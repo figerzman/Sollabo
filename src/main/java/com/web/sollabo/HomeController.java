@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Handles requests for the application home page. 1111111111
+ * Handles requests for the application home page. test
  */
 @Controller
 public class HomeController {
