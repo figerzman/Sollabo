@@ -61,8 +61,8 @@
 	<thead>
 		<tr>
 		      <th class="profile"><button class="btn1" type="button"><img src="profile.png" width="150" height="150"></button></th>
-			  <th class="pen"><button type="button"><img src="pen.png" width="150" height="150"></button></th>
-			  <th class="exit"><button type="button"><img src="exit.png" width="150" height="150"></button></th>
+			  <th class="pen"><button class="btn2" type="button"><img src="pen.png" width="150" height="150"></button></th>
+			  <th class="exit"><button class="btn3" type="button"><img src="exit.png" width="150" height="150"></button></th>
 		</tr>
 		<tr>
 			  <th class="first">회원정보</th>
@@ -72,9 +72,9 @@
 	</thead>
 	<tbody>
 		<tr>
-		      <th class="magnifying"><button type="button"><img src="magnifying.png" width="150" height="150"></button></th>
-			  <th class="cart"><button type="button"><img src="cart.png" width="150" height="150"></button></th>
-			  <th class="support"><button type="button"><img src="support.png" width="150" height="150"></button></th>
+		      <th class="magnifying"><button class="btn4" type="button"><img src="magnifying.png" width="150" height="150"></button></th>
+			  <th class="cart"><button class="btn5" type="button"><img src="cart.png" width="150" height="150"></button></th>
+			  <th class="support"><button class="btn6" type="button"><img src="support.png" width="150" height="150"></button></th>
 		</tr>
 		<tr>
 			  <th class="first">주문조회</th>
