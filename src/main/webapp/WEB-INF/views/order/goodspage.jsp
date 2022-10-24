@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,14 +110,6 @@ justify-content: center;
 }
 
 
-.total_btn .btnNormal{
-    font-weight: 600;
-    padding: 15px 70px;
-    margin: 10px 4px;
-    border-radius: 0;
-    font-size: 13px;
-}
-
 .total_btn span{
 font-weight: 400;
 }
@@ -154,6 +146,7 @@ transition: all .3s
 
 .btnSubmit:hover{
    color:#333333;  
+   
 }
 
 .btnSubmit:hover::before{
@@ -166,15 +159,48 @@ transition: all .3s
 }
 
 .btnNormal{
-
-	color: #333 !important;
-    background-color: #fff !important;
-    border: 1px solid #ddd !important;
-    transition: all .25s ease-in-out;
-    text-decoration: none;
-    padding: 15px 70px;
-  	margin:10px 4px;
+  padding: 15px 45px;
+  margin:10px 4px;
+  color: #333333;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  display:inline-block;
+  border: 1px solid #ddd !important;
+  
 }
+
+.btnNormal::before{
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+display: block;
+width: 100%;
+height: 100%;
+z-index: -1;
+background-color: #dddddd;
+-webkit-transform: scaleY(.3);
+transform: scaleY(.3);
+opacity: 0;
+transition: all .3s
+}
+
+.btnNormal:hover{
+   color:#333333;  
+}
+
+.btnNormal:hover::before{
+   opacity: 1;
+  background-color: #dddddd;
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
+  transition: transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity
+}
+
 div{
 	display: block;
 	margin: 0px;
@@ -280,5 +306,12 @@ input[ type="hidden" i]{
 				</a>
 		</div>
 	</div>
-	</body>
+	
+	<!-- 총 제품 페이지 -->
+	<div class="total_product">
+		
+	</div>
+
+
+</body>
 </html>
