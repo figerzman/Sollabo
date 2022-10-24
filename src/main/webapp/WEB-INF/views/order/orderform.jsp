@@ -36,50 +36,454 @@ function register() {
 }
 </script>
 <style type="text/css">
+
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, img {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-width: 950px;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+#contents {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 200px;
+}
+
+.titleArea {
+    min-height: 30px;
+    margin: 10px 0 30px;
+    text-align: center;
+}
+
+.titleArea h2 {
+    display: inline-block;
+    font-family: 'Poppins','Nanum Square','Noto Sans KR','맑은 고딕','Malgun Gothic',sans-serif;
+    color: #222;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    word-spacing: 2px;
+    text-transform: uppercase;
+    *display: inline;
+}
+
+.orderListArea .title {
+    position: relative;
+    height: 38px;
+    margin: 0 0 10px 0;
+    padding: 0 0 0 9px;
+    border: 1px solid #d7d5d5;
+    border-bottom: 0;
+    line-height: 38px;
+    background: #f6f6f6;
+}
+table {
+    width: 100%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.title {
+    margin: 40px 0 10px 10px;
+}
+.ec-base-table.typeList .center td, .ec-base-table.typeList td.center {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.orderListArea .title h3 {
+    display: inline-block;
+    vertical-align: middle;
+    color: #353535;
+    font-size: 12px;
+}
+
+.orderListArea .ec-base-table table {
+    position: relative;
+ /*    margin: 10px 0 0; */
+    border: 1px solid #ddd;
+/*     border-top: 0; */
+    line-height: 1.5;
+}
+
+.ec-base-table thead th {
+    padding: 11px 0 10px;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    vertical-align: middle;
+    font-weight: normal;
+    background: #fafafa;
+}
+
+.ec-base-table table:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+}
+.ec-base-table.typeList tfoot td {
+    padding: 15px 10px 17px;
+    background: #fbfafa;
+}
+
+.ec-base-button {
+    padding: 10px 0 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 배송 정보 */
+.ec-base-table table:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+}
+
+
+.ec-base-table tbody th {
+    padding: 11px 0 10px 18px;
+    border: 1px solid #ddd;
+    border-bottom-width: 0;
+    color: #333;
+    text-align: left;
+    font-weight: normal;
+    background-color: #fafafa;
+}
+
+.ec-base-table td {
+    padding: 11px 10px 10px;
+    border-top: 1px solid #ddd;
+    color: #333;
+    vertical-align: middle;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+
+input[type=text], input[type=password] {
+    height: 18px;
+    line-height: 20px;
+    padding: 2px 4px;
+    border: 1px solid #ddd;
+    color: #333;
+    font-size: 12px;
+}
+
+.ec-base-table thead th {
+    padding: 11px 0 10px;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    vertical-align: middle;
+    font-weight: normal;
+    background: #fafafa;
+}	
+/* 결제 총금액 */
+
+.totalArea .ec-base-table.total th {
+    height: 39px;
+    background: #fbfafa;
+}
+
+.total .ec-base-table table {
+    position: relative;
+    margin: 10px 0 0;
+    border: 1px solid #ddd;
+    border-top: 0;
+    color: #fff;
+    line-height: 1.5;
+}
+
+.title h3 {
+    display: inline-block;
+    vertical-align: middle;
+    color: #353535;
+    font-size: 12px;
+}
+
+.title h3 {
+    display: inline-block;
+    vertical-align: middle;
+    color: #353535;
+    font-size: 12px;
+}
+.totalArea .ec-base-table.total td {
+    height: 58px;
+}
+.txt16 {
+    font-size: 16px;
+}
+
+/* 결제 부분 */
 .payArea {
-	max-width: 400px;
     overflow: hidden;
     position: relative;
     padding: 0 241px 0 0;
     border: 1px solid #777;
     color: #353535;
     line-height: 1.5;
+    height: 350px;
+}
+.payArea .payment {
+    float: left;
+    width: 100%;
 }
 .payArea .method {
     padding: 17px 20px 15px;
     font-weight: bold;
     border-bottom: 3px double #dedede;
 }
-.payArea .total {
-    float: right;
-    width: 240px;
-    margin: 0 -241px 0 0;
-    text-align: right;
-    background: #fbfafa;
-}
+
+
 .payArea .payment > .ec-base-table {
     padding: 10px 20px;
 }
-.payment{
-	width:350px;
+
+.payArea .payHelp {
+    margin: 0 0 0 130px;
 }
-.total{
-	width: 150px;
+
+
+span.ec-base-help, p.ec-base-help, ul.ec-base-help li {
+    margin: 2px 9px;
+    padding: 1px 0 1px 20px;
+    line-height: 1.4;
+    background: url(//img.echosting.cafe24.com/skin/base/common/ico_info.gif) no-repeat 0 2px;
 }
+
+.payArea .total {
+	position: static;
+    float: right;
+    width: 240px;
+    height: 100px;
+    margin: -290px -241px 0 0;
+    text-align: right;
+    background: #fbfafa;
+}
+
+.payArea .total h4 {
+    margin: 17px 10px 0 0;
+    color: #353535;
+    font-size: 12px;
+}
+
+
+
+
+.payArea .payHelp {
+    margin: 0 0 0 130px;
+}
+
+.payArea:after {
+    position: absolute;
+    top: 0;
+    right: 240px;
+    display: block;
+    content: "";
+    width: 1px;
+    height: 100%;
+    background: #777;
+}
+
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.payArea .total .paymentAgree {
+    position: relative;
+    margin: 30px 0 0 14px;
+    padding: 0 0 0 24px;
+    text-align: left;
+}
+
+.payArea .total .ec-base-button {
+    margin: 6px 10px 0;
+}
+
+.payArea .total .price input#total_price {
+    width: 190px;
+    height: auto;
+    padding: 0;
+    border: 0;
+    color: #008bcc;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: normal;
+    background: #fbfafa;
+}
+
+.payArea .payment > .ec-base-table {
+    padding: 10px 20px;
+}
+
+.payment {
+    float: left;
+    width: 100%;
+}
+.payArea .total .paymentAgree {
+    position: relative;
+    margin: 30px 0 0 14px;
+    padding: 0 0 0 24px;
+    text-align: left;
+}
+
+.total .price {
+    margin: 20px 10px 0 0;
+    color: #008bcc;
+    font-size: 13px;
+}
+
+
+.payArea .total .ec-base-button {
+    margin: 6px 10px 0;
+}
+
+.total .mileage .ec-base-desc {
+    padding: 10px 10px 9px 0;
+    border-top: 1px solid #d7d5d5;
+}
+
+
+div.ec-base-help {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    line-height: 18px;
+}
+
+div.ec-base-help > h2, div.ec-base-help > h3 {
+    padding: 9px 0 6px 10px;
+    border-bottom: 1px solid #e8e7e7;
+    color: #333;
+    font-size: 12px;
+    background: #fafafa;
+}
+
+div.ec-base-help .inner {
+    padding: 0 9px 12px;
+    padding-top: 0px;
+    padding-right: 9px;
+    padding-bottom: 12px;
+    padding-left: 9px;
+}
+
+div.ec-base-help ul li {
+    padding: 0 0 0 11px;
+    background: url(//img.echosting.cafe24.com/skin/base/common/ico_dash.gif) no-repeat 0 7px;
+}
+li {
+    list-style: none;
+}
+
+div.ec-base-help h4 {
+    margin: 22px 0 -4px;
+    color: #404040;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.totalArea .ec-base-table.total table {	
+    z-index: 2;
+    border-color: #777;
+}
+
+.totalArea .ec-base-table.total td {
+    height: 58px;
+}
+
+
+div.ec-base-help {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    line-height: 18px;
+}
+
+div.ec-base-help h4 {
+    margin: 22px 0 -4px;
+    color: #404040;
+    font-size: 12px;
+    font-weight: normal;
+}
+div.ec-base-help {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    line-height: 18px;
+}
+
+div.ec-base-help ol li {
+    padding: 0 0 0 25px;
+    background: url(//img.echosting.cafe24.com/skin/base/common/ico_number.png) no-repeat;
+}
+
+div.ec-base-help ol .item1 {
+    background-position: -484px 0;
+}
+div.ec-base-help ol .item2 {
+    background-position: -434px -100px;
+}
+div.ec-base-help ol .item3 {
+    background-position: -384px -200px;
+}
+div.ec-base-help ol .item4 {
+    background-position: -334px -300px;
+}
+div.ec-base-help ol .item5 {
+    background-position: -284px -400px;
+}
+
 </style>
 </head>
 <body>
-	<div class="form-area">
-		<h3>주문서작성</h3>
+
+	<div id="contents">
 	
+	<div class="titleArea">
+		<h2>주문서작성</h2>
+	</div>
+	<div class="orderListArea ">
+        <div class="title">
+            <h3>국내배송상품 주문내역</h3>
+        </div>
+	
+	<div class="ec-base-table typeList gBorder ">
 		<table border="1" class="cart-main">
 			<colgroup>
 				<col style="width:27px">
 				<col style="width:100px">
-				<col style="min-width:100px">
-				<col style="width:98px">
-				<col style="width:120px">
-				<col style="width:120px">
+				<col style="width:auto">
+				<col style="width:130px">
+				<col style="width:80px">
+				<col style="width:150px">
 			</colgroup>
 			<thead>
 				<tr>
@@ -118,16 +522,7 @@ function register() {
 						</div>
 			        </td>
 			        <td>
-			        	<span class="">
-			            <span class="ec-base-qty">
-			            <input id="quantity_id_0" name="quantity_name_0" size="2" value="2" type="text">
-			            <a href="javascript:;" onclick="Basket.addQuantityShortcut('quantity_id_0', 0);">
-			            <img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="수량증가" class="up">
-			            </a>
-			            <a href="javascript:;" onclick="Basket.outQuantityShortcut('quantity_id_0', 0);">
-			            <img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="수량감소" class="down">
-			            </a></span>
-			            <a href="javascript:;" class="btnNormal gBlank5" onclick="Basket.modifyQuantity()">변경</a></span>
+			           2		           
 			        </td>
 			        <td class="right">
 						<strong>KRW <span id="sum_price_front0"></span></strong>\
@@ -138,7 +533,8 @@ function register() {
 	        	</tr>
 			</tbody>
 		</table>
-		
+		</div>
+		</div>			
 		<div class="orderArea">
 	        <div class="title">
 	            <h3>배송 정보</h3>
@@ -167,8 +563,8 @@ function register() {
 					<td>
 						<input type="text" id="addr1" name="addr" placeholder="우편번호" readonly>
 						<input type="button" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
-						<input type="text" id="addr2" placeholder="주소" readonly><br>
-						<input type="text" id="addr3" placeholder="상세주소">
+						<input type="text" id="addr2" placeholder="주소" size="40" readonly><br>
+						<input type="text" id="addr3" placeholder="상세주소" size="40">
 					</td>
 			</tr>
 			<tr>
@@ -208,61 +604,54 @@ function register() {
 		</table>
 		</div>
 		    </div>
-		
+	
 		<br><br><br><br>
 		
 		<!-- 총 주문금액 : 국내배송상품 -->
-		<div class="cart-delete">
-			
-					<table border="1" summary="">
-						<caption>총 주문금액</caption>
-					    <colgroup>
-							<col style="width:20%;">
-							<col style="width:20%;" class="displaynone">
-							<col style="width:60%;">
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">
-									<strong>총 상품금액</strong>
-								</th>
-								<th scope="col" id="total_benefit_price_title_area" class="displaynone">
-									<strong>할인금액</strong>
-								</th>
-							    <th scope="col">
-							    	<strong>결제예정금액</strong>
-							    </th>
-							</tr>
-						</thead>
-						<tbody class="price">
-							<tr>
-								<td>
-									<div class="box txt16">
-										<strong>KRW <span class="txt23">
-										<span class="total_product_price_display_front"></span>
-										</span></strong> 
-										<span class="txt14 displaynone"><span class="total_product_price_display_back"></span></span>
-									</div>
-								</td>
-								<td class="displaynone">
-									<div class="box txt16">
-									<strong>KRW <span class="txt23"><span class="total_product_vat_price_front">0</span></span></strong> 
-									<span class="txt14 displaynone"><span class="total_product_vat_price_back"></span></span>
-									</div>
-								</td>                  
-								<td>
-								<div class="box txtEm txt16">
-								<strong class="txt23">= </strong><strong>KRW <span id="total_order_price_front" class="txt23"></span></strong> <span class="txt14 displaynone"></span>
-								</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<a href="#none" class="close" onclick="OrderLayer.offDiv('order_layer_benefit');">
-					<img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="닫기"></a>
-				</div>
-				
-				<br><br><br><br>
+		
+		<div class="title">
+       		<h3>결제 예정 금액</h3>
+    	</div>
+    	<div class="ec-base-table typeList gBorder total">
+			<table border="1" summary="">
+            <colgroup>
+				<col style="width:33.33%">
+				<col style="width:33.33%" class="">
+				<col style="width:33.33%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th scope="col">
+						<strong>총 주문 금액</strong> 
+					</th>
+					<th scope="col" class="">
+						<strong>총 </strong><strong id="total_addsale_text" class="">할인</strong>
+					</th>
+					<th scope="col"><strong>총 결제예정 금액</strong></th>
+				</tr>
+			</thead>
+			<tbody class="center">
+				<tr>
+				<td class="price">
+					<div class="box txt16">
+					<strong>KRW <span id="total_order_price_view" class="txt22">62,000</span></strong> <span class="displaynone"><span id="total_order_price_ref_view"><span class="eRefPrice"></span></span></span>
+					</div>
+				</td>
+				<td class="option ">
+					<div class="box txt16">
+					<strong>-</strong> <strong>KRW <span id="total_sale_price_view" class="txt22">0</span></strong> <span class="displaynone"><span id="total_sale_price_ref_view"><span class="eRefPrice"></span></span></span>
+					</div>
+				</td>
+				<td>
+					<div class="box txtEm txt16">
+					<strong>=</strong> <strong>KRW <span id="total_order_sale_price_view" class="txt22">62,000</span></strong> <span class="displaynone"><span id="total_order_sale_price_ref_view"><span class="eRefPrice"></span></span></span>
+					</div>
+				</td>
+		      </tr>
+		    </tbody>
+			</table>
+			</div>
+			<br><br><br><br>
 				
 				<!-- 결제영역 -->
 				<div class="payArea">
@@ -313,9 +702,7 @@ function register() {
 			        	<p class="ec-base-help">휴대폰에 설치된 카카오톡 앱에서 비밀번호 입력만으로 빠르고 안전하게 결제가 가능한 서비스 입니다.</p>
 			            <p class="ec-base-help">카카오머니로 결제 시, 현금영수증 발급은 ㈜카카오페이에서 발급가능합니다.</p>
 			        </div>
-			
-			           
-			
+
 			        <div class="total">
 			            <h4>
 						<strong id="current_pay_name">입금수단</strong> <span>최종결제 금액</span>
@@ -328,8 +715,7 @@ function register() {
 							<span class="">결제하기</span>
 							</a>
 				        </div>            
-				
-			   		 </div>
+					</div>
 					
 			</div>
 		</div>
@@ -348,12 +734,7 @@ function register() {
 		<div class="ec-base-help">
         <h3>이용안내</h3>
         <div class="inner">
-            <h4>WindowXP 서비스팩2를 설치하신후 결제가 정상적인 단계로 처리되지 않는경우, 아래의 절차에 따라 해결하시기 바랍니다.</h4>
-            <ol>
-				<li class="item1"><a href="javascript:;" onclick="window.open('https://service-api.echosting.cafe24.com/shop/notice_XP_ActiveX.html','','width=795,height=500,scrollbars=yes',resizable=1);">안심클릭 결제모듈이 설치되지 않은 경우 ActiveX 수동설치</a></li>
-                <li class="item2"><a href="http://www.microsoft.com/korea/windowsxp/sp2/default.asp" target="_blank">Service Pack 2에 대한 Microsoft사의 상세안내 </a></li>
-                <li class="item3"></li>
-            </ol>
+            
         <h4>세금계산서 발행 안내</h4>
             <ol>
 				<li class="item1">부가가치세법 제 54조에 의거하여 세금계산서는 배송완료일로부터 다음달 10일까지만 요청하실 수 있습니다.</li>
@@ -383,6 +764,7 @@ function register() {
 				
 		
     	</div>	
-	</div>		    
+	</div>		
+  
 </body>
 </html>
