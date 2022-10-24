@@ -37,6 +37,7 @@ function register() {
 </script>
 <style type="text/css">
 .payArea {
+	max-width: 400px;
     overflow: hidden;
     position: relative;
     padding: 0 241px 0 0;
@@ -58,6 +59,12 @@ function register() {
 }
 .payArea .payment > .ec-base-table {
     padding: 10px 20px;
+}
+.payment{
+	width:350px;
+}
+.total{
+	width: 150px;
 }
 </style>
 </head>
@@ -304,9 +311,6 @@ function register() {
 			        <!-- 카카오페이 -->
 			        <div id="kakaopay_info" class="payHelp" style="display: none;">
 			        	<p class="ec-base-help">휴대폰에 설치된 카카오톡 앱에서 비밀번호 입력만으로 빠르고 안전하게 결제가 가능한 서비스 입니다.</p>
-			            <p class="ec-base-help">안드로이드의 경우 구글 플레이, 아이폰의 경우 앱 스토어에서 카카오톡 앱을 설치 한 후,<br>
-			            최초 1회 카드 및 계좌 정보를 등록하셔야 사용 가능합니다.</p>
-			            <p class="ec-base-help">인터넷 익스플로러의 경우 8 이상에서만 결제 가능합니다.</p>
 			            <p class="ec-base-help">카카오머니로 결제 시, 현금영수증 발급은 ㈜카카오페이에서 발급가능합니다.</p>
 			        </div>
 			
@@ -325,8 +329,60 @@ function register() {
 							</a>
 				        </div>            
 				
-			    </div>
-		    </div>
+			   		 </div>
+					
+			</div>
+		</div>
+		
+		<!-- 무이자 할부 이용안내 -->
+		<div class="ec-base-help">
+        <h3>무이자 할부 이용안내</h3>
+        <div class="inner">
+        	<ul>
+				<li>무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을 동시에 구매할 경우 전체 주문 상품 금액에 대해 무이자할부가 적용되지 않습니다.</li>
+                <li>무이자할부를 원하시는 경우 장바구니에서 무이자할부 상품만 선택하여 주문하여 주시기 바랍니다.</li>
+            </ul>
+		</div>
+		
+		
+		<div class="ec-base-help">
+        <h3>이용안내</h3>
+        <div class="inner">
+            <h4>WindowXP 서비스팩2를 설치하신후 결제가 정상적인 단계로 처리되지 않는경우, 아래의 절차에 따라 해결하시기 바랍니다.</h4>
+            <ol>
+				<li class="item1"><a href="javascript:;" onclick="window.open('https://service-api.echosting.cafe24.com/shop/notice_XP_ActiveX.html','','width=795,height=500,scrollbars=yes',resizable=1);">안심클릭 결제모듈이 설치되지 않은 경우 ActiveX 수동설치</a></li>
+                <li class="item2"><a href="http://www.microsoft.com/korea/windowsxp/sp2/default.asp" target="_blank">Service Pack 2에 대한 Microsoft사의 상세안내 </a></li>
+                <li class="item3"></li>
+            </ol>
+        <h4>세금계산서 발행 안내</h4>
+            <ol>
+				<li class="item1">부가가치세법 제 54조에 의거하여 세금계산서는 배송완료일로부터 다음달 10일까지만 요청하실 수 있습니다.</li>
+                <li class="item2">세금계산서는 사업자만 신청하실 수 있습니다.</li>
+                <li class="item3">배송이 완료된 주문에 한하여 세금계산서 발행신청이 가능합니다.</li>
+                <li class="item4">[세금계산서 신청]버튼을 눌러 세금계산서 신청양식을 작성한 후 팩스로 사업자등록증사본을 보내셔야 세금계산서 발생이 가능합니다.</li>
+                <li class="item5">[세금계산서 인쇄]버튼을 누르면 발행된 세금계산서를 인쇄하실 수 있습니다.</li>
+            </ol>
+		<h4>부가가치세법 변경에 따른 신용카드매출전표 및 세금계산서 변경안내</h4>
+            <ol>
+				<li class="item1">변경된 부가가치세법에 의거, 2004.7.1 이후 신용카드로 결제하신 주문에 대해서는 세금계산서 발행이 불가하며</li>
+                <li class="item2">신용카드매출전표로 부가가치세 신고를 하셔야 합니다.(부가가치세법 시행령 57조)</li>
+                <li class="item3">상기 부가가치세법 변경내용에 따라 신용카드 이외의 결제건에 대해서만 세금계산서 발행이 가능함을 양지하여 주시기 바랍니다.</li>
+            </ol>
+		<h4>현금영수증 이용안내</h4>
+            <ol>
+				<li class="item1">현금영수증은 1원 이상의 현금성거래(무통장입금, 실시간계좌이체, 에스크로, 예치금)에 대해 발행이 됩니다.</li>
+                <li class="item2">현금영수증 발행 금액에는 배송비는 포함되고, 적립금사용액은 포함되지 않습니다.</li>
+                <li class="item3">발행신청 기간제한 현금영수증은 입금확인일로 부터 48시간안에 발행을 해야 합니다.</li>
+                <li class="item4">현금영수증 발행 취소의 경우는 시간 제한이 없습니다. (국세청의 정책에 따라 변경 될 수 있습니다.)</li>
+                <li class="item5">현금영수증이나 세금계산서 중 하나만 발행 가능 합니다.</li>
+            </ol>
+		</div>
+    	</div>
+		
+		
+				
+		
+    	</div>	
 	</div>		    
 </body>
 </html>
