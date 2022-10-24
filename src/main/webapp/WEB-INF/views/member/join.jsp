@@ -172,7 +172,7 @@ input[type=button] {
 
 /* 회원가입 버튼 */
 .btnArea { 
-	margin:20px 0 50px; 
+	margin:50px 0 50px; 
 	text-align:center; 
 }
 
@@ -182,10 +182,33 @@ div {
 }
 
 /* 동의사항 */
-.agreeArea { padding:20px 20px 15px 20px; border:1px solid #d7d5d5; color:#747474; font-size:11px; line-height:20px; background:#fbfafa; }
-.agreeArea .agree { overflow:auto; height:110px; padding:20px; border:1px solid #e6e6e6; background:#fff; }
-.agreeArea .agree p { padding:0 0 17px; }
-.agreeArea .check { padding:7px 0 0 0; color:#202020; font-size:12px; }
+.agreeArea { 
+	margin: 10px 0 0 0;
+	padding:20px 20px 15px 20px; 
+	border:1px solid #d7d5d5; 
+	color:#747474; 
+	font-size:11px; 
+	line-height:20px; 
+	background:#fbfafa; 
+}
+
+.agreeArea .agree { 
+	overflow:auto; 
+	height:110px; 
+	padding:20px; 
+	border:1px solid #e6e6e6; 
+	background:#fff; 
+}
+
+.agreeArea .agree p { 
+	padding:0 0 17px; 
+}
+
+.agreeArea .check { 
+	padding:7px 0 0 0; 
+	color:#202020; 
+	font-size:12px; 
+}
 
 </style>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -525,18 +548,17 @@ function register() {
 				<div>
 					<div>#카카오톡 알림톡 시행에 관한 내용</div>
 					<div>"OOO쇼핑몰"은 회원가입, 주문안내, 배송안내 등 비광고성 정보를 카카오톡 알림톡으로 알려드리며, 만약 알림톡 수신이 불가능하거나 수신 차단하신 경우에는 일반 문자메세지로 보내드립니다. 카카오톡 알림톡을 통해 안내되는 정보를 와이파이가 아닌 이동통신망으로 이용할 경우, 알림톡 수신 중 데이터 요금이 발생할 수 있습니다. 카카오톡을 통해 발송되는 알림톡 수신을 원하시 않으실 경우 반드시 알림톡을 차단하여 주시기 바랍니다.</div>
-				</div> 
-				<p class="check">
+				</div>   
+			</div>
+			<p class="check">
        			<span>이용약관에 동의하십니까?</span> 
        			<input id="agree_service_check0" name="agree_service_check[]" fw-filter="/1/" fw-label="이용약관 동의" fw-msg="이용약관에 동의 하세요" class="ec-base-chk" value="1" type="checkbox" control-id="ControlID-173"><label for="agree_service_check0">동의함</label>
-       			</p>   
-			</div>
+       		</p> 
     	</div>
     	
     	<h3>개인정보 수집 및 이용 동의</h3>
     	<div class="agreeArea">
 	        <div class="agree">
-            	<p><br></p>
             	<p>1. 개인정보 수집목적 및 이용목적</p>
             	<p>가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산</p>
             	<p>콘텐츠 제공 , 구매 및 요금 결제 , 물품배송 또는 청구지 등 발송 , 금융거래 본인 인증 및 금융 서비스</p>
@@ -570,11 +592,12 @@ function register() {
             	<p>- 수집항목 : 이름, 아이디, 휴대전화번호</p>
             	<p>- 보유기간 : 회원 탈퇴 시 혹은 법정 보유기간</p>
 	        </div>
-		</div>
-        <p class="check">
+	        <p class="check">
         	<span>개인정보 수집 및 이용에 동의하십니까?</span> 
         	<input id="agree_privacy_check0" name="agree_privacy_check[]" fw-filter="/1/" fw-label="개인정보 수집 및 이용 방침" fw-msg="개인정보 수집 및 이용 방침에 동의하세요" class="ec-base-chk" value="1" type="checkbox" control-id="ControlID-174"><label for="agree_privacy_check0">동의함</label>
-        </p>
+        	</p>
+		</div>
+        
         
         <div class="btnArea">
 	        <a href="#" onclick=""><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_member_join1.gif" alt="회원가입" /></a>
