@@ -24,7 +24,6 @@
 	margin: 100px auto;
 	padding: 20px;
 	width: 770px;
-	height: 1100px;
 	position: relative;
 }
 
