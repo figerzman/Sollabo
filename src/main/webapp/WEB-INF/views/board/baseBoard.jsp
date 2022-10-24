@@ -11,7 +11,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-section.notice {
+
+/* 상단 제목 */
+section .notice {
   padding: 80px 0;
 }
 
@@ -25,6 +27,7 @@ section.notice {
   text-align: center;
 }
 
+/* 하단 검색창 */
 #board_search .search_window {
   padding: 15px 0;
   background-color: #f9f7f9;
@@ -58,6 +61,7 @@ section.notice {
   font-size: 16px;
 }
 
+/* 게시판 테이블  */
 .board_table {
   font-size: 13px;
   width: 100%;
@@ -108,6 +112,7 @@ section.notice {
   display: none;
 }
 
+/* 버튼 꾸미기 */
 .btn {
   display: inline-block;
   padding: 0 30px;
@@ -158,8 +163,12 @@ section.notice {
   color: #fff;
 }
 
-/* reset */
+.container input[type="button"]{
+	float: right;
+	margin: 5px 0 0 0;
+}
 
+/* 최초 초기화 */
 * {
   list-style: none;
   text-decoration: none;
@@ -167,6 +176,7 @@ section.notice {
   margin: 0;
   box-sizing: border-box;
 }
+
 .clearfix:after {
   content: '';
   display: block;
@@ -184,19 +194,19 @@ section.notice {
   width: 1px;
   height: 1px;
 }
+
+ /* 페이징 처리 */
 .board_count_div{
 	text-align: center;
 	margin: 10px;
 }
-.container input[type="button"]{
-	float: right;
-	margin: 5px 0 0 0;
-}
+
 .board_count_div a {
-	color:white;
+	color:black;
 }
+
 </style>
-<title>Insert title here</title>
+<title>게시판</title>
 </head>
 <body>
 
@@ -210,9 +220,9 @@ section.notice {
   <!-- board list area -->
     <div id="board_list">
         <div class="container">
-	    <!-- 	<div style="float: right;">
-	    		<h2>11</h2>
-	    	</div> -->
+        	<div style="float: right; padding: 10px;">
+        		<span><a href="#" >최신글</a> | <a href="#" >조회수</a></span>
+        	</div>
             <table class="board_table">
                 <thead>
                 <tr>
@@ -254,10 +264,10 @@ section.notice {
 	            <div class="search_window">
 	                <form action="#">
 	                    <div class="search_wrap">
-	                    	<select>
-	                    		<option>제목</option>
-	                    		<option>작성자</option>
-	                    		<option>제목+내용</option>
+	                    	<select name="boardKeyword">
+	                    		<option value="제목">제목</option>
+	                    		<option value="작성자">작성자</option>
+	                    		<option value="제목+내용">제목+내용</option>
 	                    	</select>	                   
 	                        <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
 	                        <input type="button" class="btn btn-dark" value="검색" />
