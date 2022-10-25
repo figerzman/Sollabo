@@ -45,9 +45,10 @@ fieldset {
 }
 
 .findPwd .check {
-	margin-bottom: 20px;
-    margin-left: 140px;
+	margin-bottom: 30px;
+    margin-left: -30px;
     color: #353535;
+    text-align: center;
 }
 
 .findPwd p {
@@ -66,12 +67,12 @@ p {
     display: inline-block;
     margin: 0 0 5px;
     padding: 0 4px 0 4px;
-    width: 125px;
+    width: 135px;
     font-weight: normal;
 }
 
 .findPwd #id, #name, #email {
-    width: 226px;
+    width: 230px;
 }
 
 .findPwd input[type=text] {
@@ -112,11 +113,7 @@ label {
 	            		<span id="ssn_lable" style="display: none;"></span>
 	            	</label>
 	            	<input id="check_method1" name="check_method" fw-filter="" fw-label="찾는방법" fw-msg="" value="2" type="radio" checked="checked">
-	            	<label for="check_method1">이메일</label> &nbsp;
-	            	<input id="check_method2" name="check_method" fw-filter="" fw-label="찾는방법" fw-msg="" value="3" type="radio">
-	            	<label for="check_method2">
-	            		<span id="search_type_mobile_lable" style="display:inline;">휴대폰번호</span>
-	            	</label>
+	            	<label for="check_method1">이메일</label>
 	            </p>
 	            <p id="id_view" class="id" style="">
 	            	<strong id="id_lable">아이디</strong> 
@@ -129,12 +126,6 @@ label {
 	            <p id="email_view" class="email" style="">
 	            	<strong>이메일로 찾기</strong> 
 	            	<input id="email" name="email" class="lostInput" placeholder="" value="" type="text">
-	            </p>
-	            <p id="mobile_view" class="mobile" style="display: none;">
-	            	<strong>휴대폰 번호로 찾기</strong> 
-	            	<input id="mobile1" name="mobile1" class="mobile1" placeholder="" maxlength="3" value="" type="text"> - 
-	            	<input id="mobile2" name="mobile2" class="mobile2" placeholder="" maxlength="4" value="" type="text"> - 
-	            	<input id="mobile3" name="mobile3" class="mobile2" placeholder="" maxlength="4" value="" type="text">
 	            </p>
 	            
 	            <p class="button">
