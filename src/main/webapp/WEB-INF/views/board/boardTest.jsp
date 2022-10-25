@@ -59,7 +59,7 @@
               <input type="text" class="form-control" name="t_invoice" id="t_invoice" placeholder="운송장 번호" value="567696124671">
             </div>
             <button type="button" onclick="tracking()" class="btn btn-default">조회하기</button>
-        </form>
+      </form>
         
 	<!-- <form name="search" method="get" action="./">
     <ul>
