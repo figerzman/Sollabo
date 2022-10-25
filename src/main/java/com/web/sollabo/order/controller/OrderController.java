@@ -14,5 +14,22 @@ public class OrderController {
 		return "order/orderform";
 	}
 	
+	@GetMapping("/cart")
+	public String cart() {
+		return "order/cart";
+	}
+	
+	@GetMapping("/product")
+	public String product() {
+		return "order/product";
+	}
+	
+	@GetMapping("/history")
+	public String history() {
+		return "order/history";
+	}
+	
+	
+	
 }
 	

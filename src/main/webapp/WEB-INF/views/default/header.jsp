@@ -9,7 +9,13 @@
 <meta charset="UTF-8">
 <title>default/header.jsp</title>
 <style type="text/css">
-
+.leftdiv a{
+	text-decoration: none;
+	color: black;
+}
+a {
+  text-decoration: none;
+}
 .leftdiv {
 	/* background-color: #f5d682;
  	border: 1px solid red; */
@@ -21,6 +27,7 @@
 }
 .leftdiv > ul {
 	width: 200px;
+	display: inline;
 }
 .leftdiv > ul > li > a {
 	display: block;
@@ -29,6 +36,10 @@
 }
 .leftdiv > ul > li > a:hover {
 	background-color: silver;
+}
+
+.l-title{
+	list-style: none;
 }
 
 /* 헤더(아이콘)*/
@@ -125,13 +136,17 @@ input#rightside{
 </head>
 <body>
 	<div class="leftdiv">
-		<h1 class="title">SOLLABO</h1>
-		<h1>Brand</h1>
-		<ul>
-			<li><a href="#" class="active">adi</a></li>
-			<li><a href="#">nike</a></li> 
-			<li><a href="#">newbal</a></li>
-			<li><a href="#">bans</a></li>
+		<h1 class="title"><a href="${pageContext.request.contextPath }/">SOLLABO</a></h1>
+		<h1><a href="${pageContext.request.contextPath }/order/product">Brand</a></h1>
+		<ul class=l-title>
+			<li><a href="#" class="active">Nike</a></li>
+			<li><a href="#">Adidas</a></li> 
+			<li><a href="#">NewBalance</a></li>
+			<li><a href="#">Puma</a></li>
+			<li><a href="#">Converse</a></li>
+			<li><a href="#">Vans</a></li>
+			<li><a href="#">Fredferry</a></li>
+			<li><a href="#">Lacoste</a></li>
 		</ul>
 		<h1>Sales</h1>
 	</div>
@@ -151,7 +166,8 @@ input#rightside{
 	<ul>
 		<li><a href="/sollabo/member/login">로그인</a></li>
 		<li><a href="/sollabo/order/cart">장바구니</a></li>
-		<li><a>관리자</a></li>
+		<li><a href="/sollabo/member/mypage">마이페이지</a></li>
+		<li><a href="/sollabo/admin/adminlist">관리자</a></li>
 	</ul>
 	<label for="rightside"></label>
 	</div>

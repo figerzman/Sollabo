@@ -56,15 +56,19 @@
 </style>
 </head>
 <body>
+
+<c:import url="../default/header.jsp"/>	
+
 <h2>Admin page</h2>
 <table align="center" >
 	<!--관리자 페이지는 class 전부 Ad(admin)을 붙였음  -->
 	<!-- 이미지경로 전부 바꿀것  -->
+	<!-- 이미지 경로 수정완료했습니다 -->
 	<thead>
 		<tr>
-		      <th class="AdMem"><button class="btn1" type="button"><img src="certificate.png" width="150" height="150"></button></th>
-			  <th class="AdOrd"><button class="btn2" type="button"><img src="clipboard.png" width="150" height="150"></button></th>
-			  <th class="AdPro"><button class="btn3" type="button"><img src="fashion.png" width="150" height="150"></button></th>
+		      <th class="AdMem"><button class="btn1" type="button"><img src="${pageContext.request.contextPath }/resources/image/certificate.png" width="150" height="150"></button></th>
+			  <th class="AdOrd"><button class="btn2" type="button"><img src="${pageContext.request.contextPath }/resources/image/clipboard.png" width="150" height="150"></button></th>
+			  <th class="AdPro"><button class="btn3" type="button"><img src="${pageContext.request.contextPath }/resources/image/fashion.png" width="150" height="150"></button></th>
 		</tr>
 		<tr>
 			  <th class="first">회원관리</th>
@@ -74,9 +78,9 @@
 	</thead>
 	<tbody>
 		<tr>
-		      <th class="AdQA"><button class="btn4" type="button"><img src="question.png" width="150" height="150"></button></th>
-			  <th class="AdNot"><button class="btn5" type="button"><img src="notice.png" width="150" height="150"></button></th>
-			  <th class="AdLogout"><button class="btn6" type="button"><img src="power.png" width="150" height="150"></button></th>
+		      <th class="AdQA"><button class="btn4" type="button"><img src="${pageContext.request.contextPath }/resources/image/question.png" width="150" height="150"></button></th>
+			  <th class="AdNot"><button class="btn5" type="button"><img src="${pageContext.request.contextPath }/resources/image/notice.png" width="150" height="150"></button></th>
+			  <th class="AdLogout"><button class="btn6" type="button"><img src="${pageContext.request.contextPath }/resources/image/power.png" width="150" height="150"></button></th>
 		</tr>
 		<tr>
 			  <th class="first">Q&A</th>
@@ -85,5 +89,9 @@
 		</tr>
 	</tbody>
 </table>
+
+<c:import url="../default/footer.jsp"/>   
+
+
 </body>
 </html>
