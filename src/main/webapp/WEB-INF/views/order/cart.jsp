@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style type="text/css">
 
 html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, img {
@@ -175,9 +176,58 @@ table {
     color: #333;
     background-color: #fff;
 }
+li {
+    list-style: none;
+}
+
+
+
+div.ec-base-help {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    line-height: 18px;
+}
+
+div.ec-base-help h4 {
+    margin: 22px 0 -4px;
+    color: #404040;
+    font-size: 12px;
+    font-weight: normal;
+}
+div.ec-base-help {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    line-height: 18px;
+}
+
+div.ec-base-help ol li {
+    padding: 0 0 0 25px;
+    background: url(//img.echosting.cafe24.com/skin/base/common/ico_number.png) no-repeat;
+}
+
+div.ec-base-help ol .item1 {
+    background-position: -484px 0;
+}
+div.ec-base-help ol .item2 {
+    background-position: -434px -100px;
+}
+div.ec-base-help ol .item3 {
+    background-position: -384px -200px;
+}
+div.ec-base-help ol .item4 {
+    background-position: -334px -300px;
+}
+div.ec-base-help ol .item5 {
+    background-position: -284px -400px;
+}
+
+
 </style>
 </head>
 <body>
+	
+	<c:import url="../default/header.jsp"/>	
+
 	<div class="cart-wrap"> 
 		
 	<div class="titleArea">
@@ -186,7 +236,7 @@ table {
 	
 	<div class="orderListArea ">
         <div class="title">
-            <h3>국내배송상품 주문내역</h3>
+            <h3>장바구니 내역</h3>
         </div>
 	
 	<div class="ec-base-table typeList gBorder ">
@@ -319,7 +369,7 @@ table {
 		
 
 		
-		<div class="xans-element- xans-order xans-order-basketguide ec-base-help "><h3>이용안내</h3>
+		<div class="ec-base-help "><h3>이용안내</h3>
 		<div class="inner">
 		        <h4>장바구니 이용안내</h4>
 		        <ol>
@@ -330,6 +380,8 @@ table {
 		</div>
 		</div>
 	</div>
-
+	
+	
+	<c:import url="../default/footer.jsp"/>    
 </body>
 </html>

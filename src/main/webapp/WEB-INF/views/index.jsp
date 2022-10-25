@@ -6,6 +6,10 @@
 	<title>Home</title>
 <link href="${pageContext.request.contextPath }/resources/css/test.css" rel="stylesheet">
 
+
+<style type="text/css">
+
+</style>
 </head>
 <body>
 <c:import url="default/header.jsp"/>	

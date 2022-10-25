@@ -18,5 +18,25 @@ public class MemberController {
 		return "member/join";
 	}
 	
+	@GetMapping("/mypage")
+	public String mypage() {
+		return "member/mypage";
+	}
+	
+	@GetMapping("/delete")
+	public String delete() {
+		return "member/delete";
+	}
+	
+	
+	@GetMapping("/modifyProfile")
+	public String modifyProfile() {
+		return "member/modifyProfile";
+	}
+	
+	
+	
+	
+	
 }
  

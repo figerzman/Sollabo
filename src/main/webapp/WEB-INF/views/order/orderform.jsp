@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -464,7 +465,9 @@ div.ec-base-help ol .item5 {
 </style>
 </head>
 <body>
-
+	
+	<c:import url="../default/header.jsp"/>	
+	
 	<div id="contents">
 	
 	<div class="titleArea">
@@ -765,6 +768,7 @@ div.ec-base-help ol .item5 {
 		
     	</div>	
 	</div>		
-  
+  	
+  	<c:import url="../default/footer.jsp"/>   
 </body>
 </html>

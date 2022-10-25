@@ -8,8 +8,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("order")
 public class TradeController {
 	
-	@GetMapping("/cart")
-	public String cart() {
-		return "order/cart";
-	}
+
 }

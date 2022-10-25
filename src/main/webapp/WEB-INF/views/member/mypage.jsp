@@ -30,7 +30,7 @@
  }
  
  table{
- 	padding-top: 400px;
+ 	padding-top: 200px;
  	
  }
  
@@ -51,18 +51,26 @@
  .third{
  height: 30px;
  }
- 
+
+
 
 </style>
 </head>
 <body>
+
+<c:import url="../default/header.jsp"/>	
+
+
 <h2>My Page</h2>
+<!-- 이미지 링크 수정했습니다  -->
+
+
 <table align="center" >
 	<thead>
 		<tr>
-		      <th class="profile"><button class="btn1" type="button"><img src="profile.png" width="150" height="150"></button></th>
-			  <th class="pen"><button class="btn2" type="button"><img src="pen.png" width="150" height="150"></button></th>
-			  <th class="exit"><button class="btn3" type="button"><img src="exit.png" width="150" height="150"></button></th>
+		      <th class="profile"><button class="btn1" type="button"><img src="${pageContext.request.contextPath }/resources/image/profile.png" width="150" height="150"></button></th>
+			  <th class="pen"><button class="btn2" type="button"><a href="/sollabo/member/modifyProfile"><img src="${pageContext.request.contextPath }/resources/image/pen.png" width="150" height="150"></a></button></th>
+			  <th class="exit"><button class="btn3" type="button"><a href="/sollabo/member/delete"><img src="${pageContext.request.contextPath }/resources/image/exit.png" width="150" height="150"></a></button></th>
 		</tr>
 		<tr>
 			  <th class="first">회원정보</th>
@@ -72,9 +80,9 @@
 	</thead>
 	<tbody>
 		<tr>
-		      <th class="magnifying"><button class="btn4" type="button"><img src="magnifying.png" width="150" height="150"></button></th>
-			  <th class="cart"><button class="btn5" type="button"><img src="cart.png" width="150" height="150"></button></th>
-			  <th class="support"><button class="btn6" type="button"><img src="support.png" width="150" height="150"></button></th>
+		      <th class="magnifying"><button class="btn4" type="button"><a href="/sollabo/order/history"><img src="${pageContext.request.contextPath }/resources/image/magnifying.png" width="150" height="150"></a></button></th>
+			  <th class="cart"><button class="btn5" type="button"><a href="/sollabo/order/cart"><img src="${pageContext.request.contextPath }/resources/image/cart.png" width="150" height="150"></a></button></th>
+			  <th class="support"><button class="btn6" type="button"><img src="${pageContext.request.contextPath }/resources/image/support.png" width="150" height="150"></button></th>
 		</tr>
 		<tr>
 			  <th class="first">주문조회</th>
@@ -83,5 +91,8 @@
 		</tr>
 	</tbody>
 </table>
+
+<c:import url="../default/footer.jsp"/>   
+
 </body>
 </html>
