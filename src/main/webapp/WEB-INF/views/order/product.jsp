@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +11,10 @@
 body, code{
     font: 0.8em 'Poppins','Noto Sans KR','맑은 고딕','Malgun Gothic',Verdana,Dotum,AppleGothic,sans-serif;
     color: #333;
+}
+
+img {
+	border: none;
 }
 
 p {
@@ -31,6 +35,15 @@ ul {
     padding-inline-start: 40px;
 }
 
+ol {
+	list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
 li {
 	list style: none;
 	text-align: -webkit-match-parent;
@@ -39,6 +52,7 @@ li {
 
 a {
 	text-decoration: none;
+	color: #333;
 }
 
 a:-webkit-any-link {
@@ -127,6 +141,8 @@ strong {
 
 .menuCate > li > a:hover{
 	border: 1px solid #e6e6e6;
+	border-radius: 20px;
+	box-shadow: 3px 3px 10px #e6e2af;
 	margin: 10px;
 }
 
@@ -271,9 +287,46 @@ ul .infoT {
     line-height: 0;
 }
 
+.lastPack img {
+    vertical-align: top;
+}
 
+.lastPack ol {
+	display: inline-block;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
 
+.lastPack li:first-child {
+	margin-left: 0;
+}
 
+.lastPack li {
+	float: left;
+    display: inline-block;
+    margin: 0 0 0 -1px;
+    border: 1px solid #e8e8e8;
+    font-size: 11px;
+    color: #757575;
+    vertical-align: top;
+}
+
+.lastPack li a {
+	display: block;
+    width: 33px;
+    padding: 7px 0 6px;
+    font-weight: bold;
+    color: #b7b7b7;
+    line-height: 14px;
+    background: #fff;
+}
+
+.lastPack li a.this {
+	color: #333;
+    font-weight: bold;
+    background: #f1f1f1;
+}
 
 </style>
 </head>
@@ -293,42 +346,42 @@ ul .infoT {
 				<!-- 현재는 테스트 링크만 추가 -->
 				<ul class="menuCate">
 					<li style="display:"; class="Disoption">
-						<a href="https://www.nike.com"><img src="mainnike.png">Nike
+						<a href="https://www.nike.com"><img src="img/mainnike.png">Nike
 							<span class="count displayone">()</span>
 						</a>
 					</li>
 					<li style="display:"; class="Disoption">
-						<a href=""><img src="mainadidas.png">Adidas
+						<a href=""><img src="img/mainadidas.png">Adidas
 							<span class="count displayone">()</span>
 						</a>
 					</li>
 					<li style="display:"; class="Disoption">
-						<a href=""><img src="mainnewbal.png">NewBalance
+						<a href=""><img src="img/mainnewbal.png">NewBalance
 							<span class="count displayone">()</span>
 						</a>
 					</li>
 					<li style="display:"; class="Disoption">
-						<a href=""><img src="mainpuma.png">Puma
+						<a href=""><img src="img/mainpuma.png">Puma
 							<span class="count displayone">()</span>
 						</a>
 					</li>
 					<li style="display:"; class="Disoption">
-						<a href=""><img src="mainconverse.png">Converse
+						<a href=""><img src="img/mainconverse.png">Converse
 							<span class="count displayone">()</span>
 						</a>
 					</li>
 					<li style="display:"; class="Disoption">
-						<a href=""><img src="mainvans.png">Vans
+						<a href=""><img src="img/mainvans.png">Vans
 							<span class="count displayone">()</span>
 						</a>
 					</li>
 					<li style="display:"; class="Disoption">
-						<a href=""><img src="mainfred.png">Fredferry
+						<a href=""><img src="img/mainfred.png">Fredferry
 							<span class="count displayone">()</span>
 						</a>
 					</li>
 					<li style="display:"; class="Disoption">
-						<a href=""><img src="mainlacoste.png">Lacoste
+						<a href=""><img src="img/mainlacoste.png">Lacoste
 							<span class="count displayone">()</span>
 						</a>
 					</li> 
@@ -360,7 +413,7 @@ ul .infoT {
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="https://www.adidas.co.kr/znsored-%ED%95%98%EC%9D%B4-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%96%B4%EB%8D%9C%ED%8A%B8/GZ2291.html">
-									<img src="아디다스 캡쳐.PNG">
+									<img src="img/아디다스 캡쳐.PNG">
 								</a>
 							</div>
 						</div>
@@ -391,7 +444,7 @@ ul .infoT {
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="https://www.adidas.co.kr/znsored-%ED%95%98%EC%9D%B4-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%96%B4%EB%8D%9C%ED%8A%B8/GZ2291.html">
-									<img src="아디다스 캡쳐.PNG">
+									<img src="img/아디다스 캡쳐.PNG">
 								</a>
 							</div>
 						</div>
@@ -417,11 +470,12 @@ ul .infoT {
 								</li>
 							</ul>	
 						</div>
-					</li><li id="list_test" class="listtest">
+					</li>
+					<li id="list_test" class="listtest">
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="https://www.adidas.co.kr/znsored-%ED%95%98%EC%9D%B4-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%96%B4%EB%8D%9C%ED%8A%B8/GZ2291.html">
-									<img src="아디다스 캡쳐.PNG">
+									<img src="img/아디다스 캡쳐.PNG">
 								</a>
 							</div>
 						</div>
@@ -447,11 +501,12 @@ ul .infoT {
 								</li>
 							</ul>	
 						</div>
-					</li><li id="list_test" class="listtest">
+					</li>
+					<li id="list_test" class="listtest">
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="https://www.adidas.co.kr/znsored-%ED%95%98%EC%9D%B4-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%96%B4%EB%8D%9C%ED%8A%B8/GZ2291.html">
-									<img src="아디다스 캡쳐.PNG">
+									<img src="img/아디다스 캡쳐.PNG">
 								</a>
 							</div>
 						</div>
@@ -477,11 +532,12 @@ ul .infoT {
 								</li>
 							</ul>	
 						</div>
-					</li><li id="list_test" class="listtest">
+					</li>
+					<li id="list_test" class="listtest">
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="https://www.adidas.co.kr/znsored-%ED%95%98%EC%9D%B4-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%96%B4%EB%8D%9C%ED%8A%B8/GZ2291.html">
-									<img src="아디다스 캡쳐.PNG">
+									<img src="img/아디다스 캡쳐.PNG">
 								</a>
 							</div>
 						</div>
@@ -507,11 +563,12 @@ ul .infoT {
 								</li>
 							</ul>	
 						</div>
-					</li><li id="list_test" class="listtest">
+					</li>
+					<li id="list_test" class="listtest">
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="https://www.adidas.co.kr/znsored-%ED%95%98%EC%9D%B4-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%96%B4%EB%8D%9C%ED%8A%B8/GZ2291.html">
-									<img src="아디다스 캡쳐.PNG">
+									<img src="img/아디다스 캡쳐.PNG">
 								</a>
 							</div>
 						</div>
@@ -537,11 +594,12 @@ ul .infoT {
 								</li>
 							</ul>	
 						</div>
-					</li><li id="list_test" class="listtest">
+					</li>
+					<li id="list_test" class="listtest">
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="https://www.adidas.co.kr/znsored-%ED%95%98%EC%9D%B4-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%96%B4%EB%8D%9C%ED%8A%B8/GZ2291.html">
-									<img src="아디다스 캡쳐.PNG">
+									<img src="img/아디다스 캡쳐.PNG">
 								</a>
 							</div>
 						</div>
@@ -567,11 +625,12 @@ ul .infoT {
 								</li>
 							</ul>	
 						</div>
-					</li><li id="list_test" class="listtest">
+					</li>
+					<li id="list_test" class="listtest">
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="https://www.adidas.co.kr/znsored-%ED%95%98%EC%9D%B4-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%96%B4%EB%8D%9C%ED%8A%B8/GZ2291.html">
-									<img src="아디다스 캡쳐.PNG">
+									<img src="img/아디다스 캡쳐.PNG">
 								</a>
 							</div>
 						</div>
@@ -597,11 +656,12 @@ ul .infoT {
 								</li>
 							</ul>	
 						</div>
-					</li><li id="list_test" class="listtest">
+					</li>
+					<li id="list_test" class="listtest">
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="https://www.adidas.co.kr/znsored-%ED%95%98%EC%9D%B4-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%96%B4%EB%8D%9C%ED%8A%B8/GZ2291.html">
-									<img src="아디다스 캡쳐.PNG">
+									<img src="img/아디다스 캡쳐.PNG">
 								</a>
 							</div>
 						</div>
@@ -627,11 +687,12 @@ ul .infoT {
 								</li>
 							</ul>	
 						</div>
-					</li><li id="list_test" class="listtest">
+					</li>
+					<li id="list_test" class="listtest">
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="https://www.adidas.co.kr/znsored-%ED%95%98%EC%9D%B4-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%96%B4%EB%8D%9C%ED%8A%B8/GZ2291.html">
-									<img src="아디다스 캡쳐.PNG">
+									<img src="img/아디다스 캡쳐.PNG">
 								</a>
 							</div>
 						</div>
@@ -657,11 +718,37 @@ ul .infoT {
 								</li>
 							</ul>	
 						</div>
-					</li>					
+					</li>				
 				</ul>			
 			</div>
+			<!-- 제품 진열(최하단)  -->
 			<div class="lastPack">
-				
+				<a href="#none" class="first">
+					<img src="gif/firstbtn.gif" 
+					onmouseover="this.src='gif/first_rollover.gif'" 
+					onmouseout="this.src='gif/firstbtn.gif'" alt="첫 페이지">
+				</a>
+				<a href="#none">
+					<img src="gif/prevbtn.gif" 
+					onmouseover="this.src='gif/prev_rollover.gif'" 
+					onmouseout="this.src='gif/prevbtn.gif'" alt="이전 페이지">
+				</a>
+				<ol style="padding-left: 0px;">
+					<li class="know"><a href="" class="this">1</a></li>
+			        <li class="know"><a href="" class="other">2</a></li>
+			        <li class="know"><a href="" class="other">3</a></li>
+			        <li class="know"><a href="" class="other">4</a></li>
+	            </ol>
+	            <a href="">
+		            <img src="gif/nextbtn.gif" 
+		            onmouseover="this.src='gif/next_rollover.gif'" 
+		            onmouseout="this.src='gif/nextbtn.gif'" alt="다음 페이지">
+	            </a>
+	            <a href="" class="last">
+	            	<img src="gif/lastbtn.gif" 
+	            	onmouseover="this.src='gif/last_rollover.gif'" 
+	            	onmouseout="this.src='gif/lastbtn.gif'" alt="마지막 페이지">
+            	</a>
 			</div>
 		</div>
 	</div>
