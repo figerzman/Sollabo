@@ -1,141 +1,153 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>member/login.jsp</title>
+<title>login2</title>
 <style type="text/css">
-
-/* 전체적인 세팅*/
-*{
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    text-decoration:none;
+* {
+	margin: 0;
+	padding: 0;
 }
 
+/* 전체 틀 */
+.memberLogin {
+	/* border: 1px solid black; */
+	margin: 100px auto;
+	padding: 20px;
+	width: 770px;
+	height: 1100px;
+	position: relative;
+}
+
+/* 전체 글꼴 */
 body{
-    font-size: 14px;
+    font-size: 0.9em;
     font-family: 'Roboto', sans-serif;
 }
-/* 박스 세팅 */
-.login-wrapper{
-    width: 550px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 32px;
-    position: relative;
-    margin: auto;
-    min-height: 500px;
-    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
-    box-sizing: border-box;
+
+/* 제목(회원 로그인) */
+.titleArea {
+	margin: 90px 0 30px;
+	text-align: center;
 }
 
-/* 상단 로그인 문구(로그인)*/
-.login-wrapper > h2{
-    font-size: 24px;
-    color: #31363d;
-    margin-bottom: 20px;
-    text-align:center;
+.login {
+	margin: auto;
+	width: 300px;
 }
 
-/* 중단 카카오 문구(설명)*/
-.login-wrapper > h3{
-    text-align:center;
+.loginId {
+	margin: auto;
+    width: 230px;
+}
+.loginPwd {
+	margin: auto;
+    width: 230px;
 }
 
-/* 아이디, 비번, 아이디저장(쳌박) */
-#login-form > div > input{
-    width: 80%;
-    height: 50px;
-    padding: 0 10px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    background-color: #F8F8F8; 	
+.loginId input[type=text] {
+    height: 30px;
+    line-height: 30px;
+}
+.loginPwd input[type=password] {
+    height: 30px;
+    line-height: 30px;
 }
 
-/* placholder 색깔 */
-#login-form > div > input::placeholder{
-    color: #D2D2D2;
-    text-align:left;
+input[type=text] {
+    height: 18px;
+    width: 220px;
+    line-height: 20px;
+    padding: 2px 8px;
+    margin: 2px;
+    border: 1px solid #ddd;
+    color: #333;
+    font-size: 14px;
 }
-/* 하단 로그인 클릭 */
-#login-form > div > input[type="submit"]{
-    color: #fff;
-    font-size: 16px;
-    background-color: #31363d;
-    margin-top: 20px;
-}
-/* (div처리된)아이디 비밀번호*/
-#login-form > div{
-text-align:center;
-}
-
-/* 아이디 저장 */
-#login-form > input[type="checkbox"]{
-    display: none;
-    text-indent: 30px;
-    margin-left:50px;
-    
-}
-/*라벨처리 <아이디 저장하기> 색상 */
-#login-form > label{
-    color: #999999;
-    text-align:center;
-}
-/* 수정할 시 확인 요망(아무도모름) 일단 인접된것 까지 같이 적용되는듯*/
-#login-form input[type="checkbox"] + label{
-    cursor: pointer;
-    padding-left: 26px;
-    background-image: url("checkbox.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-#login-form input[type="checkbox"]:checked + label{
-    background-image: url("checkbox-active.png");
-    background-repeat: no-repeat;
-    background-size: contain;
+input[type=password] {
+    height: 18px;
+    width: 220px;
+    line-height: 20px;
+    padding: 2px 8px;
+    margin: 2px;
+    border: 1px solid #ddd;
+    color: #333;
+    font-size: 14px;
 }
 
-/* 좌측하단 아이디 비번찾기*/
-.right a{
-   padding-left:25%;
+.login .button {
+	height:76px; 
+	line-height:76px;
+	text-align: center;
 }
 
-/* 우측하단 회원가입*/
-.left a{
-	padding-left:10%
+.utilMenu {
+    float: inherit;
+    margin: 24px 0 0;
+    width: 100%;
+    font-size: 0;
+    border: none;
 }
 
-/*하단 링크 색깔*/
-a:hover { 
-color:pink; 
+.utilMenu a:first-child {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+}
+
+.utilMenu a {
+    display: inline-block;
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid #e1e1e1;
+    font-size: 13px;
+    font-weight: lighter;
+    color: #222;
+}
+
+.utilMenu a.right {
+    float: right;
+    border-left: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+label {
+    cursor: default;
 }
 
 </style>
 </head>
 <body>
-    
-    <div class="login-wrapper">
-        <h2>로그인</h2>
-        <h3>아이디와 비밀번호 입력하기 귀찮으시죠?<br>
-        카카오로 1초 만에 로그인 하세요.</h3><br>
-        
-        <h3>카카오 1초 로그인/회원가입 정상 동작 중</h3><br><br>
-        
-        <form method="post" action="" id="login-form">
-            <div class="loginID"><input  type="text" name="userId" placeholder="아이디"></div>
-            <div class="loginPW"><input  type="password" name="userPassword" placeholder="비밀번호"></div><br>
-            <label id="test" for="remember-check">
-               <span class="saveID"><input type="checkbox" id="remember-check"> 아이디 저장하기</span>
-            </label>
-           <div class="Loginbut"><input type="submit" value="로그인"></div> 
-        </form>
-        <span class="left"><a href="#" >아이디&비밀번호 찾기</a></span>
-        <span class="right"><a href="join">회원가입</a></span>
-    </div>
+	<div class="memberLogin">
+	    <div class="login">
+	    	<div class="titleArea">
+				<h1>회원 로그인</h1>
+			</div>
+			<form method="post" action="" id="login-form">
+	            <div class="loginId"><input type="text" name="userId" placeholder="아이디"></div>
+	            <div class="loginPwd"><input type="password" name="userPassword" placeholder="비밀번호"></div><br>
+            
+            <p class="button">
+	        	<a href=""><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_find_login.gif" alt="로그인" /></a>
+	        </p>
+	        
+	        <div class="utilMenu" style="display:block">
+	            <a href="/member/findId.jsp">아이디 찾기</a>
+	            <a href="/member/findPwd.jsp">비밀번호 찾기</a>
+	            <a href="/member/join.jsp" class="right" style="display:">회원가입</a>
+        	</div>
+            
+			</form>
+	        
+	    </div>
+	</div>
+		
 </body>
 </html>

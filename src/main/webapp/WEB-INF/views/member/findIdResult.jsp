@@ -34,6 +34,114 @@ body{
 	text-align: center;
 }
 
+/* 완료 멘트 */
+.findId p.info {
+    margin: 50px 0 30px;
+    font-size: 18px;
+    color: #008bcc;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* 상단 멘트바 */
+.message {
+    display: block;
+    padding: 10px 0 10px 35px;
+    border: 1px solid #e8e8e8;
+    background: #fbfbfb url(//img.echosting.cafe24.com/skin/base/common/ico_info.gif) no-repeat 10px center;
+}
+
+/* 가입 아이디 갯수 색상 */
+.txtEm {
+    color: #008bcc;
+}
+
+/* 하단 박스 */
+.information {
+	border-left: 1px solid #e8e8e8;
+	border-bottom: 1px solid #e8e8e8;
+	border-right: 1px solid #e8e8e8;
+    display: table;
+    table-layout: fixed;
+    padding: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 하단 좌측 박스 */
+.information > .thumbnail {
+    display: table-cell;
+    padding: 0 15px;
+    width: 70px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* 하단 좌측 박스 이미지 */
+.information > .thumbnail img {
+    max-width: 70px;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+/* 하단 우측 박스 */
+.information .description {
+    display: table-cell;
+    padding: 0 10px;
+    width: auto;
+    line-height: 1.5em;
+    border-left: 1px solid #e8e8e8;
+    vertical-align: middle;
+}
+
+/* 이름, 이메일 */
+.term {
+    float: left;
+    width: 100px;
+    margin: 0 0 2px;
+    padding: 0 4px 0 0;
+    line-height: 22px;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+
+/* 고객 이름, 이메일 */
+.small .desc {
+    padding-left: 30%;
+}
+
+.desc {
+    display: block;
+    margin: 0 0 2px;
+    padding: 0 5px 0 100px;
+    min-height: 22px;
+    line-height: 22px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* 하단 우측 박스 */
+li {
+	margin-top: 3px;
+    list-style: none;
+}
+
+/* 성공 멘트 */
+.findId p.copy {
+    margin: 40px 0 0;
+    color: #757575;
+    line-height: 170%;
+    text-align: center;
+}
+
+/* 버튼 */
+.button {
+    padding: 30px 0;
+    text-align: center;
+}
 
 </style>
 </head>
@@ -61,14 +169,14 @@ body{
 							<li>
 							<strong class="term">이메일</strong><span class="desc"> : <span>abc1234@naver.com</span></span>
 							</li>
+							<li>즐거운 쇼핑 하세요 고객님!</li>
 						</ul>
 					</div>
 		        </div>
 		    </div>
 	        <p class="copy">
 	            고객님의 아이디 찾기가 성공적으로 이루어졌습니다.<br> 
-	            항상 고객님의 즐겁고 편리한 쇼핑을 위해<br>
-	            최선의 노력을 다하는 쇼핑몰이 되도록 하겠습니다.
+	            즐겁고 편리한 쇼핑을 위해 최선의 노력을 다하는 쇼핑몰이 되도록 하겠습니다.
 	        </p>
 		    <p class="button">
             	<a href=""><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_find_login.gif" alt="로그인" /></a>
