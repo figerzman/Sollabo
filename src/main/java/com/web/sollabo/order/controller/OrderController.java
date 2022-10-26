@@ -29,6 +29,11 @@ public class OrderController {
 		return "order/history";
 	}
 	
+	@GetMapping("/detailhistory")
+	public String detailhistory() {
+		return "order/detailhistory";
+	}
+	
 	
 	
 }
