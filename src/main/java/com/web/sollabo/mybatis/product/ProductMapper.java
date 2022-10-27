@@ -1,5 +1,14 @@
 package com.web.sollabo.mybatis.product;
 
-public class ProductMapper {
+import java.util.List;
 
+import com.web.sollabo.product.dto.ProductDTO;
+
+public interface ProductMapper {
+
+	public List<ProductDTO> getProduct();
+	
+
+
+	
 }
