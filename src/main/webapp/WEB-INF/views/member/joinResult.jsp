@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>findIdResult</title>
+<title>joinResult</title>
 <style type="text/css">
 * {
 	margin: 0;
@@ -13,7 +13,7 @@
 }
 
 /* 전체 틀 */
-.memberFindId {
+.memberJoin {
 	/* border: 1px solid black; */
 	margin: 100px auto;
 	padding: 20px;
@@ -28,14 +28,14 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-/* 제목(아이디 찾기) */
+/* 제목(회원가입) */
 .titleArea {
 	margin: 90px 0 30px;
 	text-align: center;
 }
 
 /* 완료 멘트 */
-.findId p.info {
+.Join p.info {
     margin: 50px 0 30px;
     font-size: 18px;
     color: #008bcc;
@@ -49,11 +49,6 @@ body{
     padding: 10px 0 10px 35px;
     border: 1px solid #e8e8e8;
     background: #fbfbfb url(//img.echosting.cafe24.com/skin/base/common/ico_info.gif) no-repeat 10px center;
-}
-
-/* 가입 아이디 갯수 색상 */
-.txtEm {
-    color: #008bcc;
 }
 
 /* 하단 박스 */
@@ -97,7 +92,7 @@ img {
     vertical-align: middle;
 }
 
-/* 이름, 이메일 */
+/* 아이디, 이름, 이메일 */
 .term {
     float: left;
     width: 100px;
@@ -108,9 +103,9 @@ img {
     font-weight: normal;
 }
 
-/* 고객 이름, 이메일 */
+/* 고객 아이디, 이름, 이메일 */
 .small .desc {
-    padding-left: 30%;
+    padding-left: 25%;
 }
 
 .desc {
@@ -133,14 +128,6 @@ li {
     list-style: none;
 }
 
-/* 성공 멘트 */
-.findId p.copy {
-    margin: 40px 0 0;
-    color: #757575;
-    line-height: 170%;
-    text-align: center;
-}
-
 /* 버튼 */
 .button {
     padding: 30px 0;
@@ -150,16 +137,15 @@ li {
 </style>
 </head>
 <body>
-	<div class="memberFindId">
-	    <div class="findId">
+	<div class="memberJoin">
+	    <div class="Join">
 	    	<div class="titleArea">
-				<h1>아이디 찾기</h1>
+				<h1>회원가입</h1>
 			</div>
-			<p class="info">고객님 아이디 찾기가 완료 되었습니다.</p>
+			<p class="info">회원가입이 완료 되었습니다.</p>
 	        <div class="Message">
 	            <p class="message">
-	            	저희 쇼핑몰을 이용해주셔서 감사합니다.<br>
-	            	다음정보로 가입된 아이디가 총 <span class="txtEm">1</span>개 있습니다.
+	            	저희 쇼핑몰을 이용해주셔서 감사합니다.
 	            </p>
 	            <div class="information">
 	                <p class="thumbnail">
@@ -167,24 +153,22 @@ li {
 	                </p>
 	                <div class="description">
 	                    <ul class="small">
+	                    	<li>
+							<strong class="term">아이디</strong><strong class="desc"><span>abc1234</span></strong>
+							</li>
 							<li>
 							<strong class="term">이름</strong><strong class="desc"><span>홍길동</span></strong>
 							</li>
 							<li>
 							<strong class="term">이메일</strong><span class="desc"><span>abc1234@naver.com</span></span>
 							</li>
-							<li>즐거운 쇼핑 하세요 고객님!</li>
 						</ul>
 					</div>
 		        </div>
 		    </div>
-	        <p class="copy">
-	            고객님의 아이디 찾기가 성공적으로 이루어졌습니다.<br> 
-	            즐겁고 편리한 쇼핑을 위해 최선의 노력을 다하는 쇼핑몰이 되도록 하겠습니다.
-	        </p>
 		    <p class="button">
-            	<a href="/sollabo/member/login"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_find_login.gif" alt="로그인" /></a>
-            	<a href="/sollabo/member/findPwd"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_find_pw.gif" alt="비밀번호 찾기" /></a>
+            	<a href="/sollabo/member/login"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_complete_login.gif" alt="로그인" /></a>
+            	<a href="${pageContext.request.contextPath }/"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_complete_main.gif" alt="메인으로 이동" /></a>
         	</p>
 		</div>
 	        
