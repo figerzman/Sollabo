@@ -6,6 +6,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	
+	// 수량 버튼 조작
+	let quantity = $(".quantity_input").val();
+	$(".plus_btn").on("click", function(){
+		$(".quantity_input").val(++quantity);
+	});
+	$(".minus_btn").on("click", function(){
+		if(quantity > 1){
+			$(".quantity_input").val(--quantity);	
+		}
+	});
+	
+/* 	// 서버로 전송할 데이터
+	const form = {
+			memno : '${member.memberno}',
+			productno : '${goodsInfo.productno}',
+			productordercount : ''
+	}
+	 */
+	// 장바구니 추가 버튼
+	$(".btn_cart").on("click", function(e){
+
+	});
+	
+	form.productordercount = $(".quantity_input").val();
+	$.ajax({
+		url: '/cart/add',
+		type: 'POST',
+		data: form,
+		success: function(result){
+		}
+	})
+</script>
+
 
 <style type="text/css">
 
@@ -240,6 +275,7 @@ div.ec-base-help ol .item5 {
         </div>
 	
 	<div class="ec-base-table typeList gBorder ">
+		
 		<table border="1" class="cart-main">
 			<colgroup>
 				<col style="width:27px">
@@ -251,7 +287,7 @@ div.ec-base-help ol .item5 {
 			</colgroup>
 			<thead>
 				<tr>
-				<th scope="col"><input type="checkbox" onclick=""></th>
+				<th scope="col"><input type="checkbox" class="all_check_input input_size_20" checked="checked"></th>
 	                    <th scope="col">이미지</th>
 	                    <th scope="col">상품정보</th>
 	                    <th scope="col">판매가</th>
@@ -259,34 +295,34 @@ div.ec-base-help ol .item5 {
 	                    <th scope="col">합계</th>
 	            </tr>
 	        </thead>
-			<tfoot class="right">
-				<tr>
-					<td colspan="8">
-					상품구매금액<span class="cal"> <!-- 상품가격총합들어갈자리 --></span>
-					 - 상품할인금액 <span class="cal" id="discount"></span> = 합계 : KRW <span class="sum"></span>
-					</td>
-		        </tr>
-	        </tfoot>
+	        
+			
+	        <c:forEach var="dto" items="${cartList}">
 	        <tbody class="cart-center">
 	        	<tr class="cart-record-">
 					<td>
-						<input type="checkbox" name="pu-select">
+						<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked">
 					</td>
 			       	<td class="pu-img"> <!-- pu-img 제품이미지 -->
 			       		<a href="/">
 			       		<img src="" alt=""></a>
 			       	</td>
 			        <td class="pu-data"> <!-- pu-data 제품정보 -->
-			     
+			     		${dto.memNo}
 			        </td>
 			        <td class="right">
 			        	<div id="product_price_div0" class="">
-							<strong>KRW</strong>
+							<strong>${dto.productPrice}KRW</strong>
 							<p class="displaynone"></p>
 						</div>
 			        </td>
 			        <td>
-			           2		           
+			        	<div class="table_text_align_center quantity_div">
+							<input type="text" value="${cartcnt}" class="quantity_input">	
+							<button class="quantity_btn plus_btn">+</button>
+							<button class="quantity_btn minus_btn">-</button>
+						</div>
+						<a class="quantity_modify_btn" data-cartId="${ci.cartno}">변경</a>	           
 			        </td>
 			        <td class="right">
 						<strong>KRW <span id="sum_price_front0"></span></strong>\
@@ -295,7 +331,17 @@ div.ec-base-help ol .item5 {
 						</div>
 					</td>
 	        	</tr>
+	        </c:forEach>
 			</tbody>
+			<tfoot class="right">
+			
+				<tr>
+					<td colspan="8">
+					상품구매금액<span class="cal"> <!-- 상품가격총합들어갈자리 --></span>
+					 - 상품할인금액 <span class="cal" id="discount"></span> = 합계 : KRW <span class="sum"></span>
+					</td>
+		        </tr>
+	        </tfoot>
 		</table>
 		</div>
 		</div>			
@@ -380,6 +426,15 @@ div.ec-base-help ol .item5 {
 		</div>
 		</div>
 	</div>
+	
+	<div>
+		
+	
+	
+	</div>
+		
+	
+	
 	
 	
 	<c:import url="../default/footer.jsp"/>    
