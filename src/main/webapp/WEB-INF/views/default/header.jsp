@@ -137,7 +137,7 @@ input#rightside{
 <body>
 	<div class="leftdiv">
 		<h1 class="title"><a href="${pageContext.request.contextPath }/">SOLLABO</a></h1>
-		<h1><a href="${pageContext.request.contextPath }/order/product">Brand</a></h1>
+		<h1><a href="${pageContext.request.contextPath }/product/product">Brand</a></h1>
 		<ul class=l-title>
 			<li><a href="#" class="active">Nike</a></li>
 			<li><a href="#">Adidas</a></li> 

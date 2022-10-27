@@ -249,12 +249,13 @@ input[ type="hidden" i]{
 <h2>제품 상세 페이지</h2>
 <div class="detail_area"> <!-- 전체 구역 -->
 	<!-- 이미지 구역(이미지는 추후에 제외(DB) -->
+	
 	<div class="detail_imgarea"> <!-- 제품 이미지 전체 -->
 		<div class="key">
 			<div class="thumbnail">
-				<img class="imgarea" src="img/shoes.jpg" >
-				<img class="imgarea" src="img/clipboard.png" >
-				<img class="imgarea" src="img/comment.png" >
+				<img class="imgarea" src="image/shoes.jpg" >
+				<img class="imgarea" src="image/clipboard.png" >
+				<img class="imgarea" src="image/comment.png" >
 			</div>	
 		</div>	
 	</div>
