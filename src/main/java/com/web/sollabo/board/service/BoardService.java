@@ -1,5 +1,10 @@
 package com.web.sollabo.board.service;
 
-public interface BoardService {
+import java.util.List;
 
+import com.web.sollabo.board.dto.BoardDTO;
+
+public interface BoardService {
+	
+	public List<BoardDTO> getNotice(BoardDTO boardDTO);
 }
