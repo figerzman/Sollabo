@@ -3,9 +3,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.web.sollabo.mybatis.member.MemberMapper">
+<mapper namespace="com.web.sollabo.mybatis.product.ProductMapper">
 
+	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="product">
+		<id property= "productNo" column = "PRODUCT_NO"/>
+		<result property = "categoryCode" column = "CATEGORY_CODE" />
+		<result property = "divisionCode" column = "DIVISION_CODE" />
+		<result property = "productName" column = "PRODUCT_NAME" />
+		<result property = "productImage" column = "PRODUCT_IMAGE" />
+		<result property = "productContent" column = "PRODUCT_CONTENT" />
+		<result property = "productCnt" column = "PRODUCT_CNT" />
+		<result property = "productPrice" column = "PRODUCT_PRICE" />
+		<result property = "productRegDate" column = "PRODUCT_REG_DATE" />
+	</resultMap>
 	
+	<select id="getProduct" resultMap="product">
+		select * from product
+	</select>
 
 </mapper>
 

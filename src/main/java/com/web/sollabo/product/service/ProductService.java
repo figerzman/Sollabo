@@ -1,5 +1,12 @@
 package com.web.sollabo.product.service;
 
-public interface ProductService {
+import java.util.List;
 
+import com.web.sollabo.product.dto.ProductDTO;
+
+public interface ProductService {
+	
+	public List<ProductDTO> getProduct();
+	
+	
 }
