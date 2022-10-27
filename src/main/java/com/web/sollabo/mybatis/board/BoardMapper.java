@@ -1,5 +1,9 @@
 package com.web.sollabo.mybatis.board;
 
-public class BoardMapper {
+import java.util.List;
 
+import com.web.sollabo.board.dto.BoardDTO;
+
+public interface BoardMapper {
+	public List<BoardDTO> getNotice(BoardDTO boardDTO);
 }
