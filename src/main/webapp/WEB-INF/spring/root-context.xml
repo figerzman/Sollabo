@@ -10,11 +10,11 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 	<!-- 히카리 컨넥션풀 빈 등록(임시 db 등록 연동 x)  -->	
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-	    <property name="jdbcUrl" value="jdbc:oracle:thin:@kyd.cjjvld1xmgto.ap-northeast-2.rds.amazonaws.com:1521:orcl"/>
-	    <property name="username" value="group3"/>
-	    <property name="password" value="a1234"/>
+ 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+      <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+      <property name="jdbcUrl" value="jdbc:oracle:thin:@kyd.cjjvld1xmgto.ap-northeast-2.rds.amazonaws.com:1521:orcl"/>
+      <property name="username" value="group3"/>
+      <property name="password" value="a1234"/>
    </bean>
 	
 	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
@@ -28,4 +28,5 @@
 	
 	<!-- 매퍼는 상황에 따라 패키지에 맞게 추가 하여야합니다. -->
 	<mybatis-spring:scan base-package="com.web.sollabo.mybatis"/>
+	
 </beans>

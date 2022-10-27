@@ -1,8 +1,12 @@
 package com.web.sollabo.cart.service;
 
+import com.web.sollabo.cart.dto.CartDTO;
+
 public interface CartService {
 	
-	/* public String getcart; */
+	
+	/* 장바구니 추가 */
+	private int addCart(CartDTO cart);
 	
 	
 	

@@ -599,7 +599,7 @@ function register() {
         
         
         <div class="btnArea">
-	        <a href="#" onclick=""><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_member_join1.gif" alt="회원가입" /></a>
+	        <a href="/sollabo/member/joinResult" onclick=""><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_member_join1.gif" alt="회원가입" /></a>
 	    </div>
 	    
 	    
