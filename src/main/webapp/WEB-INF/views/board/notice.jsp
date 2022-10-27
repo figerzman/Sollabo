@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+
 <style type="text/css">
 table {
   border-collapse: collapse;
@@ -213,7 +214,7 @@ section .notice {
 <section class="notice">
   <div class="page-title">
         <div class="container">
-            <h3>기본 베이스 게시판</h3>
+            <h3>공 지 사 항</h3>
         </div>
     </div>
    
