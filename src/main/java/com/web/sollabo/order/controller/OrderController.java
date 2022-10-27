@@ -13,11 +13,7 @@ public class OrderController {
 	public String login() {
 		return "order/orderform";
 	}
-	
-	@GetMapping("/cart")
-	public String cart() {
-		return "order/cart";
-	}
+
 	
 	@GetMapping("/product")
 	public String product() {

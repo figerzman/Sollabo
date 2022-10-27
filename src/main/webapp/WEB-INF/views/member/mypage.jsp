@@ -81,7 +81,7 @@
 	<tbody>
 		<tr>
 		      <th class="magnifying"><button class="btn4" type="button"><a href="/sollabo/order/history"><img src="${pageContext.request.contextPath }/resources/image/magnifying.png" width="150" height="150"></a></button></th>
-			  <th class="cart"><button class="btn5" type="button"><a href="/sollabo/order/cart"><img src="${pageContext.request.contextPath }/resources/image/cart.png" width="150" height="150"></a></button></th>
+			  <th class="cart"><button class="btn5" type="button"><a href="/sollabo/cart/cart"><img src="${pageContext.request.contextPath }/resources/image/cart.png" width="150" height="150"></a></button></th>
 			  <th class="support"><button class="btn6" type="button"><img src="${pageContext.request.contextPath }/resources/image/support.png" width="150" height="150"></button></th>
 		</tr>
 		<tr>
