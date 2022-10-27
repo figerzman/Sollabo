@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login2</title>
+<title>login</title>
 <style type="text/css">
 * {
 	margin: 0;
@@ -135,13 +135,13 @@ label {
 	            <div class="loginPwd"><input type="password" name="userPassword" placeholder="비밀번호"></div><br>
             
             <p class="button">
-	        	<a href=""><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_find_login.gif" alt="로그인" /></a>
+	        	<a href="${pageContext.request.contextPath }/"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_find_login.gif" alt="로그인" /></a>
 	        </p>
 	        
 	        <div class="utilMenu" style="display:block">
-	            <a href="/member/findId.jsp">아이디 찾기</a>
-	            <a href="/member/findPwd.jsp">비밀번호 찾기</a>
-	            <a href="/member/join.jsp" class="right" style="display:">회원가입</a>
+	            <a href="/sollabo/member/findId">아이디 찾기</a>
+	            <a href="/sollabo/member/findPwd">비밀번호 찾기</a>
+	            <a href="/sollabo/member/join" class="right" style="display:">회원가입</a>
         	</div>
             
 			</form>
