@@ -20,6 +20,10 @@
 	<select id="getProduct" resultMap="product">
 		select * from product
 	</select>
+	
+	<select id="viewProduct" resultMap="product">
+		select * from product where product_no = #{productNo}
+	</select>
 
 </mapper>
 

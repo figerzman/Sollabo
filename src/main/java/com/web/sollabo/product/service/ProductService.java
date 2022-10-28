@@ -8,5 +8,7 @@ public interface ProductService {
 	
 	public List<ProductDTO> getProduct();
 	
+	public ProductDTO viewProduct(ProductDTO productdto);
+	
 	
 }

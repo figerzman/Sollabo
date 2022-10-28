@@ -8,7 +8,7 @@ public interface ProductMapper {
 
 	public List<ProductDTO> getProduct();
 	
-
+	public ProductDTO viewProduct(ProductDTO productdto);
 
 	
 }

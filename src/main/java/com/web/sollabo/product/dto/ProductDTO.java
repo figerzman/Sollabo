@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class ProductDTO {
 	
+	/*product 테이블*/
 	private int productNo;
 	private String categoryCode;
 	private String divisionCode;

@@ -413,14 +413,14 @@ ul .infoT {
 					<li id="list_test" class="listtest">
 						<div class="thumnail">
 							<div class="prdImg">
-								<a href="http://localhost:8080/sollabo/product/goodspage">
+								<a href="${pageContext.request.contextPath}/product/goodspage?productNo=${dto.productNo }">
 									<img src="${dto.productImage }"><!-- Product_image -->
 								</a>
 							</div>
 						</div>
 						<div class=description>
 							<strong class="name">
-								<a href="http://localhost:8080/sollabo/product/goodspage">
+								<a href="${pageContext.request.contextPath}/product/goodspage?productNo=${dto.productNo }">
 									<span style="font-size:13px;color:#555555;">${dto.productName }</span><!-- Product_name -->
 								</a>
 							</strong>
