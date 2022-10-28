@@ -24,6 +24,11 @@ public class ProductServiceImpl implements ProductService {
 		return list;
 		
 	}
+
+	@Override
+	public ProductDTO viewProduct(ProductDTO productdto) {	
+		return productMapper.viewProduct(productdto);
+	}
 	
 	
 	

@@ -243,6 +243,129 @@ input[ type="hidden" i]{
 	height:550px;
 }
 
+#total_product{
+	    margin: 0 0 0;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+#total_product thead th {
+    height: 1px;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+.displaynone {
+    display: none !important;
+}
+
+#total_product tbody tr:first-child td {
+    border-top: 1px solid #f4f4f4;
+}
+
+#total_product tbody tr td:first-child {
+    padding-left: 0;
+    font-weight: 600;
+}
+
+#total_product tbody td .quantity {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    vertical-align: top;
+}
+
+#total_product tbody td .quantity input {
+    width: 22px;
+    height: 23px;
+    padding: 0 2px 0 3px;
+    line-height: 23px;
+    border: 1px solid #d4d8d9;
+    border-radius: 3px 0 0 3px;
+}
+
+input[type=text] {
+	color: #333;
+    font-size: 12px;
+}
+
+#total_product tbody td .quantity .up {
+    position: absolute;
+    left: 28px;
+    top: 0;
+}
+
+#total_product tbody td .quantity .down {
+    position: absolute;
+    left: 28px;
+    top: 12px;
+}
+
+#total_product tbody.option_products tr td .quantity .down {
+    bottom: 0;
+    top: auto;
+}
+
+#total_product tbody td img {
+    vertical-align: middle;
+}
+
+#total_product table .right {
+    padding-right: 9px;
+    font-weight: 600;
+    color: #333;
+    text-align: right;
+}
+
+#total_product tbody td {
+    padding: 11px 0;
+    line-height: 18px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#total_product tbody td p {
+    padding: 0 10px 0 0;
+    font-weight: 600;
+    line-height: 21px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#total_product tbody td p.product span {
+    font-weight: normal;
+    color: #757575;
+    line-height: 18px;
+}
+input{
+    font-size: 100%;
+    font-family: 'Poppins','Noto Sans KR','맑은 고딕','Malgun Gothic','돋움',Dotum;
+    color: #333;
+    vertical-align: middle;
+}
+
+#total_product tbody.option_products tr td .quantity input {
+    height: 19px;
+    line-height: 19px;
+}
 </style>
 </head>
 <body>
@@ -253,9 +376,9 @@ input[ type="hidden" i]{
 	<div class="detail_imgarea"> <!-- 제품 이미지 전체 -->
 		<div class="key">
 			<div class="thumbnail">
-				<img class="imgarea" src="image/shoes.jpg" >
-				<img class="imgarea" src="image/clipboard.png" >
-				<img class="imgarea" src="image/comment.png" >
+				<img class="imgarea" src="image/shoes.jpg"<%-- ${dto.productImage } --%>>
+				<img class="imgarea" src="image/clipboard.png"<%-- ${dto.productImage } --%> >
+				<img class="imgarea" src="image/comment.png" <%-- ${dto.productImage } --%>>
 			</div>	
 		</div>	
 	</div>
@@ -263,7 +386,7 @@ input[ type="hidden" i]{
 	<!-- 인포 구역 -->
 	<div class="detail_infoarea">	<!-- 인포 전체 --> 
 		<div class="head">
-			<h2 class="bottom_line">[UNISEX] 제로 데님 by showpin<br>(커팅타입/히든밴딩)</h2> <!-- 상품(이름) -->
+			<h2 class="bottom_line">${productList.productName }</h2> <!-- 상품(이름) -->
 		</div>
 		<br>
 		<!-- 판매가 -->
@@ -275,13 +398,13 @@ input[ type="hidden" i]{
 				</th>
 				<td>
 					<span style="font-size:20px;color:black; font-weight:bold;">
-						<strong>KRW 35,000</strong>
+						<strong>KRW ${productList.productPrice }</strong>
 						<input id="product_price" name="product_price" value="" type="hidden">
 					</span>
 				</td>
 			</tr>	
 			</table>
-			<br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br>
 			<!-- 옵션(색상) 미정-->
 			<table>
 				<tr>
@@ -315,33 +438,84 @@ input[ type="hidden" i]{
 					</td>
 				</tr>
 			</table>
+			<br><br>
+			<!-- 총 제품 페이지 --><!-- 수정중 -->
+			<div id="total_product">
+				<table >
+					<thead>
+						<tr>
+							<th scope="col">상품명</th>
+	                        <th scope="col">상품수</th>
+	                        <th scope="col">가격</th>
+                    	</tr>
+                    </thead>	
+                    <tbody class="displaynone">
+                    	<tr>
+							<td>${productList.productName }</td>
+                            <td>
+                            	<span class="quantity">
+	                                <input id="quantity" name="quantity_name" style="" value="0" type="text">                                        
+	                                <a href="#none"><img src="image/upbtn.gif" alt="수량증가" class="QuantityUp up"></a>
+	                                <a href="#none"><img src="image/downbtn.gif" alt="수량감소" class="QuantityDown down"></a>
+                                </span>
+                           </td>
+                           <td class="right">
+						   		<span class="quantity_price">${productList.productPrice }</span> 						   		
+                           </td>
+                       </tr>
+                   </tbody>
+                   	<tbody class="option_products"><!-- 정리 -->
+                            <tr class="option_product " data-option-index="1" target-key="1563">
+                            	<td>
+                            		<input type="hidden" class="option_box_id" id="option_box1_id" value="P0000CID00BE" name="item_code[]" data-item-add-option="" data-item-reserved="N" data-option-id="00BE" data-option-index="1"> 
+                            		<p class="product">${productList.productName }
+                            		<br> -
+                             		<span>커팅-블루(blue)/M(29~30)</span>
+                             		</p>
+                             	</td>
+                             	<td>
+                             		<span class="quantity" style="width:65px;">
+                             		<input type="text" id="option_box1_quantity" name="quantity_opt[]" class="quantity_opt eProductQuantityClass" value="1" product-no="1563">
+                             			<a href="#none" class="up eProductQuantityUpClass" "="" data-target="option_box1_up style="height:11px;">
+                            			<img src="${pageContext.request.contextPath}/resources/image/upbtn.gif" id="option_box1_up" class="option_box_up" alt="수량증가" style="margin-bottom:10px;"></a>
+                             			<a href="#none" class="down eProductQuantityDownClass" data-target="option_box1_down" style="height:11px;">
+                            			<img src="${pageContext.request.contextPath}/resources/image/downbtn.gif"  id="option_box1_down" class="option_box_down" alt="수량감소" style="margin-bottom:10px;"></a>
+                             		</span>
+                             		<a href="#none" class="delete">
+                            		<img src="${pageContext.request.contextPath}/resources/image/deletebtn.gif" alt="삭제" id="option_box1_del" class="option_box_del">
+                             		</a>
+                            	</td>
+                             	<td class="right">
+                             		<span id="option_box1_price">
+                             		<input type="hidden" class="option_box_price" value="59000" product-no="1563" item_code="P0000CID00BE">
+                             		<span class="ec-front-product-item-price" code="P0000CID00BE" product-no="1563">KRW : ${productList.productPrice }</span>
+                             		</span>
+                             	</td>
+                            </tr>
+                	</tbody>			
+				</table>
+			</div>
 			<br><br><br>
 			<!-- 총 가격 -->
 			<div class="total_price">
 				<strong>Total</strong> : 
 				<span class="total">
 					<strong>
-						<em>KRW 35,000</em> " (1개) "
+						<em>KRW ${productList.productPrice } <!-- 곱하기 생각해봐야함 --></em> "공백"
 					</strong>
 				</span>
 			</div>
 			</div>
 	<!-- 구매버튼 -->
 		<div class="total_btn">
-				<a href="#" class="btnSubmit" >            
+				<a href="/sollabo/cart/cart" class="btnSubmit" >            
 					<span id="buybtn">구매하기</span>
 				</a>
-				<a href="#" class="btnNormal" >            
+				<!-- <a href="#" class="btnNormal" >            
 					<span id="cartbtn">장바구니</span>
-				</a>
-		</div>
-	</div>
-	
-	<!-- 총 제품 페이지 -->
-	<div class="total_product">
-		
-	</div>
-
+				</a> -->
+		</div>	
+</div>
 
 </body>
 </html>

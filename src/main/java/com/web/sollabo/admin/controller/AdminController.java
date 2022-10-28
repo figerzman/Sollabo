@@ -13,6 +13,15 @@ public class AdminController {
 		return "admin/adminlist";
 	}
 	
+	@GetMapping("/admincorr")
+	public String admincorr() {
+		return "admin/admincorr";
+	}
+	
+	@GetMapping("/adminregister")
+	public String adminregister() {
+		return "admin/adminregister";
+	}
 	
 	
 }
