@@ -130,21 +130,26 @@ label {
 	    	<div class="titleArea">
 				<h1>회원 로그인</h1>
 			</div>
-			<form method="post" action="" id="login-form">
-	            <div class="loginId"><input type="text" name="userId" placeholder="아이디"></div>
-	            <div class="loginPwd"><input type="password" name="userPassword" placeholder="비밀번호"></div><br>
-            
-            <p class="button">
-	        	<a href="${pageContext.request.contextPath }/"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_find_login.gif" alt="로그인" /></a>
-	        </p>
-	        
-	        <div class="utilMenu" style="display:block">
-	            <a href="/sollabo/member/findId">아이디 찾기</a>
-	            <a href="/sollabo/member/findPwd">비밀번호 찾기</a>
-	            <a href="/sollabo/member/join" class="right" style="display:">회원가입</a>
-        	</div>
-            
-			</form>
+			<!-- 공부하고 수정해야함 -->
+			<c:choose>
+				<c:when test="${loginUser == null }">
+					<form method="post" action="chkUser" id="login-form">
+			            <div class="loginId"><input type="text" name="userId" placeholder="아이디"></div>
+			            <div class="loginPwd"><input type="password" name="userPassword" placeholder="비밀번호"></div><br>
+		            
+		            <p class="button">
+			        	<a href="${pageContext.request.contextPath }/"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_find_login.gif" alt="로그인" /></a>
+			        </p>
+			        
+			        <div class="utilMenu" style="display:block">
+			            <a href="/sollabo/member/findId">아이디 찾기</a>
+			            <a href="/sollabo/member/findPwd">비밀번호 찾기</a>
+			            <a href="/sollabo/member/join" class="right" style="display:">회원가입</a>
+		        	</div>
+		            
+					</form>
+				</c:when>
+			</c:choose>
 	        
 	    </div>
 	</div>
