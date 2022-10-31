@@ -6,9 +6,17 @@ import com.web.sollabo.product.dto.ProductDTO;
 
 public interface ProductMapper {
 
+	
+	
+	
 	public List<ProductDTO> getProduct();
+	
+	/* public List<ProductDTO> getDivi(); */
 	
 	public ProductDTO viewProduct(ProductDTO productdto);
 
+	public ProductDTO diviProduct(ProductDTO dividto);
+	
+	
 	
 }

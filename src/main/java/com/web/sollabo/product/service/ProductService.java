@@ -8,7 +8,14 @@ public interface ProductService {
 	
 	public List<ProductDTO> getProduct();
 	
+	/* public List<ProductDTO> getDivi(); */
+	
 	public ProductDTO viewProduct(ProductDTO productdto);
+	
+	public ProductDTO diviProduct(ProductDTO dividto);
+	
+	
+	
 	
 	
 }

@@ -31,6 +31,23 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	
+
+	@Override
+	public ProductDTO diviProduct(ProductDTO dividto) {
+		return productMapper.diviProduct(dividto);
+	}
+
+	/*
+	 * @Override public List<ProductDTO> getDivi() { List<ProductDTO> text = new
+	 * ArrayList<ProductDTO>(); text = productMapper.getDivi(); return text; }
+	 */
+
+
+
+	
+
+
+	
 	
 
 	

@@ -7,7 +7,9 @@ public class ProductDTO {
 	/*product 테이블*/
 	private int productNo;
 	private String categoryCode;
+	private String categoryName;
 	private String divisionCode;
+	private String divisionName;
 	private String productName;
 	private String productImage;
 	private String productContent;
@@ -69,6 +71,18 @@ public class ProductDTO {
 	}
 	public void setProductRegDate(Timestamp productRegDate) {
 		this.productRegDate = productRegDate;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	public String getDivisionName() {
+		return divisionName;
+	}
+	public void setDivisionName(String divisionName) {
+		this.divisionName = divisionName;
 	}
 	
 }

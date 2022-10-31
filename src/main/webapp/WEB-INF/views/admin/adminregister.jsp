@@ -236,15 +236,16 @@ section .notice {
                 </tr>	
                 </thead>
                 <tbody>
-                <c:forEach begin="1" end="10">	
+               <c:forEach var="dto" items="${productList }">
 	                <tr>
-	                    <td>productNo</td>
-	                    <td>categoryCode</td>
-	                    <td><a href="#">divisionCode</a></td>
-	                    <td><a href="#">productName</a></td>
-	                    <td>productPrice</td>
-	                    <td>productCnt</td>
-	                    <td>productRegDate</td>
+	                    <td>${dto.productNo }</td>
+	                    <td>${dto.categoryCode }</td>
+	                    <td><a href="#">${dto.divisionCode }</a></td>
+	                    <td>${dto.productName }</a></td>
+	                    <td>${dto.productPrice }</td>
+	                    <td>${dto.productCnt }</td>
+	                    <td>${dto.productRegDate }</td>
+	                    <td><input type="button" value="제품수정" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/product/goodspage?productNo=${dto.productNo }'"style="border-radius: 3px; height: 20px;"></td>
 	                </tr>
                 </c:forEach>
                 </tbody>

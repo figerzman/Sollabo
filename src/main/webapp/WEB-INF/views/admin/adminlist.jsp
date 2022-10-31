@@ -80,7 +80,7 @@
 		<tr>
 		      <th class="AdQA"><button class="btn4" type="button"><img src="${pageContext.request.contextPath }/resources/image/question.png" width="150" height="150"></button></th>
 			  <th class="AdNot"><button class="btn5" type="button"><img src="${pageContext.request.contextPath }/resources/image/notice.png" width="150" height="150"></button></th>
-			  <th class="AdLogout"><button class="btn6" type="button"><img src="${pageContext.request.contextPath }/resources/image/power.png" width="150" height="150"></button></th>
+			  <th class="AdLogout"><button class="btn6" type="button" onclick="location.href='/sollabo' "><img src="${pageContext.request.contextPath }/resources/image/power.png" width="150" height="150"></button></th>
 		</tr>
 		<tr>
 			  <th class="first">Q&A</th>
