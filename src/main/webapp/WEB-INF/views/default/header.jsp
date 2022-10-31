@@ -164,7 +164,15 @@ input#rightside{
 	<!-- 우측 사이드바 영역 -->
 	<div class="sidebar_content1">
 	<ul>
-		<li><a href="/sollabo/member/login">로그인</a></li>
+		<!-- 로그인 로그아웃 수정(곽예진) -->
+		<li>
+			<c:if test="${loginUser == null }">
+				<a href="/sollabo/member/login">로그인</a>
+			</c:if>
+			<c:if test="${loginUser != null }">
+				<a href="/sollabo/member/logout">로그아웃</a>
+			</c:if>
+		</li>
 		<li><a href="/sollabo/cart/cart">장바구니</a></li>
 		<li><a href="/sollabo/member/mypage">마이페이지</a></li>
 		<li><a href="/sollabo/admin/adminlist">관리자</a></li>
