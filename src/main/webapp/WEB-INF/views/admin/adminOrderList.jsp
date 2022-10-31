@@ -213,7 +213,7 @@ section .notice {
 <section class="notice">
   <div class="page-title">
         <div class="container">
-            <h3>회원관리 게시판</h3>
+            <h3>제품관리 게시판</h3>
         </div>
     </div>
    

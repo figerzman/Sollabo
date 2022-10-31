@@ -144,6 +144,8 @@ section .notice {
 .btn-dark {
   background: #555;
   color: #fff;
+  border-radius: 4px; 
+  height: 25px;
 }
 
 .btn-dark:hover, .btn-dark:focus {
@@ -206,6 +208,11 @@ section .notice {
 }
 
 </style>
+<script type="text/javascript">
+	function memUpdate(memNo){
+		location.href="adminMemUpdate?memNo="+memNo;
+	}
+</script>
 <title>게시판</title>
 </head>
 <body>
@@ -213,7 +220,7 @@ section .notice {
 <section class="notice">
   <div class="page-title">
         <div class="container">
-            <h3>제품등록 게시판</h3>
+            <h3>회원관리 게시판</h3>
         </div>
     </div>
    
@@ -227,24 +234,24 @@ section .notice {
                 <thead>
                 <tr>
                     <th scope="col" class="th-num">NO</th>
-                    <th scope="col" class="th-num">Brand</th>
-                    <th scope="col" class="th-num">Brand Name</th>                    
-                    <th scope="col" class="th-title" style="width:200px;">제품명</th>
-                    <th scope="col" class="th-num">가격</th>
-                    <th scope="col" class="th-date">수량</th>
-                    <th scope="col" class="th-num">등록일</th>
+                    <th scope="col" class="th-num">ID</th>
+                    <th scope="col" class="th-num">NAME</th>                    
+                    <th scope="col" class="th-title" style="width:200px;">PHONE-NUM</th>
+                    <th scope="col" class="th-num">E-mail</th>
+                    <th scope="col" class="th-date">DATE</th>
+                    <th scope="col" class="th-num">Corr</th>
                 </tr>	
                 </thead>
                 <tbody>
-                <c:forEach begin="1" end="10">	
+                <c:forEach var="memberList" items="${memberList }">	
 	                <tr>
-	                    <td>productNo</td>
-	                    <td>categoryCode</td>
-	                    <td><a href="#">divisionCode</a></td>
-	                    <td><a href="#">productName</a></td>
-	                    <td>productPrice</td>
-	                    <td>productCnt</td>
-	                    <td>productRegDate</td>
+	                    <td>${memberList.memNo }</td>
+	                    <td>${memberList.memId }</td>
+	                    <td><a href="#">${memberList.memName }</a></td>
+	                    <td><a href="#">${memberList.memTel }</a></td>
+	                    <td>${memberList.memEmail }</td>
+	                    <td>${memberList.memRegDate }</td>
+	                    <td><input type="button" value="회원관리" class="btn btn-dark" onclick="memUpdate(${memberList.memNo })"></td>
 	                </tr>
                 </c:forEach>
                 </tbody>
@@ -264,9 +271,9 @@ section .notice {
 	                <form action="#">
 	                    <div class="search_wrap">
 	                    	<select name="boardKeyword">
-	                    		<option value="상품이름">상품이름</option><!-- productName -->
-	                    		<option value="브랜드명">브랜드명</option><!-- divisionCode -->
-	                    		<option value="등록일">등록일</option><!-- productRegDate -->
+	                    		<option value="이름">이름</option>
+	                    		<option value="ID">ID</option>
+	                    		<option value="핸드폰번호">핸드폰 번호</option>
 	                    	</select>	                   
 	                        <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
 	                        <input type="button" class="btn btn-dark" value="검색" />
