@@ -14,7 +14,6 @@
 <body>
 <c:import url="default/header.jsp"/>	
 
-
     
 <c:import url="default/footer.jsp"/>    
 </body>

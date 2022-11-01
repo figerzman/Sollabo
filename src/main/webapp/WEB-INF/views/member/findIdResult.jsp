@@ -168,10 +168,13 @@ li {
 	                <div class="description">
 	                    <ul class="small">
 							<li>
-							<strong class="term">이름</strong><strong class="desc"><span>홍길동</span></strong>
+							<strong class="term">이름</strong><strong class="desc"><span>${memberDTO.memName }</span></strong>
 							</li>
 							<li>
-							<strong class="term">이메일</strong><span class="desc"><span>abc1234@naver.com</span></span>
+							<strong class="term">이메일</strong><span class="desc"><span>${memberDTO.memEmail }</span></span>
+							</li>
+							<li>
+							<strong class="term">찾은 아이디</strong><span class="desc"><span>${memberDTO.memId }</span></span>
 							</li>
 							<li>즐거운 쇼핑 하세요 고객님!</li>
 						</ul>

@@ -23,8 +23,16 @@
 		<result property="memAuKeyword" column="MEM_AU_KEYWORD"/>
 	</resultMap>
 	
-	<select id="getMember" resultMap="member">
-		select * from member
+<!-- 	<select id="getMember" resultMap="member"> -->
+<!-- 		select * from member -->
+<!-- 	</select> -->
+
+	<select id="user_check" resultMap="member">
+		select * from member where MEM_ID=#{memId }
+	</select>
+	
+	<select id="findId" resultMap="member">
+		select * from member where MEM_NAME=#{memName } and MEM_EMAIL=#{memEmail }
 	</select>
 	
 
