@@ -144,6 +144,8 @@ section .notice {
 .btn-dark {
   background: #555;
   color: #fff;
+  border-radius: 4px; 
+  height: 25px;
 }
 
 .btn-dark:hover, .btn-dark:focus {
@@ -206,6 +208,11 @@ section .notice {
 }
 
 </style>
+<script type="text/javascript">
+	function memUpdate(memNo){
+		location.href="adminMemUpdate?memNo="+memNo;
+	}
+</script>
 <title>게시판</title>
 </head>
 <body>
@@ -236,15 +243,15 @@ section .notice {
                 </tr>	
                 </thead>
                 <tbody>
-                <c:forEach begin="1" end="10">	
+                <c:forEach var="memberList" items="${memberList }">	
 	                <tr>
-	                    <td>1</td>
-	                    <td>michel35</td>
-	                    <td><a href="#">김동우</a></td>
-	                    <td><a href="#">010-3123-1201</a></td>
-	                    <td>michel35@naver.com</td>
-	                    <td>2022.10.15</td>
-	                    <td><input type="button" value="관리" class="btn btn-dark" style="border-radius: 4px; height: 25px;"></td>
+	                    <td>${memberList.memNo }</td>
+	                    <td>${memberList.memId }</td>
+	                    <td><a href="#">${memberList.memName }</a></td>
+	                    <td><a href="#">${memberList.memTel }</a></td>
+	                    <td>${memberList.memEmail }</td>
+	                    <td>${memberList.memRegDate }</td>
+	                    <td><input type="button" value="회원관리" class="btn btn-dark" onclick="memUpdate(${memberList.memNo })"></td>
 	                </tr>
                 </c:forEach>
                 </tbody>

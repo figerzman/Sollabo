@@ -64,15 +64,15 @@ public class ProductController {
 	 * return modelAndView; }
 	 */
 	
-	  @GetMapping("product1")
-	  
-	  @ResponseBody public ModelAndView divipage(ProductDTO dividto) { 
-	  ModelAndView  modelAndView = new ModelAndView();
-	  modelAndView.setViewName("product/product");
-	  modelAndView.addObject("productList", productService.diviProduct(dividto));
-	  
-	  return modelAndView; 
-	  }
-	 
+	/*
+	 * @GetMapping("product1")
+	 * 
+	 * @ResponseBody public ModelAndView divipage(ProductDTO dividto) { ModelAndView
+	 * modelAndView = new ModelAndView();
+	 * modelAndView.setViewName("product/product");
+	 * modelAndView.addObject("productList", productService.diviProduct(dividto));
+	 * 
+	 * return modelAndView; }
+	 */
 
 }

@@ -15,7 +15,7 @@ public interface ProductMapper {
 	
 	public ProductDTO viewProduct(ProductDTO productdto);
 
-	public ProductDTO diviProduct(ProductDTO dividto);
+	/* public ProductDTO diviProduct(ProductDTO dividto); */
 	
 	
 	

@@ -35,18 +35,19 @@
 		select * from product
 	</select>
 	
+	<select id="viewProduct" resultMap="product">
+		select * from product where product_no = #{productNo}
+	</select>
+	
 <!-- 	<select id="getDivi" resultMap="division">
 		select * from productDivision
 	</select>
  -->
 	
-	<select id="viewProduct" resultMap="product">
-		select * from product where product_no = #{productNo}
-	</select>
 	
-	<select id="diviProduct" resultMap="product">
+	<!-- <select id="diviProduct" resultMap="product">
 		select * from product where division_code = #{divisionCode}
-	</select>
+	</select> -->
 	
 	
 </mapper>

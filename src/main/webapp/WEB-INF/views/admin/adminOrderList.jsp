@@ -213,7 +213,7 @@ section .notice {
 <section class="notice">
   <div class="page-title">
         <div class="container">
-            <h3>제품등록 게시판</h3>
+            <h3>제품관리 게시판</h3>
         </div>
     </div>
    
@@ -227,25 +227,24 @@ section .notice {
                 <thead>
                 <tr>
                     <th scope="col" class="th-num">NO</th>
-                    <th scope="col" class="th-num">Brand</th>
-                    <th scope="col" class="th-num">Brand Name</th>                    
-                    <th scope="col" class="th-title" style="width:200px;">제품명</th>
-                    <th scope="col" class="th-num">가격</th>
-                    <th scope="col" class="th-date">수량</th>
-                    <th scope="col" class="th-num">등록일</th>
+                    <th scope="col" class="th-num">ID</th>
+                    <th scope="col" class="th-num">NAME</th>                    
+                    <th scope="col" class="th-title" style="width:200px;">PHONE-NUM</th>
+                    <th scope="col" class="th-num">E-mail</th>
+                    <th scope="col" class="th-date">DATE</th>
+                    <th scope="col" class="th-num">Corr</th>
                 </tr>	
                 </thead>
                 <tbody>
-               <c:forEach var="dto" items="${productList }">
+                <c:forEach begin="1" end="10">	
 	                <tr>
-	                    <td>${dto.productNo }</td>
-	                    <td>${dto.categoryCode }</td>
-	                    <td><a href="#">${dto.divisionCode }</a></td>
-	                    <td>${dto.productName }</a></td>
-	                    <td>${dto.productPrice }</td>
-	                    <td>${dto.productCnt }</td>
-	                    <td>${dto.productRegDate }</td>
-	                    <td><input type="button" value="제품수정" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/product/goodspage?productNo=${dto.productNo }'"style="border-radius: 3px; height: 20px;"></td>
+	                    <td>1</td>
+	                    <td>michel35</td>
+	                    <td><a href="#">김동우</a></td>
+	                    <td><a href="#">010-3123-1201</a></td>
+	                    <td>michel35@naver.com</td>
+	                    <td>2022.10.15</td>
+	                    <td><input type="button" value="관리" class="btn btn-dark" style="border-radius: 4px; height: 25px;"></td>
 	                </tr>
                 </c:forEach>
                 </tbody>
@@ -265,9 +264,9 @@ section .notice {
 	                <form action="#">
 	                    <div class="search_wrap">
 	                    	<select name="boardKeyword">
-	                    		<option value="상품이름">상품이름</option><!-- productName -->
-	                    		<option value="브랜드명">브랜드명</option><!-- divisionCode -->
-	                    		<option value="등록일">등록일</option><!-- productRegDate -->
+	                    		<option value="이름">이름</option>
+	                    		<option value="ID">ID</option>
+	                    		<option value="핸드폰번호">핸드폰 번호</option>
 	                    	</select>	                   
 	                        <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
 	                        <input type="button" class="btn btn-dark" value="검색" />

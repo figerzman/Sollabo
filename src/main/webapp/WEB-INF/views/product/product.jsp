@@ -347,11 +347,12 @@ ul .infoT {
 				<ul class="menuCate">	
 				<c:forEach var="dto" items="${productList }">			
 					<li style="display:"; class="Disoption">
-						<a href="${pageContext.request.contextPath}/product/product?divisionCode=${dto.divisionCode }"><img src="${pageContext.request.contextPath}/resources/logo/mainnike.png">Nike
+						<a href="${pageContext.request.contextPath}/product/product?divisionCode=${dto.divisionCode }">
+							<img src="${pageContext.request.contextPath}/resources/logo/mainnike.png">Nike
 							<span class="count displayone">()</span>
 						</a>
 					</li>
-					</c:forEach>
+				</c:forEach>
 					<%-- <li style="display:"; class="Disoption">
 						<a href="${pageContext.request.contextPath}/product/product"><img src="${pageContext.request.contextPath}/resources/logo/mainadidas.png">Adidas
 							<span class="count displayone">()</span>
