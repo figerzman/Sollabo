@@ -28,7 +28,7 @@ public class MemberController implements MemberSession {
 	
 	private ModelAndView modelAndView;
 	
-	// ∑Œ±◊¿Œ
+	// Î°úÍ∑∏Ïù∏
 	@PostMapping("/user_check")
 	public String userCheck(HttpServletRequest request, HttpSession session) {
 		System.out.println("re=" + request.getParameter("memId"));
@@ -53,7 +53,7 @@ public class MemberController implements MemberSession {
 		return "redirect:/index";
 	}
 	
-	// æ∆¿Ãµ √£±‚
+	// ÏïÑÏù¥Îîî Ï∞æÍ∏∞
 	@PostMapping("/findId")
 	public String findId(@ModelAttribute MemberDTO memberDTO,RedirectAttributes redirectAttributes ) {
 		int result = ms.findId(memberDTO);
@@ -67,16 +67,15 @@ public class MemberController implements MemberSession {
 	}
 	
 	
-//	@GetMapping("memberTest")
-//	public ModelAndView getMember() {
-//		ModelAndView modelAndView = new ModelAndView();
-//		
-//		modelAndView.setViewName("member/memberTest");
-//		modelAndView.addObject("list", ms.getMember());
-//		
-//		return modelAndView;
-//	}
-	
+	@GetMapping("memberTest")
+	public ModelAndView getMember() {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("member/memberTest");
+		modelAndView.addObject("list", ms.getMember());
+		
+		return modelAndView;
+	}
 
 	@GetMapping("/join")
 	public String join() {

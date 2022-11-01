@@ -23,9 +23,9 @@
 		<result property="memAuKeyword" column="MEM_AU_KEYWORD"/>
 	</resultMap>
 	
-<!-- 	<select id="getMember" resultMap="member"> -->
-<!-- 		select * from member -->
-<!-- 	</select> -->
+	<select id="getMember" resultMap="member">
+		select * from member
+	</select>
 
 	<select id="user_check" resultMap="member">
 		select * from member where MEM_ID=#{memId }

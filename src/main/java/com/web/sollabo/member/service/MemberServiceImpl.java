@@ -17,7 +17,7 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberMapper mapper;
 	
-	// ·Î±×ÀÎ
+	// ë¡œê·¸ì¸
 	@Override
 	public int user_check(HttpServletRequest request) {
 		MemberDTO dto = mapper.user_check(request.getParameter("memId"));
@@ -29,7 +29,7 @@ public class MemberServiceImpl implements MemberService {
 		return 1;
 	}
 	
-	// ¾ÆÀÌµğ Ã£±â
+	// ì•„ì´ë”” ì°¾ê¸°
 	@Override
 	public int findId(MemberDTO memberDTO) {
 		MemberDTO dto = mapper.findId(memberDTO);
@@ -41,11 +41,11 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	
-//	@Override
-//	public List<MemberDTO> getMember() {
-//		List<MemberDTO> list = new ArrayList<MemberDTO>();
-//		list = mapper.getMember();
-//		return list;
-//	}
+	@Override
+	public List<MemberDTO> getMember() {
+		List<MemberDTO> list = new ArrayList<MemberDTO>();
+		list = mapper.getMember();
+		return list;
+	}
 	
 }
