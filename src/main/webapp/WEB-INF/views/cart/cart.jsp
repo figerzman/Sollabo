@@ -1,44 +1,112 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	
-	// 수량 버튼 조작
-	let quantity = $(".quantity_input").val();
-	$(".plus_btn").on("click", function(){
-		$(".quantity_input").val(++quantity);
-	});
-	$(".minus_btn").on("click", function(){
-		if(quantity > 1){
-			$(".quantity_input").val(--quantity);	
-		}
-	});
-	
-/* 	// 서버로 전송할 데이터
-	const form = {
-			memno : '${member.memberno}',
-			productno : '${goodsInfo.productno}',
-			productordercount : ''
-	}
-	 */
-	// 장바구니 추가 버튼
-	$(".btn_cart").on("click", function(e){
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-	});
+<script type="text/javascript">
+/* 수량버튼 */
+/* $('.quantity_btn plus_btn').on("click", function(){
+	let quantity = $(this).parent("div").find("input").val();
+	$(this).parent("div").find("input").val(++quantity);
+});
+$(".quantity_btn minus_btn").on("click", function(){
+	let quantity = $(this).parent("div").find("input").val();
+	if(quantity > 1){
+		$(this).parent("div").find("input").val(--quantity);		
+	}
+});
+ */
+/* 수량 수정 버튼 */
+/* $(".quantity_modify_btn").on("click", function(){
+	let cartId = $(this).data("cartno");
+	let cartCnt = $(this).parent("td").find("input").val();
+	$(".update_cartNo").val(cartNo);
+	$(".update_cartCnt").val(cartCnt);
+	$(".quantity_update_form").submit();
 	
-	form.productordercount = $(".quantity_input").val();
-	$.ajax({
-		url: '/cart/add',
-		type: 'POST',
-		data: form,
-		success: function(result){
-		}
-	})
+});
+ */
+
+/* 장바구니 삭제 버튼 */
+/* $(".delete_btn").on("click", function(e){
+	e.preventDefault();
+	const cartId = $(this).data("cartno");
+	$(".delete_cartNo").val(cartId);
+	$(".quantity_delete_form").submit();
+});
+ */
+/* function count(type)  {
+	  // 결과를 표시할 element
+	  const resultElement = document.getElementById('result');
+	  
+	  // 현재 화면에 표시된 값
+	  let number = resultElement.innerText;
+	  
+	  // 더하기/빼기
+	  if(type === 'plus') {
+	    number = parseInt(number) + 1;
+	  }else if(type === 'minus')  {
+	    number = parseInt(number) - 1;
+	  }
+	  
+	  // 결과 출력
+	  resultElement.innerText = number;
+	} 
+ */
+ 
+ function count(type)  {
+     // 결과를 표시할 element
+     console.log()
+     
+     const resultElement = $('.quantity_input');
+     
+     console.log(resultElement)
+     // 현재 화면에 표시된 값
+     let number = $('.quantity_input').val();
+     
+     console.log(number)
+     // 더하기/빼기
+     if(type === 'plus') {
+       number = parseInt(number) + 1;
+     }else if(type === 'minus')  {
+    	 /* if(quantity > 1) */
+       number = parseInt(number) - 1;
+     }
+     
+     console.log(number)
+     // 결과 출력
+    $('.quantity_input').val(number);
+   } 
+ /* 체크박스 전체 선택 */
+$(".all_check_input").on("click", function(){
+
+ 	/* 체크박스 체크/해제 */
+ 	if($(".all_check_input").prop("checked")){
+ 		$(".individual_cart_checkbox").attr("checked", true);
+ 	} else{
+ 		$(".individual_cart_checkbox").attr("checked", false);
+ 	}
+ 	
+ 	setTotalInfo($(".cart_data_td"));	
+ 	
+ });
+
+/* 장바구니 삭제 버튼 */
+$(".delete_btn").on("click", function(e){
+	e.preventDefault();
+	const cartNo = $(this).data("cartno");
+	$(".delete_cartNo").val(cartId);
+	$(".quantity_delete_form").submit();
+});
+	
+	
+
 </script>
 
 
@@ -255,13 +323,74 @@ div.ec-base-help ol .item4 {
 div.ec-base-help ol .item5 {
     background-position: -284px -400px;
 }
+/* 
 
-
+.quantity_div{
+				position: relative;
+			    width: 42px;
+			    height: 25px;
+			    text-align: left;
+			    margin: 5px auto;		
+			}
+			.quantity_input{
+				position: absolute;
+				width: 27px;
+			    height: 23px;
+			    text-align: center;
+			    border: 1px solid #c6c6c6;
+			    border-right: 0px;
+			    line-height: 19px;
+			    font-size: 12px;
+			    color: #4c4848;	
+			    left: 0;
+			}
+.quantity_btn{
+				position: absolute;
+			    border: 1px solid #aaa;
+			    color: #3a60df;
+			    width: 14px;
+			    height: 13px;
+			    padding: 0px;
+			    background-color: #fff;
+			    font-weight: bold;
+			    font-size: 7px;
+			    line-height: 6px;
+			    vertical-align: middle;	
+			}
+			.plus_btn{
+				top: 0;
+				right: 0
+			}
+			.minus_btn{
+				bottom: 0;
+				right: 0
+			}		
+			.quantity_modify_btn{
+				border: 1px solid #d0d0d0;
+			    height: 13px;
+			    line-height: 13px;
+			    background-color: #fff;
+			    text-align: center;
+			    width: 28px;
+			    display: inline-block;
+			    padding: 3px 6px 2px;
+			    margin-top: 3px;		
+			    font-size: 7px;
+			}
+			.table_text_align_center{
+				text-align: center;
+			}
+			.delete_btn{
+				width: 40px;		
+			} */
 </style>
 </head>
 <body>
 	
 	<c:import url="../default/header.jsp"/>	
+
+
+
 
 	<div class="cart-wrap"> 
 		
@@ -296,41 +425,43 @@ div.ec-base-help ol .item5 {
 	            </tr>
 	        </thead>
 	        
-			
+			<c:set var="sum" value="0" />
 	        <c:forEach var="dto" items="${cartList}">
 	        <tbody class="cart-center">
 	        	<tr class="cart-record-">
-					<td>
+					<td class="cart_data_td">
 						<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked">
+						<input type="hidden" class="individual_totalPrice_input" value="${dto.productPrice * dto.cartCnt}">
 					</td>
 			       	<td class="pu-img"> <!-- pu-img 제품이미지 -->
 			       		<a href="/">
 			       		<img src="" alt=""></a>
 			       	</td>
 			        <td class="pu-data"> <!-- pu-data 제품정보 -->
-			     		${dto.memNo}
+			     		
 			        </td>
 			        <td class="right">
-			        	<div id="product_price_div0" class="">
-							<strong>${dto.productPrice}KRW</strong>
-							<p class="displaynone"></p>
-						</div>
+			        	<fmt:formatNumber value="${dto.productPrice}" pattern="KRW #,###" />	
 			        </td>
 			        <td>
 			        	<div class="table_text_align_center quantity_div">
-							<input type="text" value="${cartcnt}" class="quantity_input">	
+		                     <input type="text" value="${dto.cartCnt}" class="quantity_input" name="result">  
+		                     <button class="quantity_btn plus_btn" onclick='count("plus")' value="+" >+</button>
+		                     <button class="quantity_btn minus_btn" onclick='count("minus")' value="-">-</button>
+                  		</div>
+                  <a class="quantity_modify_btn" data-cartNo="${dto.cartNo}">변경</a>
+			        	<%-- <div class="table_text_align_center quantity_div">
+							<input type="text" value="${dto.cartCnt}" class="quantity_input">	
 							<button class="quantity_btn plus_btn">+</button>
 							<button class="quantity_btn minus_btn">-</button>
 						</div>
-						<a class="quantity_modify_btn" data-cartId="${ci.cartno}">변경</a>	           
+						<a class="quantity_modify_btn" data-cartNo="${dto.cartNo}">변경</a>   --%>         
 			        </td>
 			        <td class="right">
-						<strong>KRW <span id="sum_price_front0"></span></strong>\
-						<div class="displaynone">
-						
-						</div>
+						<fmt:formatNumber value="${dto.productPrice * dto.cartCnt}" pattern="KRW #,###" />
 					</td>
 	        	</tr>
+	        <c:set var="sum" value="${sum + (dto.productPrice * dto.cartCnt)}" />
 	        </c:forEach>
 			</tbody>
 			<tfoot class="right">
@@ -348,12 +479,13 @@ div.ec-base-help ol .item5 {
 		<div class="cart-edit ">
 			<span class="gLeft">
 		    	<strong class="text">선택상품을</strong>
-		        <a href="#none" class="btnEm" onclick="Basket.deleteBasket()">
-		        <i class="icoDelete"></i> 삭제하기</a>
+		    		<button class="delete_btn" data-cartid="${dto.cartNo}"> 삭제하기 </button>
+		        <!-- <a href="#none" class="btnEm" onclick="Basket.deleteBasket()">
+		        <i class="icoDelete"></i> 삭제하기 </a> -->
 	        </span>
-			<span class="gRight">
+		<!-- 	<span class="gRight">
 	            <a href="#none" class="btnNormal" onclick="Basket.emptyBasket()">장바구니비우기</a>
-	        </span>
+	        </span> -->
 		</div>
 		
 		<!-- 총 주문금액 : 국내배송상품 -->
@@ -384,7 +516,7 @@ div.ec-base-help ol .item5 {
 				<tr>
 				<td class="price">
 					<div class="box txt16">
-					<strong>KRW <span id="total_order_price_view" class="txt22">62,000</span></strong> <span class="displaynone"><span id="total_order_price_ref_view"><span class="eRefPrice"></span></span></span>
+					<strong> KRW </strong><fmt:formatNumber pattern="###,###,###" value="${sum}" />
 					</div>
 				</td>
 				<td class="option ">
@@ -394,7 +526,7 @@ div.ec-base-help ol .item5 {
 				</td>
 				<td>
 					<div class="box txtEm txt16">
-					<strong>=</strong> <strong>KRW <span id="total_order_sale_price_view" class="txt22">62,000</span></strong> <span class="displaynone"><span id="total_order_sale_price_ref_view"><span class="eRefPrice"></span></span></span>
+					<strong> KRW </strong><fmt:formatNumber pattern="###,###,###" value="${sum}" />
 					</div>
 				</td>
 		      </tr>
@@ -404,39 +536,50 @@ div.ec-base-help ol .item5 {
 			<br>
 		
 		<div class="order-button">
-			<a href="/sollabo/order/orderform" onclick="Basket.orderAll(this)"   class="btnSubmitFix sizeM  bsBtnColorBG bsLetterspacing06 ">
+			<!-- <a href="/sollabo/order/orderform" onclick="Basket.orderAll(this)"   class="btnSubmitFix sizeM  bsBtnColorBG bsLetterspacing06 ">
 			전체상품주문
-			</a>
-			<a href="/sollabo/order/orderform" onclick="cart.orderSelectcart(this)""  class="btnSubmitFix sizeM  bsBtnColorBG bsLetterspacing06 ">
+			</a> -->
+			<a href="/sollabo/order/orderform" onclick="cart.orderSelectcart(this)" class="btnSubmitFix sizeM  bsBtnColorBG bsLetterspacing06 ">
 			선택상품주문
 			</a>
 	
 		</div>
 		
-
 		
 		<div class="ec-base-help "><h3>이용안내</h3>
-		<div class="inner">
-		        <h4>장바구니 이용안내</h4>
-		        <ol>
-					<li class="item1">[쇼핑계속하기] 버튼을 누르시면 쇼핑을 계속 하실 수 있습니다.</li>
-
-		        </ol>
-		
-		</div>
+			<div class="inner">
+			        <h4>장바구니 이용안내</h4>
+			        <ol>
+						<li class="item1">[쇼핑계속하기] 버튼을 누르시면 쇼핑을 계속 하실 수 있습니다.</li>
+	
+			        </ol>
+			
+			</div>
 		</div>
 	</div>
 	
 	<div>
+	<!-- 수량 조정 form -->
+		<form action="/cart/update" method="post" class="quantity_update_form">
+			<input type="hidden" name="cartNo" class="update_cartNo">
+			<input type="hidden" name="cartCount" class="update_cartCnt">
+			<input type="hidden" name="memNo" value="${member.memNo}">
+		</form>		
 		
-	
+		<!-- 삭제 form -->
+		<form action="/cart/delete" method="post" class="quantity_delete_form">
+			<input type="hidden" name="cartId" class="delete_cartId">
+			<input type="hidden" name="memberId" value="${member.memberId}">
+		</form>
 	
 	</div>
-		
-	
-	
-	
+
+
 	
 	<c:import url="../default/footer.jsp"/>    
 </body>
 </html>
+
+
+
+
