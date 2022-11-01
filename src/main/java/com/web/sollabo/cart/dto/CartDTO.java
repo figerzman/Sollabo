@@ -2,8 +2,6 @@ package com.web.sollabo.cart.dto;
 
 
  
-import java.text.SimpleDateFormat;
-
 import oracle.sql.TIMESTAMP;
 
 /*CREATE TABLE CART (
@@ -82,15 +80,14 @@ public class CartDTO {
 		this.productName = productName;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "CartDTO [cartNo=" + cartNo + ", memNo=" + memNo + ", productNo=" + productNo + ", cartCnt=" + cartCnt
+				+ ", cartRegDate=" + cartRegDate + ", productPrice=" + productPrice + ", productName=" + productName
+				+ "]";
+	}
 
-	
-	
-
-	
-	
-	
-	
-	
 	
 }
 

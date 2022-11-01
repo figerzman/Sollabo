@@ -38,8 +38,15 @@
 		</interceptor>
 	</interceptors> -->
 	
+	<interceptors>
+		<interceptor>
+				<mapping path="/cart/**"/>
+				<beans:bean id="CartInterceptor" class="com.web.sollabo.cart.interceptor.CartInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
 	<beans:bean id="multipartResolver"
 				class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="52428800"/>
 	</beans:bean>
+	
 </beans:beans>

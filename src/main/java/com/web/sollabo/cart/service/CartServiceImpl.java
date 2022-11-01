@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.web.sollabo.cart.dto.CartDTO;
 import com.web.sollabo.mybatis.cart.CartMapper;
-import com.web.sollabo.product.dto.ProductDTO;
 
 
 @Service
@@ -44,11 +43,30 @@ public class CartServiceImpl implements CartService {
 	
 	
 	@Override
-	public List<CartDTO> getCart() {
+	public List<CartDTO> getCartList(String memno) {
 		List<CartDTO> list = new ArrayList<CartDTO>();
 		list = cartMapper.getCart();
 		return list;
 	}
+
+	@Override
+	public int deleteCart(int cartNo) {
+		
+		return cartMapper.deleteCart(cartNo);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
