@@ -1,14 +1,12 @@
 package com.web.sollabo.mybatis.member;
 
+import java.util.List;
+
 import com.web.sollabo.member.dto.MemberDTO;
-
-//import java.util.List;
-
-//import com.web.sollabo.member.dto.MemberDTO;
 
 public interface MemberMapper {
 	
-//	public List<MemberDTO> getMember();
+	public List<MemberDTO> getMember();
 	
 	public MemberDTO user_check(String memId);
 	public MemberDTO findId(MemberDTO memberDTO);
