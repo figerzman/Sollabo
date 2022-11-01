@@ -34,7 +34,7 @@
 	<select id="findId" resultMap="member">
 		select * from member where MEM_NAME=#{memName } and MEM_EMAIL=#{memEmail }
 	</select>
-	
+	<!-- 로그인 1111111111 -->
 
 </mapper>
 

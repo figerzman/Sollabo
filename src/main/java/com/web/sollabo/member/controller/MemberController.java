@@ -28,7 +28,7 @@ public class MemberController implements MemberSession {
 	
 	private ModelAndView modelAndView;
 	
-	// 로그인
+	// 로그인 1111111111
 	@PostMapping("/user_check")
 	public String userCheck(HttpServletRequest request, HttpSession session) {
 		System.out.println("re=" + request.getParameter("memId"));
