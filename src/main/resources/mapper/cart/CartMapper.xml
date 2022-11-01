@@ -16,14 +16,13 @@
 
 	</resultMap>
 	
-<!-- 	<select id="getCart" resultMap="cart">
+	<select id="getCart" resultMap="cart"> 
 		select * from cart
 	</select>
- -->
-	
-	
+
+
 	<!-- 카트 추가 -->
-	<insert id="addCart">
+	<insert id="addCart"> throws Exception
 	
 		insert into cart(MEM-NO, PRODUCT_NO,  product_order_count)
 		values(#{MEM-NO}, #{PRODUCT_NO}, #{ product_order_count}) 
@@ -46,17 +45,7 @@
 	</update>
 	
 	
-	<!-- 카트 목록 -->
-	<select id="getCart" resultType="com.web.sollabo.cart.dto.CartDTO">
-	
-		select a.CART-NO, a.MEM_NO, a.PRODUCT_NO, a.cart_cnt, b.product_name, b.product_Price, b.product_Discount
-		from cart a left outer join product b on a.product_no = b.product_no
-		where MEM_NO = #{MEM_NO}
-	<!-- 	select a.CART_NO, a.MEM_NO, a.PRODUCT_NO,  b.product_name, b.product_Price
-        from cart a left outer join product b on a.product_no = b.product_no
-        where MEM_NO = 1;	 -->
-	
-	</select> 
+
 
 	<!-- 카트 확인 -->
 	<select id="checkCart" resultType="com.web.sollabo.cart.dto.CartDTO">
