@@ -344,14 +344,17 @@ ul .infoT {
 				</div>	
 				<!-- 각 브랜드별로 링크 추가해야함 --><!-- Category_code -->
 				<!-- 현재는 테스트 링크만 추가 -->
-				<ul class="menuCate">
+				<ul class="menuCate">	
+				<c:forEach var="dto" items="${productList }">			
 					<li style="display:"; class="Disoption">
-						<a href="https://www.nike.com"><img src="${pageContext.request.contextPath}/resources/logo/mainnike.png">Nike
+						<a href="${pageContext.request.contextPath}/product/product?divisionCode=${dto.divisionCode }">
+							<img src="${pageContext.request.contextPath}/resources/logo/mainnike.png">Nike
 							<span class="count displayone">()</span>
 						</a>
 					</li>
-					<li style="display:"; class="Disoption">
-						<a href=""><img src="${pageContext.request.contextPath}/resources/logo/mainadidas.png">Adidas
+				</c:forEach>
+					<%-- <li style="display:"; class="Disoption">
+						<a href="${pageContext.request.contextPath}/product/product"><img src="${pageContext.request.contextPath}/resources/logo/mainadidas.png">Adidas
 							<span class="count displayone">()</span>
 						</a>
 					</li>
@@ -384,7 +387,7 @@ ul .infoT {
 						<a href=""><img src="${pageContext.request.contextPath}/resources/logo/mainlacoste.png">Lacoste
 							<span class="count displayone">()</span>
 						</a>
-					</li> 
+					</li>  --%>
 				</ul>		
 			</div>
 			<!-- 제품 진열(중간) -->
