@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.1.min.js"></script>
 <meta charset="UTF-8">
 <title>제품 상세 페이지</title>
 <!--3초간격 화면전환  -->
@@ -24,17 +25,94 @@
         index = 1;  //인덱스가 초과되면 1로 변경
     }   
     x[index-1].style.display = "block";  //해당 인덱스는 block으로
-    setTimeout(slideShow, 3000);   //함수를 4초마다 호출
+    setTimeout(slideShow, 100000);   //함수를 4초마다 호출
  
 }
-</script>
+    function search(type){
+    	alert('@@');
+    	if(type == 'color' ){
+    		if($('color').val() == "#"){
+    			alert('값이 없습니다')
+    			$('#total').hide();
+    		}else{
+    			
+    		}
+    	}
+    	
+    }
+    	
+  
+  
+/*     $(function() {
+    	$(function search(type) {
+    		if(type=='color' ){
+    			if($('size').val() ==null){
+    				alert('안됩니다')
+    			}else{
+    				$('#total').hide();
+    			}			
+    		}
+    		if(type=='size'){
+    			if($('color').val() ==null){
+    				alert('안됩니다')
+    			}else{
+    				$('#total').hide();
+    			}
+    		}
+    		if($('color').val() !=null && $('size').val() !=null){
+    				$('#total').show();			
+    		}
+    	})
 
-<!-- <script type="text/javascript">
-fuction check(){
-	
-	alert('색상을 선택하세요');
-}
-</script> -->
+    });  */
+    /*   $('#total').hide(); 
+    $('#size').change(function(){
+    	console.log('111' + $('#color').val())
+    	console.log('222' + $('#size').val())
+        if($('#color').val() != '#') {
+        	$('#size').val()
+        } else {
+        	alert('색상을 선택해주세요')      
+        } if($('#size').val() != '#'){
+        	$('#total').show()
+        } else{
+        	$('#total').hide()
+        }
+    }); */
+   /*  $("#tb_color").change(function() {
+    	alert("111")
+        var state = $("#tb_color option:selected").val();
+    	alert("111")
+        console.log(0)
+        
+        if(state == "라이트블루") {
+            $(".total_product").show();
+        } else {
+           $('.total_product').hide();
+        }
+    }); 
+     */
+   /*  // onchange에서 호출하는 함수. 
+    function test(obj){
+        // 'obj'는 this를 지칭하는 것입니다.
+        alert($(obj).val());
+        
+        // 값 비교로 테스트 가능.
+        if($(obj).val() == ""){
+            alert("값이 없습니다.");
+        } else if($(obj).val() == "라이트블루"){
+            alert("라이트블루");
+        } else if($(obj).val() == "블루"){
+            alert("블루");
+        } else if($(obj).val() == "딥블루"){
+            alert("딥블루");
+        }
+    } */
+    
+  
+    
+    
+</script>
 <style type="text/css">
 .detail_area {
 	margin: 0px auto;
@@ -366,19 +444,21 @@ input{
     height: 19px;
     line-height: 19px;
 }
+
+
 </style>
 </head>
 <body>
-<h2>제품 상세 페이지</h2>
-<div class="detail_area"> <!-- 전체 구역 -->
+<h2 ><a href="${pageContext.request.contextPath }/">제품 상세 페이지</a></h2>
+	<div class="detail_area"> <!-- 전체 구역 -->
 	<!-- 이미지 구역(이미지는 추후에 제외(DB) -->
 	
 	<div class="detail_imgarea"> <!-- 제품 이미지 전체 -->
 		<div class="key">
 			<div class="thumbnail">
-				<img class="imgarea" src="image/shoes.jpg"<%-- ${dto.productImage } --%>>
-				<img class="imgarea" src="image/clipboard.png"<%-- ${dto.productImage } --%> >
-				<img class="imgarea" src="image/comment.png" <%-- ${dto.productImage } --%>>
+				<img class="imgarea" src="${pageContext.request.contextPath}/resources/image/test.jpg"<%-- ${dto.productImage } --%>>
+				<img class="imgarea" src="${pageContext.request.contextPath}/resources/image/clipboard.png"<%-- ${dto.productImage } --%> >
+				<img class="imgarea" src="${pageContext.request.contextPath}/resources/image/cart.png" <%-- ${dto.productImage } --%>>
 			</div>	
 		</div>	
 	</div>
@@ -406,41 +486,48 @@ input{
 			</table>
 			<br><br><br><br><br><br><br>
 			<!-- 옵션(색상) 미정-->
+			
+						
+			
+			<div class="total_product" id="start">
 			<table>
 				<tr>
 					<th scope="row">색상</th>
 					<td>
-					<select>
-						<option value="*" selected="" link_image="">- [필수] 옵션을 선택해 주세요 -</option>
-						<option value="**" disabled="" link_image="">-------------------</option>
-						 <option value="커팅-라이트블루(light blue)" link_image="">커팅-라이트블루(light blue)</option>
-						 <option value="커팅-블루(blue)" link_image="">커팅-블루(blue)</option>
-						 <option value="커팅-딥블루(deep blue)" link_image="">커팅-딥블루(deep blue)</option>
-						 <option value="커팅-라이트블랙(light black)" link_image="">커팅-라이트블랙(light black)</option>
+					<select id="color" name="color" onchange ="search(color)">
+						<option  value="#">- [필수] 옵션을 선택해 주세요 -</option>
+						<option  value="#">-------------------</option>
+						 <option value="라이트블루">라이트블루(light blue)</option>
+						 <option value="블루" link_image="">블루(blue)</option>
+						 <option value="딥블루" link_image="">딥블루(deep blue)</option>
+						 <option value="라이트블랙" link_image="">라이트블랙(light black)</option>
 					 </select>
+					 
 					</td>
 				</tr>
-			</table>
+			</table>	
 			<br><br>
 			<!-- 옵션(사이즈) 미정-->
 			<table>
 				<tr>
 					<th scope="row">사이즈</th>
 					<td>
-					<select>
-						<option value="*" selected="" link_image="">- [필수] 옵션을 선택해 주세요 -</option>
-						<option value="**" disabled="" link_image="">-------------------</option>
-						 <option value="커팅-라이트블루(light blue)" link_image="">커팅-라이트블루(light blue)</option>
-						 <option value="커팅-블루(blue)" link_image="">커팅-블루(blue)</option>
-						 <option value="커팅-딥블루(deep blue)" link_image="">커팅-딥블루(deep blue)</option>
-						 <option value="커팅-라이트블랙(light black)" link_image="">커팅-라이트블랙(light black)</option>
+					<select name="size" id="size" onchange ="search(size)">
+						<option value="#">- [필수] 옵션을 선택해 주세요 -</option>
+						<option value="#">-------------------</option>
+						 <option value="스몰" link_image="">Small</option>
+						 <option value="미디엄" link_image="">Medium</option>
+						 <option value="라지" link_image="">Large</option>
+						 <option value="엑스라지" link_image="">X-Large</option>
+						 <option value="투엑스라지" link_image="">2X-Large</option>
 					 </select>
 					</td>
 				</tr>
 			</table>
+			</div>
 			<br><br>
 			<!-- 총 제품 페이지 --><!-- 수정중 -->
-			<div id="total_product">
+			<div class="total_product" id="total" style="display:none">
 				<table >
 					<thead>
 						<tr>

@@ -16,38 +16,41 @@
 		<result property = "productPrice" column = "PRODUCT_PRICE" />
 		<result property = "productRegDate" column = "PRODUCT_REG_DATE" />
 	</resultMap>
-<!-- 	
-	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="category">
-		<id property= "categoryCode" column = "CATEGORY_CODE"/>
-		<result property= "categoryName" column = "CATEGORY_NAME"/>
-	</resultMap>
 	
 	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="division">
 		<id property= "divisionCode" column = "DIVISION_CODE"/>		
 		<result property= "categoryCode" column = "CATEGORY_CODE"/>
 		<result property= "divisionName" column = "DIVISION_NAME"/>
+		<result property= "icon" column = "ICON"/>
+	</resultMap> 
+	
+<!-- 	
+	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="category">
+		<id property= "categoryCode" column = "CATEGORY_CODE"/>
+		<result property= "categoryName" column = "CATEGORY_NAME"/>
 	</resultMap> -->
 	
 	
 	
 	
-	<select id="getProduct" resultMap="product">
-		select * from product
+	<select id="getDivision" resultMap="division"> 
+		select * from product_division 
 	</select>
+	
+	<select id="getProduct" resultMap="product">
+		select * from product 
+		where division_code = #{divisionCode} 
+	</select>
+	
+	
+	
+	
 	
 	<select id="viewProduct" resultMap="product">
-		select * from product where product_no = #{productNo}
+		select * from product where product_no = #{productNo} 	
 	</select>
 	
-<!-- 	<select id="getDivi" resultMap="division">
-		select * from productDivision
-	</select>
- -->
-	
-	
-	<!-- <select id="diviProduct" resultMap="product">
-		select * from product where division_code = #{divisionCode}
-	</select> -->
+
 	
 	
 </mapper>

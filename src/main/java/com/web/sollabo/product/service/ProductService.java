@@ -6,13 +6,21 @@ import com.web.sollabo.product.dto.ProductDTO;
 
 public interface ProductService {
 	
-	public List<ProductDTO> getProduct();
+	/* product 테이블 리스트*/
+	public List<ProductDTO> getProduct(String divisionCode);
 	
-	/* public List<ProductDTO> getDivi(); */
+	/* product_division 테이블 리스트*/
+	public List<ProductDTO> getDivision();
 	
+	/*goodspage(productList) product_no  */
 	public ProductDTO viewProduct(ProductDTO productdto);
 	
-	/* public ProductDTO diviProduct(ProductDTO dividto); */
+	
+	
+	/* public ProductDTO cateProduct(ProductDTO catedto); */
+
+	
+	
 	
 	
 	
