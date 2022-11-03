@@ -18,28 +18,34 @@ public class ProductServiceImpl implements ProductService {
 	ProductMapper productMapper;
 	
 	@Override
-	public List<ProductDTO> getProduct(){
+	public List<ProductDTO> getProduct(String divisionCode){
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
-		list = productMapper.getProduct();
+		list = productMapper.getProduct(divisionCode);
 		return list;
 		
 	}
+	
+	@Override
+	public List<ProductDTO> getDivision() {
+		List<ProductDTO> divi = new ArrayList<ProductDTO>();
+		divi = productMapper.getDivision();
+		return divi;
+	}
+	
 
 	@Override
 	public ProductDTO viewProduct(ProductDTO productdto) {	
 		return productMapper.viewProduct(productdto);
 	}
-	
-	
+
 
 	/*
-	 * @Override public ProductDTO diviProduct(ProductDTO dividto) { return
-	 * productMapper.diviProduct(dividto); }
+	 * @Override public ProductDTO cateProduct(ProductDTO catedto) {
+	 * 
+	 * return productMapper.cateProduct(catedto); }
 	 */
-	/*
-	 * @Override public List<ProductDTO> getDivi() { List<ProductDTO> text = new
-	 * ArrayList<ProductDTO>(); text = productMapper.getDivi(); return text; }
-	 */
+	
+
 
 
 

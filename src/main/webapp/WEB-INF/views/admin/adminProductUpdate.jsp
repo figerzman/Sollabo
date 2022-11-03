@@ -227,24 +227,24 @@ section .notice {
                 <thead>
                 <tr>
                     <th scope="col" class="th-num">NO</th>
-                    <th scope="col" class="th-num">ID</th>
-                    <th scope="col" class="th-num">NAME</th>                    
-                    <th scope="col" class="th-title" style="width:200px;">PHONE-NUM</th>
-                    <th scope="col" class="th-num">E-mail</th>
-                    <th scope="col" class="th-date">DATE</th>
+                    <th scope="col" class="th-num">CategoryName</th>
+                    <th scope="col" class="th-num">BrandName</th>
+                    <th scope="col" class="th-title" style="width:200px;">ProductName</th>
+                    <th scope="col" class="th-num">ProductPrice</th>                    
+                    <th scope="col" class="th-date">ProductCnt</th>
                     <th scope="col" class="th-num">Corr</th>
                 </tr>	
                 </thead>
                 <tbody>
-                <c:forEach begin="1" end="10">	
+                <c:forEach var="dto" items="${productList}">
 	                <tr>
-	                    <td>1</td>
-	                    <td>michel35</td>
-	                    <td><a href="#">김동우</a></td>
-	                    <td><a href="#">010-3123-1201</a></td>
-	                    <td>michel35@naver.com</td>
-	                    <td>2022.10.15</td>
-	                    <td><input type="button" value="관리" class="btn btn-dark" style="border-radius: 4px; height: 25px;"></td>
+	                    <td>${dto.productNo }</td>
+	                    <td>공백</td>
+	                    <td><a href="#">공백</a></td>
+	                    <td><a href="#">${dto.productName }</a></td>
+	                    <td>${dto.productPrice }</td>
+	                    <td>${dto.productCnt }</td>
+	                    <td><input type="button" value="관리" onclick="location.href='/sollabo/product/goodspage';" class="btn btn-dark" style="border-radius: 4px; height: 25px;"></td>
 	                </tr>
                 </c:forEach>
                 </tbody>
