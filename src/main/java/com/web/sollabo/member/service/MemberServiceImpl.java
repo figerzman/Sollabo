@@ -17,7 +17,7 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberMapper mapper;
 	
-	// 로그인 1111111111
+	// 로그인
 	@Override
 	public int user_check(HttpServletRequest request) {
 		MemberDTO dto = mapper.user_check(request.getParameter("memId"));
@@ -31,14 +31,28 @@ public class MemberServiceImpl implements MemberService {
 	
 	// 아이디 찾기
 	@Override
-	public int findId(MemberDTO memberDTO) {
+	public MemberDTO findId(MemberDTO memberDTO) {
 		MemberDTO dto = mapper.findId(memberDTO);
-		if(dto != null) {
-			return 0;
-		}
-		return 1;
+		return dto;
 	}
 	
+	// 비밀번호 찾기
+	@Override
+	public MemberDTO findPwd(MemberDTO memberDTO) {
+		MemberDTO dto = mapper.findPwd(memberDTO);
+		return dto;
+	}
+	
+	// 회원가입
+	@Override
+	public int join(MemberDTO member) {
+		try {
+			return mapper.join(member);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 	
 	
 	@Override

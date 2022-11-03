@@ -18,7 +18,7 @@
 	margin: 100px auto;
 	padding: 20px;
 	width: 770px;
-	height: 1100px;
+	height: 550px;
 	position: relative;
 }
 
@@ -71,7 +71,7 @@ p {
     font-weight: normal;
 }
 
-.findId #name, #email {
+.findId #memName, #memEmail {
     width: 230px;
 }
 
@@ -109,6 +109,7 @@ label {
 </style>
 </head>
 <body>
+	<c:import url="../default/header.jsp"/>
 	<div class="memberFindId">
 	    <div class="findId">
 	    	<div class="titleArea">
@@ -126,11 +127,11 @@ label {
 	            <form action="${pageContext.request.contextPath }/member/findId" method="post">
 		            <p id="name_view" class="name" style="">
 		            	<strong id="name_lable">이름</strong> 
-		            	<input id="name" name="memName" class="lostInput" placeholder="" value="" type="text">
+		            	<input id="memName" name="memName" class="lostInput" placeholder="" value="" type="text">
 		            </p>
 		            <p id="email_view" class="email" style="">
 		            	<strong>이메일로 찾기</strong> 
-		            	<input id="email" name="memEmail" class="lostInput" placeholder="" value="" type="text">
+		            	<input id="memEmail" name="memEmail" class="lostInput" placeholder="" value="" type="text">
 		            </p>
 		            
 		            <p class="button">
@@ -141,6 +142,6 @@ label {
 	        
 	    </div>
 	</div>
-		
+	<c:import url="../default/footer.jsp"/>	
 </body>
 </html>

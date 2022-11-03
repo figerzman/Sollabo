@@ -18,7 +18,7 @@
 	margin: 100px auto;
 	padding: 20px;
 	width: 770px;
-	height: 1100px;
+	height: 550px;
 	position: relative;
 }
 
@@ -137,6 +137,7 @@ li {
 </style>
 </head>
 <body>
+	<c:import url="../default/header.jsp"/>
 	<div class="memberJoin">
 	    <div class="Join">
 	    	<div class="titleArea">
@@ -154,13 +155,13 @@ li {
 	                <div class="description">
 	                    <ul class="small">
 	                    	<li>
-							<strong class="term">아이디</strong><strong class="desc"><span>abc1234</span></strong>
+							<strong class="term">아이디</strong><strong class="desc"><span>abc ${memId }</span></strong>
 							</li>
 							<li>
-							<strong class="term">이름</strong><strong class="desc"><span>홍길동</span></strong>
+							<strong class="term">이름</strong><strong class="desc"><span>홍길동 ${memName }</span></strong>
 							</li>
 							<li>
-							<strong class="term">이메일</strong><span class="desc"><span>abc1234@naver.com</span></span>
+							<strong class="term">이메일</strong><span class="desc"><span>abc1234@naver.com ${memEmail }</span></span>
 							</li>
 						</ul>
 					</div>
@@ -173,6 +174,6 @@ li {
 		</div>
 	        
 	</div>
-		
+	<c:import url="../default/footer.jsp"/>	
 </body>
 </html>

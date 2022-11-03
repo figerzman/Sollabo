@@ -18,7 +18,7 @@
 	margin: 100px auto;
 	padding: 20px;
 	width: 770px;
-	height: 1100px;
+	height: 550px;
 	position: relative;
 }
 
@@ -49,11 +49,6 @@ body{
     padding: 10px 0 10px 35px;
     border: 1px solid #e8e8e8;
     background: #fbfbfb url(//img.echosting.cafe24.com/skin/base/common/ico_info.gif) no-repeat 10px center;
-}
-
-/* 가입 아이디 갯수 색상 */
-.txtEm {
-    color: #008bcc;
 }
 
 /* 하단 박스 */
@@ -92,23 +87,23 @@ img {
     display: table-cell;
     padding: 0 10px;
     width: auto;
-    line-height: 1.5em;
+    line-height: 0.8em;
     border-left: 1px solid #e8e8e8;
     vertical-align: middle;
 }
 
-/* 이름, 이메일 */
+/* 이름, 이메일, 아이디 */
 .term {
     float: left;
     width: 100px;
     margin: 0 0 2px;
     padding: 0 4px 0 0;
-    line-height: 22px;
+    line-height: 17px;
     box-sizing: border-box;
     font-weight: normal;
 }
 
-/* 고객 이름, 이메일 */
+/* 고객 이름, 이메일, 아이디 */
 .small .desc {
     padding-left: 30%;
 }
@@ -116,9 +111,9 @@ img {
 .desc {
     display: block;
     margin: 0 0 2px;
-    padding: 0 5px 0 100px;
-    min-height: 22px;
-    line-height: 22px;
+    padding: 0 10px 0 100px;
+    min-height: 17px;
+    line-height: 17px;
     word-wrap: break-word;
     word-break: break-all;
 }
@@ -150,6 +145,7 @@ li {
 </style>
 </head>
 <body>
+	<c:import url="../default/header.jsp"/>
 	<div class="memberFindId">
 	    <div class="findId">
 	    	<div class="titleArea">
@@ -159,7 +155,6 @@ li {
 	        <div class="Message">
 	            <p class="message">
 	            	저희 쇼핑몰을 이용해주셔서 감사합니다.<br>
-	            	다음정보로 가입된 아이디가 총 <span class="txtEm">1</span>개 있습니다.
 	            </p>
 	            <div class="information">
 	                <p class="thumbnail">
@@ -167,15 +162,16 @@ li {
 	                </p>
 	                <div class="description">
 	                    <ul class="small">
+<!--  							<li>  -->
+<%--  							<strong class="term">이름</strong><strong class="desc"><span>${memName }</span></strong> --%>
+<!--  							</li>  -->
+<!--  							<li>  -->
+<%-- 							<strong class="term">이메일</strong><span class="desc"><span>${memEmail }</span></span> --%>
+<!--  							</li> -->
 							<li>
-							<strong class="term">이름</strong><strong class="desc"><span>${memberDTO.memName }</span></strong>
+							<strong class="term">아이디</strong><span class="desc"><span>${memId }</span></span>
 							</li>
-							<li>
-							<strong class="term">이메일</strong><span class="desc"><span>${memberDTO.memEmail }</span></span>
-							</li>
-							<li>
-							<strong class="term">찾은 아이디</strong><span class="desc"><span>${memberDTO.memId }</span></span>
-							</li>
+							<br>
 							<li>즐거운 쇼핑 하세요 고객님!</li>
 						</ul>
 					</div>
@@ -192,6 +188,6 @@ li {
 		</div>
 	        
 	</div>
-		
+	<c:import url="../default/footer.jsp"/>	
 </body>
 </html>
