@@ -8,182 +8,65 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
 <script>
 
-$(".all_check_input").on("click", function(){
-
-    /* 체크박스 체크/해제 */
-    if($(".all_check_input").prop("checked")){
-       $(".individual_cart_checkbox").attr("checked", true);
-    } else{
-       $(".individual_cart_checkbox").attr("checked", false);
+function count(type)  {
+    // 결과를 표시할 element
+   var value = $('#'+type).val();
+   var result =  type.replace(/[0-9]/g,"")
+    const resultElement = $('.quantity_input'+value);
+    // 현재 화면에 표시된 값
+    let number = $('.quantity_input'+value).val();
+    
+    // 더하기/빼기
+    if(result === 'plus' ) {
+      number = parseInt(number) + 1;
+    }else if(result === 'minus')  {
+       if($('.quantity_input'+value).val() < 2){
+          alert("더이상 내릴수 없습니다")
+         }else{
+            number = parseInt(number) - 1;          
+         }
     }
     
-    setTotalInfo($(".cart_data_td"));   
-    
- });
+    // 결과 출력
+   $('.quantity_input'+value).val(number);
+  } 
 
 
-/* 수량버튼 */
-$(".plus_btn").on("click", function(){
-   let quantity = $(this).parent("div").find("quantity_input").val();
-   $(this).parent("div").find("input").val(++quantity);
+
+  $(".all_check_input").on("click", function(){
+
+	    /* 체크박스 체크/해제 */
+	    if($(".all_check_input").prop("checked")){
+	       $(".individual_cart_checkbox").attr("checked", true);
+	    } else{
+	       $(".individual_cart_checkbox").attr("checked", false);
+	    }
+	    
+	    setTotalInfo($(".cart_data_td"));   
+	    
+	 });
+
+
+
+ $(document).ready(function() {
+	  $('#deleteButton').click(function(){
+		  
+		  var $checked =('table input[type=checkbox]:checked')
+		  
+		  console.log( $checked.length)
+		  
+		  
+		  
+	  });
+
 });
-$(".minus_btn").on("click", function(){
-   let quantity = $(this).parent("div").find("quantity_input").val();
-   if(quantity > 1){
-      $(this).parent("div").find("input").val(--quantity);      
-   }
-});
-
-
-/* 수량 수정 버튼 */
-$(".quantity_modify_btn").on("click", function(){
-   let cartNo = $(this).data("cartno");
-   let cartCnt = $(this).parent("td").find("input").val();
-   $(".update_cartNo").val(cartId);
-   $(".update_cartCnt").val(cartCnt);
-   $(".quantity_update_form").submit();
-   
-});
 
 
 
-/* 
-function checkSelectAll()  {
-     // 전체 체크박스
-     const checkboxes 
-       = document.querySelectorAll('input[name="product"]');
-     // 선택된 체크박스
-     const checked 
-       = document.querySelectorAll('input[name="product"]:checked');
-     // select all 체크박스
-     const selectAll 
-       = document.querySelector('input[name="selectall"]');
-     
-     if(checkboxes.length === checked.length)  {
-       selectAll.checked = true;
-     }else {
-       selectAll.checked = false;
-     }
 
-   }
-
-   function selectAll(selectAll)  {
-     const checkboxes 
-        = document.getElementsByName('product');
-     
-     checkboxes.forEach((checkbox) = {
-       checkbox.checked = selectAll.checked
-     })
-   }
-
-    */
-/* 
-   //체크박스 전체 선택 클릭 이벤트
-       function allChecked(target){
-
-           //전체 체크박스 버튼
-           const checkbox = document.getElementById('allCheckBox');
-
-           //전체 체크박스 버튼 체크 여부
-           const is_checked = checkbox.checked;
-
-           //전체 체크박스 제외한 모든 체크박스
-           if(is_checked){
-               //체크박스 전체 체크
-               chkAllChecked()
-           }
-
-           else{
-               //체크박스 전체 해제
-               chkAllUnChecked()
-           }
-       }
-
-       //자식 체크박스 클릭 이벤트
-       function chkClicked(){
-
-           //체크박스 전체개수
-           const allCount = document.querySelectorAll(".chk").length;
-
-           //체크된 체크박스 전체개수
-           const query = 'input[name="chk"]:checked'
-           const selectedElements = document.querySelectorAll(query)
-           const selectedElementsCnt = selectedElements.length;
-
-           //체크박스 전체개수와 체크된 체크박스 전체개수가 같으면 전체 체크박스 체크
-           if(allCount == selectedElementsCnt){
-                document.getElementById('allCheckBox').checked = true;
-           }
-
-           //같지않으면 전체 체크박스 해제
-           else{
-               document.getElementById('allCheckBox').checked = false;
-           }
-       }
-
-       //체크박스 전체 체크
-       function chkAllChecked(){
-           document.querySelectorAll(".chk").forEach(function(v, i) {
-               v.checked = true;
-           });
-       }
-
-       //체크박스 전체 체크 해제
-       function chkAllUnChecked(){
-           document.querySelectorAll(".chk").forEach(function(v, i) {
-               v.checked = false;
-           });
-       }
-   
-       
-       function cartDelete(){
-           //체크박스 체크된 항목
-           const query = 'input[name="chk"]:checked'
-           const selectedElements = document.querySelectorAll(query)
-
-           //체크박스 체크된 항목의 개수
-           const selectedElementsCnt = selectedElements.length;
-
-           if(selectedElementsCnt == 0){
-               alert("삭제할 항목을 선택해주세요.");
-               return false;
-           }
-
-           else{
-               if (confirm("정말로 삭제하시겠습니까?")) {
-                   //배열생성
-                   const arr = new Array(selectedElementsCnt);
-
-                   document.querySelectorAll('input[name="chk"]:checked').forEach(function(v, i) {
-                       arr[i] = v.value;
-                   });
-
-                   const form = document.createElement('form');
-                   form.setAttribute('method', 'post');        //Post 메소드 적용
-                   form.setAttribute('action', '/delete');
-
-                   var input1 = document.createElement('input');
-                   input1.setAttribute("type", "hidden");
-                   input1.setAttribute("name", "cartNo");
-                   input1.setAttribute("value", arr);
-                   form.appendChild(input1);
-                   console.log(form);
-                   document.body.appendChild(form);
-                   form.submit();
-               }
-           }
-       } */
-       
-       /* 장바구니 삭제 버튼 */
-       $(".delete_btn").on("click", function(e){
-          e.preventDefault();
-          const cartNo = $(this).data("cartno");
-          $(".delete_cartNo").val(cartNo);
-          $(".quantity_delete_form").submit();
-       });
-       
 </script>
 
 
@@ -195,7 +78,7 @@ html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form
 }
 
 .cart-wrap{
-   max-width: 1080px;
+	max-width: 1080px;
     margin: 0 auto;
     padding: 0 200px
 }
@@ -341,41 +224,7 @@ table {
 [class^='btnNormal'], a[class^='btnNormal'] {
     display: inline-block;
     box-sizing: border-box;
-    padding: 2px 8px;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    font-size: 12px;
-    line-height: 18px;
-    font-weight: normal;
-    text-decoration: none;
-    vertical-align: middle;
-    word-spacing: -0.5px;
-    letter-spacing: 0;
-    text-align: center;
-    white-space: nowrap;
-    color: #333;
-    background-color: #fff;
-}
-li {
-    list-style: none;
-}
-
-
-
-div.ec-base-help {
-    margin: 20px 0;
-    border: 1px solid #ddd;
-    line-height: 18px;
-}
-
-div.ec-base-help h4 {
-    margin: 22px 0 -4px;
-    color: #404040;
-    font-size: 12px;
-    font-weight: normal;
-}
-div.ec-base-help {
-    margin: 20px 0;
+    pad	       margin: 20px 0;
     border: 1px solid #ddd;
     line-height: 18px;
 }
@@ -385,7 +234,7 @@ div.ec-base-help ol li {
     background: url(//img.echosting.cafe24.com/skin/base/common/ico_number.png) no-repeat;
 }
 
-div.ec-base-help ol .item1 {
+div.ec-basel .item1 {
     background-position: -484px 0;
 }
 div.ec-base-help ol .item2 {
@@ -403,171 +252,161 @@ div.ec-base-help ol .item5 {
 /* 
 
 .quantity_div{
-            position: relative;
-             width: 42px;
-             height: 25px;
-             text-align: left;
-             margin: 5px auto;      
-         }
-         .quantity_input{
-            position: absolute;
-            width: 27px;
-             height: 23px;
-             text-align: center;
-             border: 1px solid #c6c6c6;
-             border-right: 0px;
-             line-height: 19px;
-             font-size: 12px;
-             color: #4c4848;   
-             left: 0;
-         }
+				position: relative;
+			    width: 42px;
+			    height: 25px;
+			    text-align: left;
+			    margin: 5px auto;		
+			}
+			.quantity_input{
+				position: absolute;
+				width: 27px;
+			    height: 23px;
+			    text-align: center;
+			    border: 1px solid #c6c6c6;
+			    border-right: 0px;
+			    line-height: 19px;
+			    font-size: 12px;
+			    color: #4c4848;	
+			    left: 0;
+			}
 .quantity_btn{
-            position: absolute;
-             border: 1px solid #aaa;
-             color: #3a60df;
-             width: 14px;
-             height: 13px;
-             padding: 0px;
-             background-color: #fff;
-             font-weight: bold;
-             font-size: 7px;
-             line-height: 6px;
-             vertical-align: middle;   
-         }
-         .plus_btn{
-            top: 0;
-            right: 0
-         }
-         .minus_btn{
-            bottom: 0;
-            right: 0
-         }      
-         .quantity_modify_btn{
-            border: 1px solid #d0d0d0;
-             height: 13px;
-             line-height: 13px;
-             background-color: #fff;
-             text-align: center;
-             width: 28px;
-             display: inline-block;
-             padding: 3px 6px 2px;
-             margin-top: 3px;      
-             font-size: 7px;
-         }
-         .table_text_align_center{
-            text-align: center;
-         }
-         .delete_btn{
-            width: 40px;      
-         } */
+				position: absolute;
+			    border: 1px solid #aaa;
+			    color: #3a60df;
+			    width: 14px;
+			    height: 13px;
+			    padding: 0px;
+			    background-color: #fff;
+			    font-weight: bold;
+			    font-size: 7px;
+			    line-height: 6px;
+			    vertical-align: middle;	
+			}
+			.plus_btn{
+				top: 0;
+				right: 0
+			}
+			.minus_btn{
+				bottom: 0;
+				right: 0
+			}		
+			.quantity_modify_btn{
+				border: 1px solid #d0d0d0;
+			    height: 13px;
+			    line-height: 13px;
+			    background-color: #fff;
+			    text-align: center;
+			    width: 28px;
+			    display: inline-block;
+			    padding: 3px 6px 2px;
+			    margin-top: 3px;		
+			    font-size: 7px;
+			}
+			.table_text_align_center{
+				text-align: center;
+			}
+			.delete_btn{
+				width: 40px;		
+			} */
 </style>
 </head>
 <body>
-   
-   <c:import url="../default/header.jsp"/>   
+	
+	<c:import url="../default/header.jsp"/>	
 
 
 
 
-   <div class="cart-wrap"> 
-      
-   <div class="titleArea">
-       <h2>cart</h2>
-   </div>
-   
-   <div class="orderListArea ">
+	<div class="cart-wrap"> 
+		
+	<div class="titleArea">
+	    <h2>cart</h2>
+	</div>
+	
+	<div class="orderListArea ">
         <div class="title">
             <h3>장바구니 내역</h3>
         </div>
-   
-   <div class="ec-base-table typeList gBorder ">
-      
-      <table border="1" class="cart-main">
-         <colgroup>
-            <col style="width:27px">
-            <col style="width:100px">
-            <col style="width:auto">
-            <col style="width:130px">
-            <col style="width:80px">
-            <col style="width:150px">
-         </colgroup>
-         <thead>
-            <tr>
-               <th scope="col"><!-- <input type="checkbox" class="all_check_input input_size_20" checked="checked"> --><!--  <input type="checkbox" id="allCheckBox" onclick="allChecked()"> -->
-               <div class="allCheck">
-                     <input type="checkbox" name="allCheck" id="allCheck" />
-                     <script>
-                     $("#allCheck").click(function(){
-                      var chk = $("#allCheck").prop("checked");
-                      if(chk) {
-                       $(".chBox").prop("checked", true);
-                      } else {
-                       $(".chBox").prop("checked", false);
-                      }
-                     });
-                  </script>
-                     
-                </div>
-               </th>
-                       <th scope="col">이미지</th>
-                       <th scope="col">상품정보</th>
-                       <th scope="col">판매가</th>
-                       <th scope="col">수량</th>
-                       <th scope="col">합계</th>
-               </tr>
-           </thead>
-           
-         <c:set var="sum" value="0" />
-           <c:forEach var="dto" items="${cartList}">
-           <tbody class="cart-center">
-              <tr class="cart-record-">
-               <td class="cart_data_td">
-                  <!-- <input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked"> -->
-                  <%-- <input type="checkbox" name="chk" class="chk"onclick="chkClicked()"data-cartN0="${dto.cartNo}"> --%>
-                  <div class="checkBox">
-                     <input type="checkbox" name="chBox" class="chBox" data-cartNo="${dto.cartNo}" />
-                     <button class="delete_btn" data-cartno="${dto.cartNo}">삭제</button>
-                     <script>
-                         $(".chBox").click(function(){
-                          $("#allCheck").prop("checked", false);
-                         });
-                     </script>
-                  </div>
-                  <input type="hidden" class="individual_totalPrice_input" value="${dto.productPrice * dto.cartCnt}">
-               </td>
-                   <td class="pu-img"> <!-- pu-img 제품이미지 -->
-                      <a href="/">
-                      <img src="" alt=""></a>
-                   </td>
-                 <td class="pu-data" align="center"> <!-- pu-data 제품정보 -->
-                    ${dto.productNo}   
-                 </td>
-                 <td class="right" align="center">
-                    <fmt:formatNumber value="${dto.productPrice}" pattern="KRW #,###" />   
-                 </td>
-                 <td align="center">
-                    ${dto.cartCnt}
-                    <%-- <div class="table_text_align_center quantity_div">
-                              <input type="text" value="${dto.cartCnt}" class="quantity_input">   
-                              <button class="quantity_btn plus_btn">+</button>
-                              <button class="quantity_btn minus_btn">-</button>
-                  </div> --%>
-                  <%-- <a class="quantity_modify_btn" data-cartNo="${dto.cartNo}">변경</a> --%>
-                    <%-- <div class="table_text_align_center quantity_div">
-                     <input type="text" value="${dto.cartCnt}" class="quantity_input">   
-                     <button class="quantity_btn plus_btn">+</button>
-                     <button class="quantity_btn minus_btn">-</button>
-                  </div> --%>
-               <%--    <a class="quantity_modify_btn" data-cartId="${dto.cartNo}">변경</a> --%>
-                  
-                    <%-- <div class="table_text_align_center quantity_div">
-                           <input type="text" value="${dto.cartCnt}" class="quantity_input" name="result">  
-                           <button class="quantity_btn plus_btn" onclick='count("plus")' value="+" >+</button>
-                           <button class="quantity_btn minus_btn" onclick='count("minus")' value="-">-</button>
-                        </div>
-                  <a class="quantity_modify_btn" data-cartNo="${dto.cartNo}">변경</a> --%>
-                         
-                 </td>
+	
+	<div class="ec-base-table typeList gBorder ">
+		
+		<table border="1" class="cart-main">
+			<colgroup>
+				<col style="width:27px">
+				<col style="width:100px">
+				<col style="width:auto">
+				<col style="width:130px">
+				<col style="width:80px">
+				<col style="width:150px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th scope="col"><!-- <input type="checkbox" class="all_check_input input_size_20" checked="checked"> --><!--  <input type="checkbox" id="allCheckBox" onclick="allChecked()"> -->
+					<div class="allCheck">
+				   		<input type="checkbox" name="allCheck" id="allCheck" />
+				   		<script>
+							$("#allCheck").click(function(){
+							 var chk = $("#allCheck").prop("checked");
+							 if(chk) {
+							  $(".chBox").prop("checked", true);
+							 } else {
+							  $(".chBox").prop("checked", false);
+							 }
+							});
+						</script>
+				   		
+				 	</div>
+					</th>
+	                    <th scope="col">이미지</th>
+	                    <th scope="col">상품정보</th>
+	                    <th scope="col">판매가</th>
+	                    <th scope="col">수량</th>
+	                    <th scope="col">합계</th>
+	            </tr>
+	        </thead>
+	        
+			<c:set var="sum" value="0" />
+	        <c:forEach var="dto" items="${cartList}" varStatus="status">
+	        <tbody class="cart-center">
+	        	<tr class="cart-record-">
+					<td class="cart_data_td">
+						<div class="checkBox">
+							<input type="checkbox" name="chBox" class="chBox" data-cartNo="${dto.cartNo}" />
+							<script>
+								 $(".chBox").click(function(){
+								  $("#allCheck").prop("checked", false);
+								 });
+							</script>
+						</div>
+						<input type="hidden" class="individual_totalPrice_input" value="${dto.productPrice * dto.cartCnt}">
+						<input type="hidden" class="individual_productPrice_input" value="${dto.productPrice}">
+						<input type="hidden" class="individual_cartCnt_input" value="${dto.cartCnt}">
+						<input type="hidden" class="individual_productNo_input" value="${dto.productNo}">								
+					</td>
+			       	<td class="pu-img"> <!-- pu-img 제품이미지 -->
+			       		<a href="/">
+			       		<img src="" alt=""></a>
+			       	</td>
+			        <td class="pu-data" align="center"> <!-- pu-data 제품정보 -->
+			     		${dto.productNo}	
+			        </td>
+			        <td class="right" align="center">
+			        	<fmt:formatNumber value="${dto.productPrice}" pattern="KRW #,###" />	
+			        </td>
+			        <td align="center">
+			        	
+                    	<div class="table_text_align_center quantity_div">
+                    <!-- status.index로 각각 번호를 매겨준다 -->
+	                        <input type="text" value="${dto.cartCnt}" class="quantity_input${status.index}" name="result" id="quantity_input${status.index}">  
+	                        <button class="quantity_btn plus_btn" onclick='count(this.id)' value="${status.index}" id="plus${status.index}" >+</button>
+	                        <button class="quantity_btn minus_btn" onclick='count(this.id)' value="${status.index}" id="minus${status.index}">-</button>
+	                        <button class="quantity_modify_btn" > 변경 </button> 
+	                        
+                     	</div>
+                    
+                       
+                 	 </td>
                  <td class="right" align="center">
                   <fmt:formatNumber value="${dto.productPrice * dto.cartCnt}" pattern="KRW #,###" />
                </td>
@@ -598,7 +437,7 @@ div.ec-base-help ol .item5 {
       </div>
       <div class="delBtn">
          <button type="button" class="selectDelete_btn">선택 삭제</button>
-         <script>
+       <!--   <script>
              $(".selectDelete_btn").click(function(){
               var confirm_val = confirm("정말 삭제하시겠습니까?");
               
@@ -619,7 +458,7 @@ div.ec-base-help ol .item5 {
                });
               } 
              });
-         </script> 
+         </script>  -->
       </div>
       <!-- 총 주문금액 : 국내배송상품 -->
       <!-- 총 주문금액 : 국내배송상품 -->
@@ -690,28 +529,15 @@ div.ec-base-help ol .item5 {
          </div>
       </div> -->
    </div>
-   
-   <div>
-   <!-- 수량 조정 form -->
-      <form action="/cart/update" method="post" class="quantity_update_form">
-         <input type="hidden" name="cartNo" class="update_cartNo">
-         <input type="hidden" name="cartCount" class="update_cartCnt">
-         <input type="hidden" name="memNo" value="${member.memNo}">
-      </form>      
-      
-      <!-- 삭제 form -->
-      <form action="/cart/delete" method="post" class="quantity_delete_form">
-         <input type="hidden" name="cartNo" class="delete_cartNo">
-         <input type="hidden" name="memNo" value="${member.memNo}">
-      </form>
-   
-   </div>
+
+	
 
 
-   
-   <c:import url="../default/footer.jsp"/>    
+	
+	<c:import url="../default/footer.jsp"/>    
 </body>
 </html>
+
 
 
 
