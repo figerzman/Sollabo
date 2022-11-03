@@ -14,38 +14,38 @@ import com.web.sollabo.mybatis.member.MemberMapper;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-   @Autowired
-   private MemberMapper mapper;
-   
-   // ë¡œê·¸ì¸ 1111111111
-   @Override
-   public int user_check(HttpServletRequest request) {
-      MemberDTO dto = mapper.user_check(request.getParameter("memId"));
-      if(dto != null) {
-         if(request.getParameter("memPassword").equals(dto.getMemPassword())) {
-            return 0;
-         }
-      }
-      return 1;
-   }
-   
-   // ì•„ì´ë”” ì°¾ê¸°
-   @Override
-   public int findId(MemberDTO memberDTO) {
-      MemberDTO dto = mapper.findId(memberDTO);
-      if(dto != null) {
-         return 0;
-      }
-      return 1;
-   }
-   
-   
-   
-   @Override
-   public List<MemberDTO> getMember() {
-      List<MemberDTO> list = new ArrayList<MemberDTO>();
-      list = mapper.getMember();
-      return list;
-   }
-   
+	@Autowired
+	private MemberMapper mapper;
+	
+	// ·Î±×ÀÎ
+	@Override
+	public int user_check(HttpServletRequest request) {
+		MemberDTO dto = mapper.user_check(request.getParameter("memId"));
+		if(dto != null) {
+			if(request.getParameter("memPassword").equals(dto.getMemPassword())) {
+				return 0;
+			}
+		}
+		return 1;
+	}
+	
+	// ¾ÆÀÌµğ Ã£±â
+	@Override
+	public int findId(MemberDTO memberDTO) {
+		MemberDTO dto = mapper.findId(memberDTO);
+		if(dto != null) {
+			return 0;
+		}
+		return 1;
+	}
+	
+	
+	
+//	@Override
+//	public List<MemberDTO> getMember() {
+//		List<MemberDTO> list = new ArrayList<MemberDTO>();
+//		list = mapper.getMember();
+//		return list;
+//	}
+	
 }
