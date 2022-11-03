@@ -331,6 +331,9 @@ ul .infoT {
 </style>
 </head>
 <body>
+
+<c:import url="../default/header.jsp"/>	
+
 <div id="wrap" class="prdPage">
 	<div id="container">
 		<div id="contents">
@@ -345,68 +348,29 @@ ul .infoT {
 				<!-- 각 브랜드별로 링크 추가해야함 --><!-- Category_code -->
 				<!-- 현재는 테스트 링크만 추가 -->
 				<ul class="menuCate">	
-				<c:forEach var="dto" items="${productList }">			
-					<li style="display:"; class="Disoption">
-						<a href="${pageContext.request.contextPath}/product/product?divisionCode=${dto.divisionCode }">
-							<img src="${pageContext.request.contextPath}/resources/logo/mainnike.png">Nike
-							<span class="count displayone">()</span>
-						</a>
-					</li>
-				</c:forEach>
-					<%-- <li style="display:"; class="Disoption">
-						<a href="${pageContext.request.contextPath}/product/product"><img src="${pageContext.request.contextPath}/resources/logo/mainadidas.png">Adidas
-							<span class="count displayone">()</span>
-						</a>
-					</li>
-					<li style="display:"; class="Disoption">
-						<a href=""><img src="${pageContext.request.contextPath}/resources/logo/mainnewbal.png">NewBalance
-							<span class="count displayone">()</span>
-						</a>
-					</li>
-					<li style="display:"; class="Disoption">
-						<a href=""><img src="${pageContext.request.contextPath}/resources/logo/mainpuma.png">Puma
-							<span class="count displayone">()</span>
-						</a>
-					</li>
-					<li style="display:"; class="Disoption">
-						<a href=""><img src="${pageContext.request.contextPath}/resources/logo/mainconverse.png">Converse
-							<span class="count displayone">()</span>
-						</a>
-					</li>
-					<li style="display:"; class="Disoption">
-						<a href=""><img src="${pageContext.request.contextPath}/resources/logo/mainvans.png">Vans
-							<span class="count displayone">()</span>
-						</a>
-					</li>
-					<li style="display:"; class="Disoption">
-						<a href=""><img src="${pageContext.request.contextPath}/resources/logo/mainfred.png">Fredferry
-							<span class="count displayone">()</span>
-						</a>
-					</li>
-					<li style="display:"; class="Disoption">
-						<a href=""><img src="${pageContext.request.contextPath}/resources/logo/mainlacoste.png">Lacoste
-							<span class="count displayone">()</span>
-						</a>
-					</li>  --%>
+					<c:forEach var="dto" items="${divisionList }">			
+						<li style="display:"; class="Disoption">
+							<a href="${pageContext.request.contextPath}/product/product?divisionCode=${dto.divisionCode }">
+								<img src="${pageContext.request.contextPath}${dto.icon }">${dto.divisionName }
+								<span class="count displayone">()</span>
+							</a>
+						</li>
+					</c:forEach>
 				</ul>		
 			</div>
-			<!-- 제품 진열(중간) -->
-			<div class="middlePack">
+			<!-- 제품 진열(중간) --><!--정렬방식은 마무리 -->
+			<!-- <div class="middlePack">
 				<div class="middleMenu">
 					<div class="function">
-						<p class="prdCount">
-							<strong>6</strong>
-							" 개의 상품이 있습니다. "
-						</p>
 						<ul id="type" class="option">
-							<li class="SMoption"><a href="#">신상품</a></li>
-							<li class="SMoption"><a href="#">낮은가격</a></li>
-							<li class="SMoption"><a href="#">높은가격</a></li>
-							<li class="SMoption"><a href="#">조회수</a></li>
+							<li class="SMoption"><button id="가나다순"></button>가나다순</a></li>
+							<li class="SMoption"><button id="낮은가격"></button>낮은가격</a></li>
+							<li class="SMoption"><button id="높은가격"></button>높은가격</a></li>
+							<li class="SMoption"><button id="원래대로"></button>원래대로</a></li>
 						</ul>	
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- 제품 진열(하단) -->
 			<div class="bottomPack">
 				<ul class="prdList">
@@ -417,7 +381,7 @@ ul .infoT {
 						<div class="thumnail">
 							<div class="prdImg">
 								<a href="${pageContext.request.contextPath}/product/goodspage?productNo=${dto.productNo }">
-									<img src="${dto.productImage }"><!-- Product_image -->
+									<img src="${pageContext.request.contextPath}${dto.productImage }"><!-- Product_image -->
 								</a>
 							</div>
 						</div>
@@ -450,14 +414,14 @@ ul .infoT {
 			<!-- 제품 진열(최하단)  -->
 			<div class="lastPack">
 				<a href="#none" class="first">
-					<img src="gif/firstbtn.gif" 
-					onmouseover="this.src='gif/first_rollover.gif'" 
-					onmouseout="this.src='gif/firstbtn.gif'" alt="첫 페이지">
+					<img src="${pageContext.request.contextPath}/resources/gif/firstbtn.gif" 
+					onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/first_rollover.gif'" 
+					onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/firstbtn.gif'" alt="첫 페이지">
 				</a>
 				<a href="#none">
-					<img src="gif/prevbtn.gif" 
-					onmouseover="this.src='gif/prev_rollover.gif'" 
-					onmouseout="this.src='gif/prevbtn.gif'" alt="이전 페이지">
+					<img src="${pageContext.request.contextPath}/resources/gif/prevbtn.gif" 
+					onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/prev_rollover.gif'" 
+					onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/prevbtn.gif'" alt="이전 페이지">
 				</a>
 				<ol style="padding-left: 0px;">
 					<li class="know"><a href="" class="this">1</a></li>
@@ -466,18 +430,20 @@ ul .infoT {
 			        <li class="know"><a href="" class="other">4</a></li>
 	            </ol>
 	            <a href="">
-		            <img src="gif/nextbtn.gif" 
-		            onmouseover="this.src='gif/next_rollover.gif'" 
-		            onmouseout="this.src='gif/nextbtn.gif'" alt="다음 페이지">
+		            <img src="${pageContext.request.contextPath}/resources/gif/nextbtn.gif" 
+		            onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/next_rollover.gif'" 
+		            onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/nextbtn.gif'" alt="다음 페이지">
 	            </a>
 	            <a href="" class="last">
-	            	<img src="gif/lastbtn.gif" 
-	            	onmouseover="this.src='gif/last_rollover.gif'" 
-	            	onmouseout="this.src='gif/lastbtn.gif'" alt="마지막 페이지">
+	            	<img src="${pageContext.request.contextPath}/resources/gif/lastbtn.gif" 
+	            	onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/last_rollover.gif'" 
+	            	onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/lastbtn.gif'" alt="마지막 페이지">
             	</a>
 			</div>
 		</div>
 	</div>
 </div>
+
+<c:import url="../default/footer.jsp"/>   
 </body>
 </html>

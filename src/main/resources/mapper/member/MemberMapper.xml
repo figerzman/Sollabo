@@ -5,27 +5,27 @@
 
 <mapper namespace="com.web.sollabo.mybatis.member.MemberMapper">
 
-	<resultMap type="com.web.sollabo.member.dto.MemberDTO" id="member">
-		<id property="memNo" column="MEM_NO"/>
-		<result property="memId" column="MEM_ID"/>
-		<result property="memEmail" column="MEM_EMAIL"/>
-		<result property="memPassword" column="MEM_PASSWORD"/>
-		<result property="memName" column="MEM_NAME"/>
-		<result property="memNickname" column="MEM_NICKNAME"/>
-		<result property="memProfile" column="MEM_PROFILE"/>
-		<result property="memAddr1" column="MEM_ADDR1"/>
-		<result property="memAddr2" column="MEM_ADDR2"/>
-		<result property="memAddr3" column="MEM_ADDR3"/>
-		<result property="memTel" column="MEM_TEL"/>
-		<result property="memRegDate" column="MEM_REG_DATE"/>
-		<result property="memGrade" column="MEM_GRADE"/>
-		<result property="memLoginFaleCnt" column="MEM_LOGIN_FALE_CNT"/>
-		<result property="memAuKeyword" column="MEM_AU_KEYWORD"/>
-	</resultMap>
-	
-	<select id="getMember" resultMap="member">
-		select * from member
-	</select>
+   <resultMap type="com.web.sollabo.member.dto.MemberDTO" id="member">
+      <id property="memNo" column="MEM_NO"/>
+      <result property="memId" column="MEM_ID"/>
+      <result property="memEmail" column="MEM_EMAIL"/>
+      <result property="memPassword" column="MEM_PASSWORD"/>
+      <result property="memName" column="MEM_NAME"/>
+      <result property="memNickname" column="MEM_NICKNAME"/>
+      <result property="memProfile" column="MEM_PROFILE"/>
+      <result property="memAddr1" column="MEM_ADDR1"/>
+      <result property="memAddr2" column="MEM_ADDR2"/>
+      <result property="memAddr3" column="MEM_ADDR3"/>
+      <result property="memTel" column="MEM_TEL"/>
+      <result property="memRegDate" column="MEM_REG_DATE"/>
+      <result property="memGrade" column="MEM_GRADE"/>
+      <result property="memLoginFaleCnt" column="MEM_LOGIN_FALE_CNT"/>
+      <result property="memAuKeyword" column="MEM_AU_KEYWORD"/>
+   </resultMap>
+   
+   <select id="getMember" resultMap="member">
+      select * from member
+   </select>
 
 	<select id="user_check" resultMap="member">
 		select * from member where MEM_ID=#{memId }
@@ -42,7 +42,5 @@
 	<insert id="join">
 		insert into member values(#{memId}, #{memPassword }, #{memName }, #{memAddr1 }, #{memAddr2 }, #{memAddr3 }, #{memTel }, #{memEmail })
 	</insert>
-	
 
 </mapper>
-
