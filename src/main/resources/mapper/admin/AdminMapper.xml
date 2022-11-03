@@ -5,7 +5,42 @@
 
 <mapper namespace="com.web.sollabo.mybatis.admin.AdminMapper">
 
-	
+ 	<resultMap type="com.web.sollabo.order.dto.OrderDTO" id="order">
+      <id property="orderNo" column="ORDER_NO"/>
+      <result property="memId" column="MEM_ID"/>
+      <result property="productNo" column="PRODUCT_NO"/>
+      <result property="orderName" column="ORDER_NAME"/>
+      <result property="orderAddr1" column="ORDER_ADDR1"/>
+      <result property="orderAddr2" column="ORDER_ADDR2"/>
+      <result property="orderAddr3" column="ORDER_ADDR3"/>
+      <result property="orderTel" column="ORDER_TEL"/>
+      <result property="productOrderCnt" column="PRODUCT_ORDER_CNT"/>
+      <result property="orderAccount" column="ORDER_ACCOUNT"/>
+      <result property="orderRegDate" column="ORDER_REG_DATE"/>
+      <result property="orderState" column="ORDER_STATE"/>
+   </resultMap>
 
+ 	<resultMap type="com.web.sollabo.qna.dto.QnaDTO" id="qna">
+      <id property="qnaNo" column="ORDER_NO"/>
+      <result property="qnaTitle" column="MEM_ID"/>
+      <result property="qnaContent" column="PRODUCT_NO"/>
+      <result property="qnaWriter" column="ORDER_NAME"/>
+      <result property="qnaFile" column="ORDER_ADDR1"/>
+      <result property="qnaRegdate" column="ORDER_ADDR2"/>
+      <result property="qnaPublic" column="ORDER_ADDR3"/>
+      <result property="qnaReplyNo" column="ORDER_TEL"/>
+      <result property="qnaReNo" column="PRODUCT_ORDER_CNT"/>
+      <result property="qnaReplyContent" column="ORDER_ACCOUNT"/>
+      <result property="qnaReplyWriter" column="ORDER_REG_DATE"/>
+      <result property="qnaReplyRegdate" column="ORDER_STATE"/>
+   </resultMap>
+	
+	<select id="adminOrderList" resultMap="order">
+		select * from order_list 
+	</select>
+	
+	<select id="adminQAList" resultMap="qna">
+		select * from qna
+	</select>
 </mapper>
 

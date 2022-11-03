@@ -206,6 +206,54 @@ section .notice {
 .board_count_div a {
 	color:black;
 }
+.board_count_div {
+	display: table;
+    margin: 70px auto 0;
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+}
+
+.board_count_div img {
+    vertical-align: top;
+}
+
+.board_count_div ol {
+	display: inline-block;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
+
+.board_count_div li:first-child {
+	margin-left: 0;
+}
+
+.board_count_div li {
+	float: left;
+    display: inline-block;
+    margin: 0 0 0 -1px;
+    border: 1px solid #e8e8e8;
+    font-size: 11px;
+    color: #757575;
+    vertical-align: top;
+}
+
+.board_count_div li a {
+	display: block;
+    width: 33px;
+    padding: 7px 0 6px;
+    font-weight: bold;
+    color: #b7b7b7;
+    line-height: 14px;
+    background: #fff;
+}
+
+.board_count_div li a.this {
+	color: #333;
+    font-weight: bold;
+    background: #f1f1f1;
+}
 
 </style>
 <script type="text/javascript">
@@ -258,11 +306,61 @@ section .notice {
             </table>        
         </div>
         <br>
-        <div class="board_count_div">
+        
+						
+		<!-- [1][2][3][4][5][6][7][8][9][10] -->
+		<c:forEach var="i" begin="${pagingInfo.firstPage }" end="${pagingInfo.lastPage }">
+			<c:if test="${i==pagingInfo.currentPage }">
+				<span style="color:blue;font-weight:bold">${i }</span>
+			</c:if>
+			<c:if test="${i!=pagingInfo.currentPage }">						
+				<a href="#" onclick="boardList(${i})">
+					[${i }]
+				</a>
+			</c:if>		
+		</c:forEach>
+		
+		
+   			<div class="board_count_div">
+   			
+				<a href="#" onclick="boardList(${pagingInfo.firstPage-1})"class="first">
+					<img src="${pageContext.request.contextPath}/resources/gif/firstbtn.gif" 
+					onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/first_rollover.gif'" 
+					onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/firstbtn.gif'" alt="첫 페이지">
+				</a>
+				<a href="#none">
+					<img src="${pageContext.request.contextPath}/resources/gif/prevbtn.gif" 
+					onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/prev_rollover.gif'" 
+					onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/prevbtn.gif'" alt="이전 페이지">
+				</a>
+				<ol style="padding-left: 0px;">
+					<c:forEach var="i" begin="${pagingInfo.firstPage }" end="${pagingInfo.lastPage }">
+						<c:if test="${i==pagingInfo.currentPage }">
+							<span style="color:blue;font-weight:bold">${i }</span>
+						</c:if>
+						<c:if test="${i!=pagingInfo.currentPage }">						
+							<a href="#" onclick="boardList(${i})">
+								[${i }]
+							</a>
+						</c:if>		
+					</c:forEach>
+	            </ol>
+	            <a href="">
+		            <img src="${pageContext.request.contextPath}/resources/gif/nextbtn.gif" 
+		            onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/next_rollover.gif'" 
+		            onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/nextbtn.gif'" alt="다음 페이지">
+	            </a>
+	            <a href="#" onclick="boardList(${pagingInfo.lastPage+1})" class="last">
+	            	<img src="${pageContext.request.contextPath}/resources/gif/lastbtn.gif" 
+	            	onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/last_rollover.gif'" 
+	            	onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/lastbtn.gif'" alt="마지막 페이지">
+            	</a>
+			</div>
+       <%--  <div class="board_count_div">
 			<c:forEach begin="1" end="10" var="tests">
 				<a href="#">[ ${tests } ]</a>
 			</c:forEach>
-		</div>
+		</div> --%>
         <br>
          <!-- board seach area -->
 	    <div id="board_search">
