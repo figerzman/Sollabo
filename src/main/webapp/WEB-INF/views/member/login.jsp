@@ -18,7 +18,7 @@
 	margin: 100px auto;
 	padding: 20px;
 	width: 770px;
-	height: 1100px;
+	height: 550px;
 	position: relative;
 }
 
@@ -133,6 +133,7 @@ label {
 </style>
 </head>
 <body>
+	<c:import url="../default/header.jsp"/>
 	<div class="memberLogin">
 	    <div class="login">
 	    	<div class="titleArea">
@@ -155,6 +156,6 @@ label {
 			</form>
 	    </div>
 	</div>
-		
+	<c:import url="../default/footer.jsp"/>	
 </body>
 </html>

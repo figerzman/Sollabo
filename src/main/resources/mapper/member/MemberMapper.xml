@@ -27,13 +27,20 @@
       select * from member
    </select>
 
-   <select id="user_check" resultMap="member">
-      select * from member where MEM_ID=#{memId }
-   </select>
-   
-   <select id="findId" resultMap="member">
-      select * from member where MEM_NAME=#{memName } and MEM_EMAIL=#{memEmail }
-   </select>
-   
+	<select id="user_check" resultMap="member">
+		select * from member where MEM_ID=#{memId }
+	</select>
+	
+	<select id="findId" resultMap="member">
+		select * from member where MEM_NAME=#{memName } and MEM_EMAIL=#{memEmail }
+	</select>
+	
+	<select id="findPwd" resultMap="member">
+		select * from member where MEM_ID=#{memId} and MEM_NAME=#{memName } and MEM_EMAIL=#{memEmail }
+	</select>
+	
+	<insert id="join">
+		insert into member values(#{memId}, #{memPassword }, #{memName }, #{memAddr1 }, #{memAddr2 }, #{memAddr3 }, #{memTel }, #{memEmail })
+	</insert>
 
 </mapper>

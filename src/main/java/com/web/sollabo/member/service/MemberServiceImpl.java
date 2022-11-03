@@ -29,16 +29,6 @@ public class MemberServiceImpl implements MemberService {
       return 1;
    }
    
-   // 아이디 찾기
-   @Override
-   public int findId(MemberDTO memberDTO) {
-      MemberDTO dto = mapper.findId(memberDTO);
-      if(dto != null) {
-         return 0;
-      }
-      return 1;
-   }
-   
    
    
    @Override
@@ -47,5 +37,27 @@ public class MemberServiceImpl implements MemberService {
       list = mapper.getMember();
       return list;
    }
+
+@Override
+public MemberDTO findId(MemberDTO memberDTO) {
+	MemberDTO dto = mapper.findId(memberDTO);
+    if(dto != null) {
+       return dto;
+    }
+    return dto;
+ }
+
+@Override
+public MemberDTO findPwd(MemberDTO memberDTO) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public int join(MemberDTO member) {
+	// TODO Auto-generated method stub
+	return 0;
+}
    
 }
+

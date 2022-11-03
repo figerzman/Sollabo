@@ -18,7 +18,7 @@
 	margin: 100px auto;
 	padding: 20px;
 	width: 770px;
-	height: 1100px;
+	height: 550px;
 	position: relative;
 }
 
@@ -94,6 +94,15 @@ input[type=text] {
 	text-align:center; 
 }
 
+.findPwd .button input {
+	background: url("http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_submit.gif");
+	background-repeat: no-repeat;
+	width: 100px;
+	height: 40px;
+	border: 0;
+}
+
+
 label {
     cursor: default;
 }
@@ -101,6 +110,7 @@ label {
 </style>
 </head>
 <body>
+	<c:import url="../default/header.jsp"/>
 	<div class="memberFindPwd">
 	    <div class="findPwd">
 	    	<div class="titleArea">
@@ -108,33 +118,35 @@ label {
 			</div>
 			<fieldset>
 	            <p class="check">
-	            	<input id="check_method0" name="check_method" fw-filter="" fw-label="찾는방법" fw-msg="" value="1" type="radio" style="display: none;">
-	            	<label for="check_method0" style="display: none;">
-	            		<span id="ssn_lable" style="display: none;"></span>
-	            	</label>
-	            	<input id="check_method1" name="check_method" fw-filter="" fw-label="찾는방법" fw-msg="" value="2" type="radio" checked="checked">
+<!-- 	            	<input id="check_method0" name="check_method" fw-filter="" fw-label="찾는방법" fw-msg="" value="1" type="radio" style="display: none;"> -->
+<!-- 	            	<label for="check_method0" style="display: none;"> -->
+<!-- 	            		<span id="ssn_lable" style="display: none;"></span> -->
+<!-- 	            	</label> -->
+	            	<input id="check_method1" name="check_method" fw-label="찾는방법" value="2" type="radio" checked="checked">
 	            	<label for="check_method1">이메일</label>
 	            </p>
-	            <p id="id_view" class="id" style="">
-	            	<strong id="id_lable">아이디</strong> 
-	            	<input id="id" name="id" class="lostInput" placeholder="" value="" type="text">
-	            </p>
-	            <p id="name_view" class="name" style="">
-	            	<strong id="name_lable">이름</strong> 
-	            	<input id="name" name="name" class="lostInput" placeholder="" value="" type="text">
-	            </p>
-	            <p id="email_view" class="email" style="">
-	            	<strong>이메일로 찾기</strong> 
-	            	<input id="email" name="email" class="lostInput" placeholder="" value="" type="text">
-	            </p>
-	            
-	            <p class="button">
-	                <a href="#none" onclick=""><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_submit.gif" alt="확인" /></a>
-	            </p>
+	            <form action="${pageContext.request.contextPath }/member/findPwd" method="post">
+		            <p id="id_view" class="id" style="">
+		            	<strong id="id_lable">아이디</strong> 
+		            	<input id="id" name="memId" class="lostInput" placeholder="" value="" type="text">
+		            </p>
+		            <p id="name_view" class="name" style="">
+		            	<strong id="name_lable">이름</strong> 
+		            	<input id="name" name="memName" class="lostInput" placeholder="" value="" type="text">
+		            </p>
+		            <p id="email_view" class="email" style="">
+		            	<strong>이메일로 찾기</strong> 
+		            	<input id="email" name="memEmail" class="lostInput" placeholder="" value="" type="text">
+		            </p>
+		            
+		            <p class="button">
+		                <input type="submit" value="">
+		            </p>
+	            </form>
         </fieldset>
 	        
 	    </div>
 	</div>
-		
+	<c:import url="../default/footer.jsp"/>	
 </body>
 </html>

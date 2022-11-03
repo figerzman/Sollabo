@@ -10,5 +10,7 @@ public interface MemberMapper {
 	
 	public MemberDTO user_check(String memId);
 	public MemberDTO findId(MemberDTO memberDTO);
+	public MemberDTO findPwd(MemberDTO memberDTO);
+	public int join(MemberDTO member);
 
 }
