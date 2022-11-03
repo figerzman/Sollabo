@@ -47,18 +47,19 @@ public class CartController {
 	}
 	
 	/* 장바구니 수량 수정 */
-	@PostMapping("/cart/update")
+	@PostMapping("CartUpdate")
 	public String updateCartPOST(CartDTO cart) {
 		cartService.modifyCount(cart);
 		
-		return "redirect:/cart/" + cart.getMemNo();
+		System.out.println("들어온걸확인");
+		return "redirect:/cart/cart" /* + cart.getMemNo() */;
 
 	}
 	
 	
 	
 	//장바구니 삭제
-	@PostMapping("/cart/delete")
+	@PostMapping("delete")
 	public String deleteCartPOST(CartDTO cart) {
 		
 		cartService.deleteCart(cart.getCartNo());

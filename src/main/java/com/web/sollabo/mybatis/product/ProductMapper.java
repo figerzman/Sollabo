@@ -9,18 +9,13 @@ public interface ProductMapper {
 	
 	
 	
-	public List<ProductDTO> getProduct(String divisionCode);
+	public List<ProductDTO> getProduct();
 	
-	public List<ProductDTO> getDivision();
-	
-	
+	/* public List<ProductDTO> getDivi(); */
 	
 	public ProductDTO viewProduct(ProductDTO productdto);
 
-	
-	
-	
-	/* public ProductDTO cateProduct(ProductDTO catedto); */
+	/* public ProductDTO diviProduct(ProductDTO dividto); */
 	
 	
 	

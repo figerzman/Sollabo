@@ -2,6 +2,8 @@ package com.web.sollabo.cart.dto;
 
 
  
+import java.awt.List;
+
 import oracle.sql.TIMESTAMP;
 
 /*CREATE TABLE CART (
@@ -16,7 +18,7 @@ import oracle.sql.TIMESTAMP;
 
 public class CartDTO {
 	
-	
+
 	private int cartNo;
 	private int memNo;
 	private int productNo;

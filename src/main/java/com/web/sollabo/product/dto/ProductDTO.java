@@ -16,7 +16,6 @@ public class ProductDTO {
 	private int productCnt;
 	private int productPrice;
 	private Timestamp productRegDate;
-	private String icon;
 	
 	
 	public int getProductNo() {
@@ -84,12 +83,6 @@ public class ProductDTO {
 	}
 	public void setDivisionName(String divisionName) {
 		this.divisionName = divisionName;
-	}
-	public String getIcon() {
-		return icon;
-	}
-	public void setIcon(String icon) {
-		this.icon = icon;
 	}
 	
 }
