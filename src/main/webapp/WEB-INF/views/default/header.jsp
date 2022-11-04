@@ -137,16 +137,17 @@ input#rightside{
 <body>
 	<div class="leftdiv">
 		<h1 class="title"><a href="${pageContext.request.contextPath }/">SOLLABO</a></h1>
-		<h1><a href="${pageContext.request.contextPath }/product/product">Brand</a></h1>
+		<h1>Brand</h1>
 		<ul class=l-title>
-			<li><a href="#" class="active">Nike</a></li>
-			<li><a href="#">Adidas</a></li> 
-			<li><a href="#">NewBalance</a></li>
-			<li><a href="#">Puma</a></li>
-			<li><a href="#">Converse</a></li>
-			<li><a href="#">Vans</a></li>
-			<li><a href="#">Fredferry</a></li>
-			<li><a href="#">Lacoste</a></li>
+			<li><a href="${pageContext.request.contextPath }/product/product?divisionCode=0" class="active">All</a></li>
+			<li><a href="${pageContext.request.contextPath }/product/product?divisionCode=6" class="active">Nike</a></li>
+			<li><a href="${pageContext.request.contextPath }/product/product?divisionCode=7">Adidas</a></li> 
+			<li><a href="${pageContext.request.contextPath }/product/product?divisionCode=22">Puma</a></li>
+			<li><a href="${pageContext.request.contextPath }/product/product?divisionCode=23">Converse</a></li>
+			<li><a href="${pageContext.request.contextPath }/product/product?divisionCode=24">Fredferry</a></li>
+			<li><a href="${pageContext.request.contextPath }/product/product?divisionCode=25">Lacoste</a></li>
+			<li><a href="${pageContext.request.contextPath }/product/product?divisionCode=26">NewBalance</a></li>
+			<li><a href="${pageContext.request.contextPath }/product/product?divisionCode=27">Vans</a></li>
 		</ul>
 		<h1>Sales</h1>
 	</div>
@@ -175,7 +176,7 @@ input#rightside{
 		</li>
 		<li><a href="/sollabo/cart/cart">장바구니</a></li>
 		<li><a href="/sollabo/member/mypage">마이페이지</a></li>
-		<li><a href="/sollabo/admin/adminlist">관리자</a></li>
+		<li><a href="/sollabo/admin/adminMenuList">관리자</a></li>
 	</ul>
 	<label for="rightside"></label>
 	</div>
