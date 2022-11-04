@@ -13,6 +13,10 @@ import com.web.sollabo.admin.service.AdminService;
 import com.web.sollabo.member.dto.MemberDTO;
 import com.web.sollabo.member.service.MemberService;
 import com.web.sollabo.notice.dto.NoticeDTO;
+import com.web.sollabo.product.service.ProductService;
+import com.web.sollabo.util.PaginationInfo;
+import com.web.sollabo.util.SearchVO;
+import com.web.sollabo.util.Utility;
 
 @Controller
 @RequestMapping("admin")
@@ -22,6 +26,8 @@ public class AdminController {
    private MemberService memberService;
    @Autowired
    private AdminService adminService;
+   @Autowired
+   private ProductService productService;
    
    private ModelAndView modelAndView;
    
@@ -33,12 +39,32 @@ public class AdminController {
 
    /* 관리자 고객 관리 리스트 페이지 이동 get 방식*/
    @RequestMapping(value="adminMemList", method=RequestMethod.GET)
-   public ModelAndView adminUserListGet() {
+   public ModelAndView adminUserListGet(@ModelAttribute SearchVO searchVo, MemberDTO memberDTO) {
       modelAndView = new ModelAndView();
       
-      //memberService 재사용 하여 고객 검색
-      modelAndView.addObject("memberList",memberService.getMember());
-      modelAndView.setViewName("admin/adminMemList");
+      
+  	PaginationInfo pagingInfo = new PaginationInfo();
+	pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+	pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT_PER_PAGE);
+	pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+			
+	//SearchVo에 값 셋팅
+	searchVo.setRecordCountPerPage(Utility.RECORD_COUNT_PER_PAGE);
+	searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+	
+	/*
+	 * List<MemberDTO> list =memberService.selectAll(searchVo);
+	 * 
+	 * int totalRecord = memberService.selectTotalRecordCount(searchVo);
+	 */
+	
+	/*
+	 * pagingInfo.setTotalRecord(totalRecord);
+	 * 
+	 * modelAndView.addObject("list", list);
+	 */	modelAndView.addObject("pagingInfo", pagingInfo);
+	modelAndView.setViewName("admin/adminMemList");
+      
       
       return modelAndView;
    }   
