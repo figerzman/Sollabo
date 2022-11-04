@@ -12,5 +12,6 @@ public interface MemberMapper {
 	public MemberDTO findId(MemberDTO memberDTO);
 	public MemberDTO findPwd(MemberDTO memberDTO);
 	public int join(MemberDTO member);
+	public MemberDTO modifyProfile(MemberDTO memberDTO);
 
 }

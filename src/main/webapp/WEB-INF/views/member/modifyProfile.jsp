@@ -24,7 +24,7 @@
 	margin: 100px auto;
 	padding: 20px;
 	width: 770px;
-	height: 1100px;
+	height: 750px;
 	position: relative;
 }
 
@@ -129,10 +129,10 @@ td {
 }
 
 /* 인풋 박스 전체 */
-input {
+.boardWrite input {
     height: 18px;
     line-height: 20px;
-    margin: 2px;
+	margin: 2px;
     padding: 2px 4px;
     border: 1px solid #ddd;
     color: #333;
@@ -181,11 +181,16 @@ div {
 	text-align:center; 
 }
 
-.btnArea.center { 
-	text-align: center; 
+.btnArea input { 
+	background: url("http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_modify_member.gif");
+	background-repeat: no-repeat;
+	margin: 0;
+	width: 140px;
+	height: 40px;
+	border: 0;
 }
 
-.btnArea.center span.right { 
+.btnArea span.right { 
 	position: absolute; 
 	right: 20px; 
 }
@@ -213,17 +218,10 @@ function daumPost() {
     }).open();
 }
 
-function register() {
-	addr1 = $("#addr1").val()
-	addr2 = $("#addr2").val()
-	addr3 = $("#addr3").val()
-	addr1 = addr1 + "/" + addr2 + "/" + addr3
-	$("#addr1").val(addr1)
-	register_form.submit()
-}
 </script>
 </head>
 <body>
+	<c:import url="../default/header.jsp"/>
 	<div class="memberJoin">
 		<div class="titleArea">
 			<h1>회원정보 수정</h1>
@@ -234,126 +232,89 @@ function register() {
 			<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수"> 필수입력사항
 		</p>
 		<div class="boardWrite">
-			<table border="1">
-			<tbody>
-				<tr>
-					<th scope="row">
-					아이디 
-					<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
-					</th>
-					<td><input type="text" id="id" name="id" maxlength="30" required><a> (영문소문자/숫자, 4~16자)</a></td>
-				</tr>
-				<tr>
-					<th scope="row">
-					비밀번호 
-					<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
-					</th>
-					<td><input type="password" id="pw" name="pw" required><a> (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)</a></td>
-				</tr>
-				<tr>
-					<th scope="row">
-					비밀번호 확인 
-					<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
-					</th>
-					<td><input type="password" id="pwd" name="pwd" required></td>
-				</tr>
-				<tr>
-					<th scope="row">
-					이름 
-					<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
-					</th>
-					<td><input type="text" id="name" name="name" required></td>
-				</tr>
-				<tr>
-					<th scope="row">주소</th>
-					<td>
-						<input type="text" id="addr1" name="addr" readonly>
-						<input type="button" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
-						<input type="text" id="addr2" readonly> 주소<br>
-						<input type="text" id="addr3"> 상세주소
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">일반전화</th>
-					<td>
-						<select id="phone1" name="phone[]">
-							<option value="02">02</option>
-							<option value="02">031</option>
-							<option value="02">041</option>
-							<option value="02">051</option>
-							<option value="02">010</option>
-						</select>
-						-
-						<input id="phone2" name="phone[]" maxlength="4">
-						-
-						<input id="phone3" name="phone[]" maxlength="4">
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-					휴대전화 
-					<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
-					</th>
-					<td>
-						<select id="mobile1" name="mobile[]">
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="016">016</option>
-						</select>
-						-
-						<input id="mobile2" name="mobile[]" maxlength="4" required>
-						-
-						<input id="mobile3" name="mobile[]" maxlength="4" required>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-					이메일 
-					<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
-					</th>
-					<td><input type="email" id="user_mail" name="userMail" required></td>
-				</tr>
-			</tbody>
-			</table>
-		</div>
-		
-		<h3>추가 정보</h3>
-		<div class="boardWriteAddinfo">
-			<table border="1">
-			<tbody>
-				<tr>
-					<th scope="row">생년월일</th>
-					<td>
-						<input type="text" id="birth_year" name="birth_year" maxlength="4"> 년
-						<input type="text" id="birth_month" name="birth_month" maxlength="2"> 월
-						<input type="text" id="birth_day" name="birth_day" maxlength="2"> 일
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">키</th>
-					<td><input type="text" id="height" name="height" maxlength="3"> cm</td>
-				</tr>
-				<tr>
-					<th scope="row">몸무게</th>
-					<td><input type="text" id="weight" name="weight" maxlength="3"> kg</td>
-				</tr>
-			</tbody>
-			</table>
-		</div>
-		<br>
-	    
-	    <div class="btnArea center">
-        <a href="#" onclick=""><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_modify_member.gif" alt="회원정보수정" /></a>
-        <a href="/index.jsp"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_modify_cancel.gif" alt="취소" /></a>
-        <span class="right">
-            <a href="delete.jsp" onclick=""><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_modify_out.gif" alt="회원탈퇴" /></a>
-        </span>
-    	</div>
-    	
+			<form id="modifyProfile" action="${pageContext.request.contextPath }/member/modifyProfile" method="post">
+				<table border="1">
+				<tbody>
+					<tr>
+						<th scope="row">
+						아이디 
+						<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
+						</th>
+						<td><input type="text" id="id" name="memId" value="${MemberDTO.memId }" maxlength="30" required><!-- <a> (영문소문자/숫자, 4~16자)</a> --></td>
+					</tr>
+					<tr>
+						<th scope="row">
+						비밀번호 
+						<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
+						</th>
+						<td><input type="password" id="pw" name="memPassword" required><!-- <a> (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)</a> --></td>
+					</tr>
+					<tr>
+						<th scope="row">
+						비밀번호 확인 
+						<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
+						</th>
+						<td><input type="password" id="pwd" name="memPasswordCheck" required></td>
+					</tr>
+					<tr>
+						<th scope="row">
+						이름 
+						<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
+						</th>
+						<td><input type="text" id="name" name="memName" value="${MemberDTO.memName }" required></td>
+					</tr>
+					<tr>
+						<th scope="row">주소</th>
+						<td>
+							<input type="text" id="addr1" name="memAddr1" value="${MemberDTO.memAddr1 }" readonly>
+		                    <input type="button" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
+		                    <input type="text" id="addr2" name="memAddr2" value="${MemberDTO.memAddr2 }" readonly> 주소<br>
+		                    <input type="text" id="addr3" name="memAddr3" value="${MemberDTO.memAddr3 }"> 상세주소
+						</td>
+					</tr>
 
-	    
-	    
+					<!-- 전화번호 일단 빼놓고 하기 -->
+<!--                <tr> -->
+<!--                   <th scope="row"> -->
+<!--                   휴대전화  -->
+<!--                   <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수"> -->
+<!--                   </th> -->
+<!--                   <td> -->
+<!--                      <select id="mobile1" name="memTel"> -->
+<!--                         <option value="010">010</option> -->
+<!--                         <option value="011">011</option> -->
+<!--                         <option value="016">016</option> -->
+<!--                      </select> -->
+<!--                      - -->
+<!--                      <input id="mobile2" name="memTel" maxlength="4" required> -->
+<!--                      - -->
+<!--                      <input id="mobile3" name="memTel" maxlength="4" required> -->
+<!--                   </td> -->
+<!--                </tr> -->
+
+					<tr>
+						<th scope="row">
+						이메일 
+						<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
+						</th>
+						<td><input type="email" id="user_mail" name="memEmail" value="${MemberDTO.memEmail }" required></td>
+					</tr>
+				</tbody>
+				</table>
+				
+			<br>
+		    
+		    <div class="btnArea">
+		        <input type="submit" value=""><a href="/sollabo/member/mypage" onclick=""></a>
+		        <a href="/sollabo/member/mypage"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_modify_cancel.gif" alt="취소" /></a>
+	        <span class="right">
+	            <a href="/sollabo/member/delete" onclick=""><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_modify_out.gif" alt="회원탈퇴" /></a>
+	        </span>
+	    	</div>
+    	 </form>
+    	</div>
     </div>
-		
+    
+	<c:import url="../default/footer.jsp"/>		
 </body>
 </html>
