@@ -5,6 +5,12 @@
 
 <mapper namespace="com.web.sollabo.mybatis.admin.AdminMapper">
 
+	<sql id="searchWhere">
+		<if test="searchKeyword !=null and searchKeyword!=''">
+			where ${searchCondition} like '%' || #{searchKeyword} || '%'
+		</if>
+	</sql>
+	
  	<resultMap type="com.web.sollabo.order.dto.OrderDTO" id="order">
       <id property="orderNo" column="ORDER_NO"/>
       <result property="memId" column="MEM_ID"/>
@@ -21,26 +27,47 @@
    </resultMap>
 
  	<resultMap type="com.web.sollabo.qna.dto.QnaDTO" id="qna">
-      <id property="qnaNo" column="ORDER_NO"/>
-      <result property="qnaTitle" column="MEM_ID"/>
-      <result property="qnaContent" column="PRODUCT_NO"/>
-      <result property="qnaWriter" column="ORDER_NAME"/>
-      <result property="qnaFile" column="ORDER_ADDR1"/>
-      <result property="qnaRegdate" column="ORDER_ADDR2"/>
-      <result property="qnaPublic" column="ORDER_ADDR3"/>
-      <result property="qnaReplyNo" column="ORDER_TEL"/>
-      <result property="qnaReNo" column="PRODUCT_ORDER_CNT"/>
-      <result property="qnaReplyContent" column="ORDER_ACCOUNT"/>
-      <result property="qnaReplyWriter" column="ORDER_REG_DATE"/>
-      <result property="qnaReplyRegdate" column="ORDER_STATE"/>
+      <id property="qnaNo" column="QNA_NO"/>
+      <result property="qnaTitle" column="QNA_TITLE"/>
+      <result property="qnaContent" column="QNA_CONTENT"/>
+      <result property="qnaWriter" column="QNA_WRITER"/>
+      <result property="qnaFile" column="QNA_FILE"/>
+      <result property="qnaRegdate" column="QNA_REGDATE"/>
+      <result property="qnaPublic" column="QNA_PUBLIC"/>
+      <result property="qnaReplyNo" column="QNA_REPLY_NO"/>
+      <result property="qnaReNo" column="QNA_RE_NO"/>
+      <result property="qnaReplyContent" column="QNA_REPLY_CONTENT"/>
+      <result property="qnaReplyWriter" column="QNA_REPLY_WRITER"/>
+      <result property="qnaReplyRegdate" column="QNA_REPLY_REGDATE"/>
    </resultMap>
 	
-	<select id="adminOrderList" resultMap="order">
+<!-- 	<select id="adminOrderList" resultMap="order">
 		select * from order_list 
-	</select>
+	</select> -->
 	
 	<select id="adminQAList" resultMap="qna">
 		select * from qna
 	</select>
+	
+	<select id="adminOrderList" parameterType="SearchVO" resultMap="order" >
+		select * from
+		(select rownum as RNUM, blist.*
+		    from(
+		        select r.*, (sysdate-regdate)*24 as newImgTerm 
+		        from order_list r 
+		        <include refid="searchWhere"></include>
+		        order by groupNo desc, sortNo		        
+		    ) blist
+		) 
+		<![CDATA[
+		where RNUM > #{firstRecordIndex} 
+		and RNUM<=#{firstRecordIndex}+ #{recordCountPerPage} ]]>	
+	</select>
+	
+	<select id="adminOrderListCount" resultType="int" parameterType="SearchVO">
+		select count(*) from order_list
+		<include refid="searchWhere"></include>	
+	</select>
+	
 </mapper>
 
