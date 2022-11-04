@@ -16,8 +16,31 @@ public class ProductDTO {
 	private int productCnt;
 	private int productPrice;
 	private Timestamp productRegDate;
+	private String icon;
+	
+	/*option 테이블*/
+	private String shcolor;
+	private String shsize;
 	
 	
+	public String getShcolor() {
+		return shcolor;
+	}
+	public void setShcolor(String shcolor) {
+		this.shcolor = shcolor;
+	}
+	public String getShsize() {
+		return shsize;
+	}
+	public void setShsize(String shsize) {
+		this.shsize = shsize;
+	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 	public int getProductNo() {
 		return productNo;
 	}
