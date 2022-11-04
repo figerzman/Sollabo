@@ -5,12 +5,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,6 +22,13 @@ import com.web.sollabo.session.name.MemberSession;
 @RequestMapping("member")
 public class MemberController implements MemberSession {
 	
+	// db
+	@Autowired
+	private MemberService ms;
+	
+	private ModelAndView modelAndView;
+	
+	// getMember
 	@GetMapping("memberTest")
 	public ModelAndView getMember() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -32,11 +39,6 @@ public class MemberController implements MemberSession {
 		return modelAndView;
 	}
 	
-	// db
-	@Autowired
-	private MemberService ms;
-	
-	private ModelAndView modelAndView;
 	
 	// 로그인
 	@PostMapping("/user_check")
@@ -63,7 +65,13 @@ public class MemberController implements MemberSession {
 		return "redirect:/index";
 	}
 	
+	
 	// 아이디 찾기
+	@GetMapping("/findId")
+	public String findId() {
+		return "member/findId";
+	}
+	
 	@PostMapping("/findId")
 	public String findId(@ModelAttribute MemberDTO memberDTO, RedirectAttributes redirectAttributes) {
 		MemberDTO result = ms.findId(memberDTO);
@@ -82,7 +90,13 @@ public class MemberController implements MemberSession {
 		return modelAndView;
 	}
 	
+	
 	// 비밀번호 찾기
+	@GetMapping("/findPwd")
+	public String findPwd() {
+		return "member/findPwd";
+	}
+	
 	@PostMapping("/findPwd")
 	public String findPwd(@ModelAttribute MemberDTO memberDTO, RedirectAttributes redirectAttributes) {
 		MemberDTO result = ms.findPwd(memberDTO);
@@ -93,7 +107,6 @@ public class MemberController implements MemberSession {
 		return "redirect:/member/findPwd";
 	}
 	
-	/* 임시 비밀번호 메일 발송 뺌 */
 	@GetMapping("/findPwdResult")	// 비밀번호 찾기 결과 페이지로 왔으면
 	public ModelAndView findPwdResult(@RequestParam String memPassword) { // 비밀번호를 받아서
 		ModelAndView modelAndView = new ModelAndView();
@@ -102,61 +115,54 @@ public class MemberController implements MemberSession {
 		return modelAndView;
 	}
 	
+	
 	// 회원가입
 	@RequestMapping("/join_form")
 	public String join_form() {
 		return "member/join";
 	}
-	
-	@RequestMapping("/join")
-	public String join(MemberDTO member) {
+
+	@PostMapping("/join")
+	@ResponseBody
+	public int join(MemberDTO member) {
 		int result = ms.join(member);
 		if(result == 1) {
-			return "redirect:joinResult";
+			return 1; //성공하면
 		}
-		return "redirect:join_form";
+		return 0; //실패하면
 	}
-	
+
 	@GetMapping("/join")
 	public String join() {
 		return "member/join";
 	}
 	
-	@GetMapping("/joinResult")
-	public String joinResult() {
-		return "member/joinResult";
+	
+	// 회원정보 수정
+	// 로그인된 id의 정보를 가져와서 회원정보 수정 페이지에 보여줌
+	@GetMapping("/modifyProfile")	
+	public ModelAndView modifyProfile(HttpSession session) { 
+		ModelAndView modelAndView = new ModelAndView();
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setMemId((String)session.getAttribute("memId"));
+		modelAndView.addObject("MemberDTO", ms.modifyProfile(memberDTO));	
+		modelAndView.setViewName("member/modifyProfile");
+		return modelAndView;
 	}
+	
+	// 수정 업데이트 하는 것
+	
 	
 	//--------------------------------
-	
-	@GetMapping("/mypage")
-	public String mypage() {
-		return "member/mypage";
-	}
 	
 	@GetMapping("/delete")
 	public String delete() {
 		return "member/delete";
 	}
 	
-	@GetMapping("/modifyProfile")
-	public String modifyProfile() {
-		return "member/modifyProfile";
-	}
-	
-	@GetMapping("/findId")
-	public String findId() {
-		return "member/findId";
-	}
-	
-	@GetMapping("/findPwd")
-	public String findPwd() {
-		return "member/findPwd";
-	}
-	
-	@GetMapping("/sendPwd")
-	public String sendPwd() {
-		return "member/sendPwd";
+	@GetMapping("/mypage")
+	public String mypage() {
+		return "member/mypage";
 	}
 	
 }
