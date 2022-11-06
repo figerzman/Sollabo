@@ -54,6 +54,15 @@ public class CartServiceImpl implements CartService {
 		
 		return cartMapper.deleteCart(cartNo);
 	}
+
+
+
+	@Override
+	public List<CartDTO> getCartList2(CartDTO cartDTO) {
+		List<CartDTO> list = new ArrayList<CartDTO>();
+		list = cartMapper.getCart2(cartDTO);
+		return list;
+	}
 	
 	
 	

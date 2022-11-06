@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,11 +48,12 @@ public class CartController {
 	}
 	
 	/* 장바구니 수량 수정 */
-	@PostMapping("CartUpdate")
-	public String updateCartPOST(CartDTO cart) {
+	@PostMapping("cartUpdate")
+	public String updateCartPOST(@ModelAttribute CartDTO cart) {
+		System.out.println(cart.getCartNo());
+		System.out.println(cart.getCartCnt());		
 		cartService.modifyCount(cart);
 		
-		System.out.println("들어온걸확인");
 		return "redirect:/cart/cart" /* + cart.getMemNo() */;
 
 	}

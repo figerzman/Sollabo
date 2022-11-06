@@ -17,7 +17,10 @@
 	</resultMap>
 	
 	<select id="getCart" resultMap="cart"> 
-		select * from cart
+		<!-- select * from cart -->
+		select a.CART_NO, a.mem_no, a.PRODUCT_NO, a.cart_cnt, b.product_Price , b.product_name
+	        from cart a left outer join product b on a.product_no = b.product_no
+	        where MEM_NO = 1
 	</select>
 
 
@@ -52,7 +55,11 @@
 	</update>
 	
 	
-	
+	<select id="getCart2" resultMap="cart"> 
+		select a.CART_NO, a.mem_no, a.PRODUCT_NO, a.cart_cnt, b.product_Price , b.product_name
+	        from cart a left outer join product b on a.product_no = b.product_no
+	        where cart_no = #{cartNo}
+	</select>
 	
 	
 	
