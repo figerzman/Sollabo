@@ -21,6 +21,7 @@ public interface CartMapper {
 	/* 카트 확인 */
 	public CartDTO checkCart(CartDTO cart);
 	
+	public List<CartDTO> getCart2(CartDTO cartDTO);
 	
 }
 

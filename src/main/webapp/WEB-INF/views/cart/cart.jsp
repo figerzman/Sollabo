@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
 <script>
 
 function count(type)  {
@@ -64,7 +63,10 @@ function count(type)  {
 
 });
 
-
+function going() {
+	console.log($('#cartNo').val())
+	location.href="../order/orderform?cartNo="+$('#cartNo').val()
+}
 
 
 </script>
@@ -379,10 +381,12 @@ div.ec-base-help ol .item5 {
 								 });
 							</script>
 						</div>
-						<input type="hidden" class="individual_totalPrice_input" value="${dto.productPrice * dto.cartCnt}">
+					
+						
+						<%-- <input type="hidden" class="individual_totalPrice_input" value="${dto.productPrice * dto.cartCnt}">
 						<input type="hidden" class="individual_productPrice_input" value="${dto.productPrice}">
 						<input type="hidden" class="individual_cartCnt_input" value="${dto.cartCnt}">
-						<input type="hidden" class="individual_productNo_input" value="${dto.productNo}">								
+						<input type="hidden" class="individual_productNo_input" value="${dto.productNo}">					 --%>			
 					</td>
 			       	<td class="pu-img"> <!-- pu-img 제품이미지 -->
 			       		<a href="/">
@@ -396,16 +400,17 @@ div.ec-base-help ol .item5 {
 			        </td>
 			        <td align="center">
 			        	
-                    	<div class="table_text_align_center quantity_div">
-                    <!-- status.index로 각각 번호를 매겨준다 -->
-	                        <input type="text" value="${dto.cartCnt}" class="quantity_input${status.index}" name="result" id="quantity_input${status.index}">  
-	                        <button class="quantity_btn plus_btn" onclick='count(this.id)' value="${status.index}" id="plus${status.index}" >+</button>
-	                        <button class="quantity_btn minus_btn" onclick='count(this.id)' value="${status.index}" id="minus${status.index}">-</button>
-	                        <button class="quantity_modify_btn" > 변경 </button> 
-	                        
-                     	</div>
-                    
-                       
+                    	<form action="cartUpdate" method="post">                    	
+	                    	<div class="table_text_align_center quantity_div">
+			                    <!-- status.index로 각각 번호를 매겨준다 -->
+			                    	<input type="hidden" name="cartNo" id="cartNo" class="individual_productPrice_input" value="${dto.cartNo }">
+		                        <input type="text" value="${dto.cartCnt}" class="quantity_input${status.index}" name="cartCnt" id="quantity_input${status.index}">  
+		                        <button class="quantity_btn plus_btn" type="button" onclick='count(this.id)' value="${status.index}" id="plus${status.index}" >+</button>
+		                        <button class="quantity_btn minus_btn" type="button" onclick='count(this.id)' value="${status.index}" id="minus${status.index}">-</button>
+		                        <input type="submit" value="변경">
+		                        <!-- <button class="quantity_modify_btn" type="submit" onclick="going()" > 변경 </button> -->                   
+	                    	</div>
+	                   	</form>
                  	 </td>
                  <td class="right" align="center">
                   <fmt:formatNumber value="${dto.productPrice * dto.cartCnt}" pattern="KRW #,###" />
@@ -511,7 +516,7 @@ div.ec-base-help ol .item5 {
          <!-- <a href="/sollabo/order/orderform" onclick="Basket.orderAll(this)"   class="btnSubmitFix sizeM  bsBtnColorBG bsLetterspacing06 ">
          전체상품주문
          </a> -->
-         <a href="/sollabo/order/orderform" onclick="cart.orderSelectcart(this)" class="btnSubmitFix sizeM  bsBtnColorBG bsLetterspacing06 ">
+         <a href="#" onclick="going()" class="btnSubmitFix sizeM  bsBtnColorBG bsLetterspacing06 ">
          선택상품주문
          </a>
    
@@ -530,7 +535,7 @@ div.ec-base-help ol .item5 {
       </div> -->
    </div>
 
-	
+	<br><br><br><br><br><br><br><br><br><br>
 
 
 	

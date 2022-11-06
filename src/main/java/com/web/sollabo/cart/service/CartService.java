@@ -12,6 +12,8 @@ public interface CartService {
 	
 	public List<CartDTO> getCartList(String memno);
 	
+	public  List<CartDTO> getCartList2(CartDTO cartDTO);
+
 	// 카트 수량 변경
 	public int modifyCount(CartDTO cart);
 

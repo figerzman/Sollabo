@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <title>Insert title here</title>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <script>
 function daumPost() {
     new daum.Postcode({
@@ -35,6 +37,8 @@ function register() {
 	$("#addr1").val(addr1)
 	register_form.submit()
 }
+
+
 </script>
 <style type="text/css">
 
@@ -479,9 +483,10 @@ div.ec-base-help ol .item5 {
         </div>
 	
 	<div class="ec-base-table typeList gBorder ">
+		
 		<table border="1" class="cart-main">
 			<colgroup>
-				<col style="width:27px">
+				
 				<col style="width:100px">
 				<col style="width:auto">
 				<col style="width:130px">
@@ -490,7 +495,6 @@ div.ec-base-help ol .item5 {
 			</colgroup>
 			<thead>
 				<tr>
-				<th scope="col"><input type="checkbox" onclick=""></th>
 	                    <th scope="col">이미지</th>
 	                    <th scope="col">상품정보</th>
 	                    <th scope="col">판매가</th>
@@ -498,45 +502,48 @@ div.ec-base-help ol .item5 {
 	                    <th scope="col">합계</th>
 	            </tr>
 	        </thead>
-			<tfoot class="right">
-				<tr>
-					<td colspan="8">
-					상품구매금액<span class="cal"> <!-- 상품가격총합들어갈자리 --></span>
-					 - 상품할인금액 <span class="cal" id="discount"></span> = 합계 : KRW <span class="sum"></span>
-					</td>
-		        </tr>
-	        </tfoot>
+	        
+			<c:set var="sum" value="0" />
+	        <c:forEach var="dto" items="${cartList}" varStatus="status">
 	        <tbody class="cart-center">
 	        	<tr class="cart-record-">
-					<td>
-						<input type="checkbox" name="pu-select">
-					</td>
-			       	<td class="pu-img"> <!-- pu-img 제품이미지 -->
+					
+			       	<td class="pu-img">
 			       		<a href="/">
 			       		<img src="" alt=""></a>
 			       	</td>
-			        <td class="pu-data"> <!-- pu-data 제품정보 -->
-			     
+			        <td class="pu-data" align="center"> <!-- pu-data 제품정보 -->
+			     		${dto.productNo}	
 			        </td>
-			        <td class="right">
-			        	<div id="product_price_div0" class="">
-							<strong>KRW</strong>
-							<p class="displaynone"></p>
-						</div>
+			        <td class="right" align="center">
+			        	<fmt:formatNumber value="${dto.productPrice}" pattern="KRW #,###" />	
 			        </td>
-			        <td>
-			           2		           
-			        </td>
-			        <td class="right">
-						<strong>KRW <span id="sum_price_front0"></span></strong>\
-						<div class="displaynone">
-						
-						</div>
-					</td>
-	        	</tr>
-			</tbody>
-		</table>
-		</div>
+			        <td align="center">
+			        	
+                    	<form action="cartUpdate" method="post">                    	
+	                    	<div class="table_text_align_center quantity_div">  
+		                       ${dto.cartCnt}                          
+	                    	</div>
+	                   	</form>
+                 	 </td>
+                 <td class="right" align="center">
+                  <fmt:formatNumber value="${dto.productPrice * dto.cartCnt}" pattern="KRW #,###" />
+               </td>
+              </tr>
+           <c:set var="sum" value="${sum + (dto.productPrice * dto.cartCnt)}" />
+           </c:forEach>
+         </tbody>
+         <tfoot class="right">
+         
+            <tr>
+               <td colspan="8">
+               상품구매금액<fmt:formatNumber pattern="###,###,###" value="${sum}" />
+                - 상품할인금액 <span class="cal" id="discount"></span> = 합계 : KRW <fmt:formatNumber pattern="###,###,###" value="${sum}" />
+               </td>
+              </tr>
+           </tfoot>
+      </table>
+      </div>
 		</div>			
 		<div class="orderArea">
 	        <div class="title">
@@ -548,7 +555,7 @@ div.ec-base-help ol .item5 {
 		<caption>배송 정보 입력</caption>
 		<tbody class="">
 			<tr class="">
-				<th scope="row">배송지 선택</th>
+				<!-- <th scope="row">배송지 선택</th>
 	            	<td>
 	                	<div class="address">
 	                    	<input id="sameaddr0" name="sameaddr" fw-filter="" fw-label="1" fw-msg="" value="M" type="radio" autocomplete="off"><label for="sameaddr0">회원 정보와 동일</label>
@@ -556,7 +563,7 @@ div.ec-base-help ol .item5 {
 	                                
 	                    </div>
 	                </td>
-	        </tr>
+	        </tr> -->
 			<tr>
 				<th scope="row">받으시는 분 <img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt="필수"></th>
 	            	<td><input id="rname" name="rname"  class="inputTypeText" placeholder="" size="15" value="" type="text"></td>
@@ -612,48 +619,48 @@ div.ec-base-help ol .item5 {
 		
 		<!-- 총 주문금액 : 국내배송상품 -->
 		
-		<div class="title">
-       		<h3>결제 예정 금액</h3>
-    	</div>
-    	<div class="ec-base-table typeList gBorder total">
-			<table border="1" summary="">
+		 <div class="title">
+             <h3>결제 예정 금액</h3>
+       </div>
+       <div class="ec-base-table typeList gBorder total">
+         <table border="1" summary="">
             <colgroup>
-				<col style="width:33.33%">
-				<col style="width:33.33%" class="">
-				<col style="width:33.33%">
-			</colgroup>
-			<thead>
-				<tr>
-					<th scope="col">
-						<strong>총 주문 금액</strong> 
-					</th>
-					<th scope="col" class="">
-						<strong>총 </strong><strong id="total_addsale_text" class="">할인</strong>
-					</th>
-					<th scope="col"><strong>총 결제예정 금액</strong></th>
-				</tr>
-			</thead>
-			<tbody class="center">
-				<tr>
-				<td class="price">
-					<div class="box txt16">
-					<strong>KRW <span id="total_order_price_view" class="txt22">62,000</span></strong> <span class="displaynone"><span id="total_order_price_ref_view"><span class="eRefPrice"></span></span></span>
-					</div>
-				</td>
-				<td class="option ">
-					<div class="box txt16">
-					<strong>-</strong> <strong>KRW <span id="total_sale_price_view" class="txt22">0</span></strong> <span class="displaynone"><span id="total_sale_price_ref_view"><span class="eRefPrice"></span></span></span>
-					</div>
-				</td>
-				<td>
-					<div class="box txtEm txt16">
-					<strong>=</strong> <strong>KRW <span id="total_order_sale_price_view" class="txt22">62,000</span></strong> <span class="displaynone"><span id="total_order_sale_price_ref_view"><span class="eRefPrice"></span></span></span>
-					</div>
-				</td>
-		      </tr>
-		    </tbody>
-			</table>
-			</div>
+            <col style="width:33.33%">
+            <col style="width:33.33%" class="">
+            <col style="width:33.33%">
+         </colgroup>
+         <thead>
+            <tr>
+               <th scope="col">
+                  <strong>총 주문 금액</strong> 
+               </th>
+               <th scope="col" class="">
+                  <strong>총 </strong><strong id="total_addsale_text" class="">할인</strong>
+               </th>
+               <th scope="col"><strong>총 결제예정 금액</strong></th>
+            </tr>
+         </thead>
+         <tbody class="center">
+            <tr>
+            <td class="price">
+               <div class="box txt16">
+               <strong> KRW </strong><fmt:formatNumber pattern="###,###,###" value="${sum}" />
+               </div>
+            </td>
+            <td class="option ">
+               <div class="box txt16">
+               <strong>-</strong> <strong>KRW <span id="total_sale_price_view" class="txt22">0</span></strong> <span class="displaynone"><span id="total_sale_price_ref_view"><span class="eRefPrice"></span></span></span>
+               </div>
+            </td>
+            <td>
+               <div class="box txtEm txt16">
+               <strong> KRW </strong><fmt:formatNumber pattern="###,###,###" value="${sum}" />
+               </div>
+            </td>
+            </tr>
+          </tbody>
+         </table>
+         </div>
 			<br><br><br><br>
 				
 				<!-- 결제영역 -->
@@ -723,7 +730,7 @@ div.ec-base-help ol .item5 {
 			</div>
 		</div>
 		
-		<!-- 무이자 할부 이용안내 -->
+		<!-- 무이자 할부 이용안내 커밋-->
 		<div class="ec-base-help">
         <h3>무이자 할부 이용안내</h3>
         <div class="inner">
@@ -763,7 +770,7 @@ div.ec-base-help ol .item5 {
 		</div>
     	</div>
 		
-		
+	
 				
 		
     	</div>	
@@ -772,3 +779,7 @@ div.ec-base-help ol .item5 {
   	<c:import url="../default/footer.jsp"/>   
 </body>
 </html>
+
+
+
+
