@@ -969,27 +969,23 @@ input{
             <table class="board_table">
                 <thead>
                 <tr>
-                    <th scope="col" class="th-num">NO</th>
+                    <th scope="col" class="th-num">No</th>
                     <th scope="col" class="th-num">ID</th>
                     <th scope="col" class="th-num">NAME</th>                    
-                    <th scope="col" class="th-title" style="width:200px;">PHONE-NUM</th>
-                    <th scope="col" class="th-num">E-mail</th>
+                    <th scope="col" class="th-title" style="width:200px;">제품 이름</th>                  
                     <th scope="col" class="th-date">DATE</th>
-                    <th scope="col" class="th-num">Corr</th>
                 </tr>	
                 </thead>
                 <tbody>
-                	
+                	<c:forEach begin="1" end="10" >
 	                <tr>
-	                    <td>1</td>
-	                    <td>1</td>
-	                    <td><a href="#">1</a></td>
-	                    <td><a href="#">1</a></td>
-	                    <td>1</td>
-	                    <td>1</td>
-	                    <td><input type="button" value="회원관리" class="btn btn-dark" onclick="memUpdate(${memberList.memNo })">1</td>
+	                    <td>${productList.productReplyNo }</td>
+	                    <td></td>
+	                    <td><a href="#">${productList.productReplyWriter}</a></td>
+	                    <td><a href="#">${productList.productName}</a></td>
+	                    <td>1</td>	                    	                    
 	                </tr>
-                
+                </c:forEach>
                 </tbody>
             </table>        
         </div>

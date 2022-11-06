@@ -359,7 +359,7 @@ ul .infoT {
 				</ul>		
 			</div>
 			<!-- 제품 진열(중간) -->
-			<div class="middlePack">
+			<!-- <div class="middlePack">
 				<div class="middleMenu">
 					<div class="function">
 						<p class="prdCount">
@@ -374,7 +374,7 @@ ul .infoT {
 						</ul>	
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- 제품 진열(하단) -->
 			<div class="bottomPack">
 				<ul class="prdList">

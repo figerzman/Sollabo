@@ -227,8 +227,8 @@ section .notice {
                 <thead>
                 <tr>
                     <th scope="col" class="th-num">NO</th>
-                    <th scope="col" class="th-num">ID</th>
-                    <th scope="col" class="th-num">NAME</th>                    
+                    <th scope="col" class="th-num">제품명</th>
+                    <th scope="col" class="th-num"></th>                    
                     <th scope="col" class="th-title" style="width:200px;">PHONE-NUM</th>
                     <th scope="col" class="th-num">E-mail</th>
                     <th scope="col" class="th-date">DATE</th>
@@ -236,15 +236,15 @@ section .notice {
                 </tr>	
                 </thead>
                 <tbody>
-                <c:forEach begin="1" end="10">	
+                <c:forEach var="dto" items="${productList }">
 	                <tr>
-	                    <td>1</td>
-	                    <td>michel35</td>
-	                    <td><a href="#">김동우</a></td>
-	                    <td><a href="#">010-3123-1201</a></td>
+	                    <td>${dto.productNo }</td>
+	                    <td>${dto.productName }</td>
+	                    <td><a href="#">${dto.productPrice}</a></td>
+	                    <td><a href="#">${dto.productRegDate}</a></td>
 	                    <td>michel35@naver.com</td>
 	                    <td>2022.10.15</td>
-	                    <td><input type="button" value="관리" class="btn btn-dark" style="border-radius: 4px; height: 25px;"></td>
+	                    <td><input type="button" value="삭제" class="btn btn-dark" style="border-radius: 4px; height: 25px;"></td>
 	                </tr>
                 </c:forEach>
                 </tbody>

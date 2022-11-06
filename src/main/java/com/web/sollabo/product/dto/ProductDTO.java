@@ -22,6 +22,30 @@ public class ProductDTO {
 	private String shcolor;
 	private String shsize;
 	
+	/*reply 테이블*/
+	private String productReplyNo;
+	private String productReplyWriter;
+	private String productReplyContent;
+	
+	public String getProductReplyNo() {
+		return productReplyNo;
+	}
+	public void setProductReplyNo(String productReplyNo) {
+		this.productReplyNo = productReplyNo;
+	}
+	public String getProductReplyWriter() {
+		return productReplyWriter;
+	}
+	public void setProductReplyWriter(String productReplyWriter) {
+		this.productReplyWriter = productReplyWriter;
+	}
+	public String getProductReplyContent() {
+		return productReplyContent;
+	}
+	public void setProductReplyContent(String productReplyContent) {
+		this.productReplyContent = productReplyContent;
+	}
+	
 	
 	public String getShcolor() {
 		return shcolor;
