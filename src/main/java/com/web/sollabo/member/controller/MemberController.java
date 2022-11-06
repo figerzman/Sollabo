@@ -165,5 +165,10 @@ public class MemberController implements MemberSession {
 		return "member/mypage";
 	}
 	
+	@GetMapping("/goodspage")
+	public String goodspage() {
+		return "product/goodspage";
+	}
+	
 }
  

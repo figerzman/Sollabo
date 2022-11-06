@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.web.sollabo.member.service.MemberService;
 import com.web.sollabo.product.dto.ProductDTO;
 import com.web.sollabo.product.service.ProductService;
 
@@ -21,6 +22,9 @@ public class ProductController {
 	/* 항상 위로 */
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	MemberService memberService;
 
 	/*
 	 * 구매하기(버튼)

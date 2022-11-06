@@ -15,6 +15,9 @@
 		<result property = "productCnt" column = "PRODUCT_CNT" />
 		<result property = "productPrice" column = "PRODUCT_PRICE" />
 		<result property = "productRegDate" column = "PRODUCT_REG_DATE" />
+		<result property = "productReplyContent" column = "PRODUCT_REPLY_CONTENT" />
+		<result property = "productReplyWriter" column = "PRODUCT_REPLY_WRITER" />
+		<result property = "productReplyNo" column = "PRODUCT_REPLY_NO" />
 	</resultMap>
 	
 	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="division">
@@ -24,11 +27,22 @@
 		<result property= "icon" column = "ICON"/>
 	</resultMap> 
 	
-	<!-- <resultMap type="com.web.sollabo.product.dto.ProductDTO" id="option">
+	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="reply">
+		<id property= "productReplyNo" column = "PRODUCT_REPLY_NO"/>		
+		<result property = "productNo" column = "PRODUCT_NO" />
+		<result property = "productReplyWriter" column = "PRODUCT_REPLY_WRITER" />
+		<result property = "productReplyContent" column = "PRODUCT_REPLY_CONTENT" />
+		<result property = "productReplyFile" column = "PRODUCT_REPLY_FILE" />
+		<result property = "productReplyRegDate" column = "PRODUCT_REPLY_REG_DATE" />
+		<result property = "productReplyDel" column = "PRODUCT_REPLY_DEL" />
+	</resultMap> 
+	
+	
+	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="option">
 		<result property = "shcolor" column = "SHCOLOR" />
 		<result property = "shsize" column = "SHSIZE" />
 	</resultMap>
-	 -->
+	 
 <!-- 	
 	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="category">
 		<id property= "categoryCode" column = "CATEGORY_CODE"/>
