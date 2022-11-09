@@ -11,11 +11,9 @@
 <title>제품 상세 페이지</title>
 <!--3초간격 화면전환  -->
 <script>
-
     var index = 0;   //이미지에 접근하는 인덱스
     window.onload = function(){
         slideShow();
-
     }
     
     function slideShow() {
@@ -39,7 +37,7 @@
     			alert('색상을 선택해주세요.')   	
     		}else if($('#size').val() == ""){
     			 alert('사이즈를 선택해주세요.')    			
-    		}else if($('#color').val() != "" && $('#size').val() != "Nope" && $('#size').val() != ""){  			
+    		}else if($('#color').val() != "" && $('#size').val() != "금지" && $('#size').val() != ""){  			
     			$('#total').show();	
     		}
     	}		
@@ -762,10 +760,10 @@ input{
 					<select id="color" name="color" onchange ="search(color)">
 						<option  value="">- [필수] 옵션을 선택해 주세요 -</option>
 						<option  value="">-------------------</option>
-						 <option value="LiteBlue">LiteBlue</option>
-						 <option value="Blue" link_image="">Blue</option>
-						 <option value="DeepBlue" link_image="">DeepBlue</option>
-						 <option value="ListBlack" link_image="">ListBlack</option>
+						 <option value="라이트블루">Black</option>
+						 <option value="블루" link_image="">Ivory</option>
+						 <option value="딥블루" link_image="">Gray</option>
+						 <option value="라이트블랙" link_image="">Violet</option>
 					 </select>
 					</td>
 				</tr>
@@ -777,12 +775,12 @@ input{
 					<th scope="row">사이즈</th>
 					<td>
 					<select name="size" id="size" onchange ="search(size)">
-						<option value="Nope">- [필수] 옵션을 선택해 주세요 -</option>
+						<option value="금지">- [필수] 옵션을 선택해 주세요 -</option>
 						<option value="">-------------------</option>
-						 <option value="Small" link_image="">S(255~260)</option>
-						 <option value="Medium" link_image="">M(265~270)</option>
-						 <option value="Large" link_image="">L(275~280)</option>
-						 <option value="xLarge" link_image="">XL(285~290)</option>	
+						 <option value="스몰" link_image="">S(255~260)</option>
+						 <option value="미디엄" link_image="">M(265~270)</option>
+						 <option value="라지" link_image="">L(275~280)</option>
+						 <option value="엑스라지" link_image="">XL(285~290)</option>	
 					 </select>
 					</td>
 				</tr>
@@ -805,8 +803,8 @@ input{
                             <td>
                             	<span class="quantity">
 	                                <input id="quantity" name="quantity_name" style="" value="1" type="text">                                        
-	                               <!--  <a href="#none" onclick='count(this.id)' id="plus"><img src="image/upbtn.gif" alt="수량증가" class="QuantityUp up"></a>
-	                                <a href="#none" onclick='count(this.id)' id="minus"><img src="image/downbtn.gif" alt="수량감소" class="QuantityDown down"></a> -->
+	                                <a href="#none" onclick='count(this.id)' id="plus"><img src="image/upbtn.gif" alt="수량증가" class="QuantityUp up"></a>
+	                                <a href="#none" onclick='count(this.id)' id="minus"><img src="image/downbtn.gif" alt="수량감소" class="QuantityDown down"></a>
                                 </span>
                            </td>
                            <td class="right">
@@ -814,28 +812,26 @@ input{
                            </td>
                        </tr>
                    </tbody>
-                 
                    	<tbody class="option_products"><!-- 정리 -->
                             <tr class="option_product " data-option-index="1" target-key="1563">
                             	<td>
                             		<input type="hidden" class="option_box_id" id="option_box1_id" value="P0000CID00BE" name="item_code[]" data-item-add-option="" data-item-reserved="N" data-option-id="00BE" data-option-index="1"> 
                             		<p class="product">${goodsProduct.productName }
                             		<br> -
-                             		<span id="colorSize"></span>
+                             		<span>커팅-블루(blue)/M(29~30)</span>
                              		</p>
                              	</td>
                              	<td>
                              		<span class="quantity" style="width:65px;">
-                             			<input type="text" id="option_box1_quantity" name="productCnt" class="quantity_opt eProductQuantityClass" value="1" product-no="1563" readonly="readonly" disabled="disabled">                             		
-                             			<input type="hidden" name="productNo" id="productNo" value="${goodsProduct.productNo }">
-                             		</span>
-                             		<%-- 	<a href="#none" class="up eProductQuantityUpClass" "="" data-target="option_box1_up style="height:11px;">
+                             		<input type="text" id="option_box1_quantity" name="quantity_opt[]" class="quantity_opt eProductQuantityClass" value="1" product-no="1563">
+                             			<a href="#none" class="up eProductQuantityUpClass" "="" data-target="option_box1_up style="height:11px;">
                             			<img src="${pageContext.request.contextPath}/resources/image/upbtn.gif" id="option_box1_up" class="option_box_up" alt="수량증가" style="margin-bottom:10px;"></a>
                              			<a href="#none" class="down eProductQuantityDownClass" data-target="option_box1_down" style="height:11px;">
                             			<img src="${pageContext.request.contextPath}/resources/image/downbtn.gif"  id="option_box1_down" class="option_box_down" alt="수량감소" style="margin-bottom:10px;"></a>
+                             		</span>
                              		<a href="#none" class="delete">
                             		<img src="${pageContext.request.contextPath}/resources/image/deletebtn.gif" alt="삭제" id="option_box1_del" class="option_box_del">
-                             		</a> --%>
+                             		</a>
                             	</td>
                              	<td class="right">
                              		<span id="option_box1_price">
@@ -844,7 +840,7 @@ input{
                              		</span>
                              	</td>
                             </tr>
-                	</tbody>		
+                	</tbody>			
 				</table>
 			</div>
 			<br><br><br>
@@ -853,15 +849,15 @@ input{
 				<strong>Total</strong> : 
 				<span class="total">
 					<strong>
-						<em>KRW ${goodsProduct.productPrice } <!-- 곱하기 생각해봐야함 --></em>
+						<em>KRW ${goodsProduct.productPrice } <!-- 곱하기 생각해봐야함 --></em> "공백"
 					</strong>
 				</span>
 			</div>
 			</div>
 	<!-- 구매버튼 -->
 		<div class="total_btn">
-				<a href="${pageContext.request.contextPath}/cart/cart?productNo=${goodsProduct.productNo }&productCnt=${goodsProduct.productCnt }" class="btnSubmit" >            
-					<span id="buybtn" >구매하기</span>
+				<a href="/sollabo/cart/cart" class="btnSubmit" >            
+					<span id="buybtn">구매하기</span>
 				</a>
 				
 		</div>	
@@ -910,11 +906,11 @@ input{
     <c:forEach var="productImageFile" items="${productImage}" varStatus="varStatus">
 	     <c:if test="${varStatus.count eq key }">
 		    <td >
-		        <img src="${pageContext.request.contextPath}/resources/image/brand/fredperry/${productImageFile}"> 
+		        <img src="${pageContext.request.contextPath}/resources/image/brand/fredperry/${productImageFile} />"> 
 		    </td>
 	     </c:if>
-   	 <c:set var="key" value="${key + 1}" />
     </c:forEach> 
+    <c:set var="key" value="${key + 1}" />
     
     
 		<%-- <br>

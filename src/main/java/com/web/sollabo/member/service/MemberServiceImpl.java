@@ -84,7 +84,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int updateMember(MemberDTO memberDTO) {
+	public MemberDTO updateMember(MemberDTO memberDTO) {
 		return mapper.updateMember(memberDTO);
 	}
 
