@@ -158,7 +158,7 @@ input#rightside {
 </style>
 </head>
 <body>
-	<div class="leftdiv">
+	<div class="leftdiv" style="margin-top: 80px;">
 		<h1 class="title">
 			<a href="${pageContext.request.contextPath }/">SOLLABO</a>
 		</h1>
