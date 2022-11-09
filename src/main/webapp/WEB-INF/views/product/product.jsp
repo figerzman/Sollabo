@@ -70,6 +70,7 @@ strong {
 
 #container{
 	margin: 0;
+	text-align: center;	
 }
 
 #contents{
@@ -227,8 +228,8 @@ ul .prdList > li {
     color: #757575;
     vertical-align: top;
     
-    margin-right: 17px;
-    margin-left: 17px;
+    margin-right: 10px;
+    margin-left: 10px;
     
 }
 
@@ -239,8 +240,8 @@ ul .prdList > li {
 }
 
 .bottomPack .prdList .thumnail .prdImg a img {
-	width: 250px;
-	height: 280px;
+	width: 350px;
+	height: 400px;
     box-sizing: border-box;
 }
 

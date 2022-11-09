@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,13 +38,10 @@
     		}else if($('#size').val() == ""){
     			 alert('사이즈를 선택해주세요.')    			
     		}else if($('#color').val() != "" && $('#size').val() != "금지" && $('#size').val() != ""){  			
-    			$('#total').show();
-    			
-    			
+    			$('#total').show();	
     		}
     	}		
 	}
-  
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
@@ -900,7 +899,21 @@ input{
 <br>
 <br>
 <div class="down_area">
-		<br>
+
+
+    <c:set var="key" value="1" />
+    <c:set var="productImage" value="${fn:split(goodsProduct.productImage,'#')}" />
+    <c:forEach var="productImageFile" items="${productImage}" varStatus="varStatus">
+	     <c:if test="${varStatus.count eq key }">
+		    <td >
+		        <img src="${pageContext.request.contextPath}/resources/image/brand/fredperry/${productImageFile} />"> 
+		    </td>
+	     </c:if>
+    </c:forEach> 
+    <c:set var="key" value="${key + 1}" />
+    
+    
+		<%-- <br>
 		<br>
 		<br>
 		<br>
@@ -992,7 +1005,7 @@ input{
 			&nbsp;<span style="background-color: rgb(237, 242, 194);">#운동화</span> 
 			&nbsp;<span style="background-color: rgb(237, 242, 194);">#편안함</span></span>
 		</div>
-	</div>
+	</div> --%>
 </div>
 
 <br>
