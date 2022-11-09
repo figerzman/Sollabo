@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -31,6 +30,7 @@
 
 /* 전체 글꼴 */
 body {
+<<<<<<< HEAD
 /*    font-size: 0.9em; */
    font-family: 'Roboto', sans-serif;
 }
@@ -196,78 +196,72 @@ div {
 /*    right: 20px; */
 /* } */
 </style>
-<script
-   src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
 </head>
 <body>
-   <c:import url="../default/header.jsp" />
-   <div class="memberJoin">
-      <div class="titleArea">
-         <h1>회원정보 수정</h1>
-      </div>
+	<c:import url="../default/header.jsp" />
+	<div class="memberJoin">
+		<div class="titleArea">
+			<h1>회원정보 수정</h1>
+		</div>
 
-      <h3>기본 정보</h3>
-      <p class="required">
-         <img
-            src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"
-            alt="필수"> 필수입력사항
-      </p>
-      <div class="boardWrite">
-         <form id="modifyProfile" name="modifyProfile" method="post">
-            <table border="1">
-               <tbody>
-                  <tr>
-                     <th scope="row">아이디 <img
-                        src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"
-                        alt="필수">
-                     </th>
-                     <td><input type="text" id="memId" name="memId"
-                        value="${MemberDTO.memId }" maxlength="30" required>
-                     <!-- <a> (영문소문자/숫자, 4~16자)</a> --></td>
-                  </tr>
-                  <tr>
-                     <th scope="row">비밀번호 <img
-                        src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"
-                        alt="필수">
-                     </th>
-                     <td><input type="password" id="memPassword"
-                        name="memPassword" required>
-                     <!-- <a> (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)</a> --></td>
-                  </tr>
-                  <tr>
-                     <th scope="row">비밀번호 확인 <img
-                        src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"
-                        alt="필수">
-                     </th>
-                     <td><input type="password" id="memPasswordCheck"
-                        name="memPasswordCheck" required></td>
-                  </tr>
-                  <tr>
-                     <th scope="row">이름 <img
-                        src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"
-                        alt="필수">
-                     </th>
-                     <td><input type="text" id="memName" name="memName"
-                        value="${MemberDTO.memName }" required></td>
-                  </tr>
-                  <tr>
-                     <th scope="row">
-                     주소
-                     <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
-                     </th>
-                     <td><input type="text" id="memAddr1" name="memAddr1"
-                        value="${MemberDTO.memAddr1 }" readonly> <input
-                        type="button" class="btn btn-info" value="우편번호 찾기"
-                        onclick="daumPost()"><br> <input type="text"
-                        id="memAddr2" name="memAddr2" value="${MemberDTO.memAddr2 }"
-                        readonly> 주소<br> <input type="text" id="memAddr3"
-                        name="memAddr3" value="${MemberDTO.memAddr3 }"> 상세주소</td>
-                  </tr>
+		<h3>기본 정보</h3>
+		<p class="required">
+			<img
+				src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"
+				alt="필수"> 필수입력사항
+		</p>
+		<div class="boardWrite">
+			<form id="modifyProfile" name="modifyProfile" method="post">
+				<table border="1">
+					<tbody>
+						<tr>
+							<th scope="row">아이디 <img
+								src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"
+								alt="필수">
+							</th>
+							<td><input type="text" id="memId" name="memId"
+								value="${MemberDTO.memId }" maxlength="30" required>
+							<!-- <a> (영문소문자/숫자, 4~16자)</a> --></td>
+						</tr>
+						<tr>
+							<th scope="row">비밀번호 <img
+								src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"
+								alt="필수">
+							</th>
+							<td><input type="password" id="memPassword"
+								name="memPassword" required>
+							<!-- <a> (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)</a> --></td>
+						</tr>
+						<tr>
+							<th scope="row">비밀번호 확인 <img
+								src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"
+								alt="필수">
+							</th>
+							<td><input type="password" id="memPasswordCheck"
+								name="memPasswordCheck" required></td>
+						</tr>
+						<tr>
+							<th scope="row">이름 <img
+								src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"
+								alt="필수">
+							</th>
+							<td><input type="text" id="memName" name="memName"
+								value="${MemberDTO.memName }" required></td>
+						</tr>
+						<tr>
+							<th scope="row">주소</th>
+							<td><input type="text" id="memAddr1" name="memAddr1"
+								value="${MemberDTO.memAddr1 }" readonly> <input
+								type="button" class="btn btn-info" value="우편번호 찾기"
+								onclick="daumPost()"><br> <input type="text"
+								id="memAddr2" name="memAddr2" value="${MemberDTO.memAddr2 }"
+								readonly> 주소<br> <input type="text" id="memAddr3"
+								name="memAddr3" value="${MemberDTO.memAddr3 }"> 상세주소</td>
+						</tr>
 
                   <!-- 전화번호 일단 빼놓고 하기 -->
-
 
                   <c:set var="TextValue" value="${MemberDTO.memTel }" />
                   <tr>
@@ -403,6 +397,7 @@ div {
 	         }        
 	      }      
 	</script>
+
 	<c:import url="../default/footer.jsp" />
 </body>
 
