@@ -293,7 +293,12 @@ ul .infoT {
 .lastPack img {
     vertical-align: top;
 }
-
+/*11111111111*/
+/*11111111111*/
+/*11111111111*/
+/*11111111111*/
+/*11111111111*/
+/*11111111111*/
 .lastPack ol {
 	display: inline-block;
 	font-size: 0;
