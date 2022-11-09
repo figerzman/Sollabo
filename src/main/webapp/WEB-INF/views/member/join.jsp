@@ -8,7 +8,7 @@
 <title>join</title>
 <style type="text/css">
 * {
-   margin: 0;
+/*    margin: 0; */
    padding: 0;
 }
 
@@ -29,7 +29,7 @@
 
 /* 전체 글꼴 */
 body{
-    font-size: 0.9em;
+/*     font-size: 0.9em; */
     font-family: 'Roboto', sans-serif;
 }
 
@@ -267,7 +267,10 @@ div {
                   <td><input type="text" id="memName" name="memName" required></td>
                </tr>
                <tr>
-                  <th scope="row">주소</th>
+                  <th scope="row">
+                  주소
+                  <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
+                  </th>
                   <td>
                      <input type="text" id="memAddr1" name="memAddr1" readonly>
                      <input type="button" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
@@ -653,7 +656,7 @@ div {
 		            if(json==1){ // 1이면 성공 0이면 실패
 		            	idch = 1;		            		
 		            	$('#memId').attr("readonly",true);
-						alert("중복된 아이디가 아닙니다")
+						alert("사용 가능한 아이디입니다")
 		            }else{
 		               alert("중복된 아이디입니다");
 		            }
