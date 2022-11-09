@@ -184,7 +184,7 @@ input#rightside {
 			<li><a
 				href="${pageContext.request.contextPath }/product/product?divisionCode=27">Vans</a></li>
 		</ul>
-<!-- 		<h1>Sales</h1> -->
+		<h1>Sales</h1>
 	</div>
 
 	<!-- 우측 사이드바 수정(김동우) -->
