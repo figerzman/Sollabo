@@ -23,14 +23,18 @@ public class ProductDTO {
 	private String shsize;
 	
 	/*reply 테이블*/
-	private String productReplyNo;
+	private int productReplyNo;
 	private String productReplyWriter;
 	private String productReplyContent;
+	private String productReplyFile;
+	private Timestamp productReplyRegDate;
+	private int productReplyDel;
 	
-	public String getProductReplyNo() {
+	
+	public int getProductReplyNo() {
 		return productReplyNo;
 	}
-	public void setProductReplyNo(String productReplyNo) {
+	public void setProductReplyNo(int productReplyNo) {
 		this.productReplyNo = productReplyNo;
 	}
 	public String getProductReplyWriter() {
@@ -130,6 +134,36 @@ public class ProductDTO {
 	}
 	public void setDivisionName(String divisionName) {
 		this.divisionName = divisionName;
+	}
+	public String getProductReplyFile() {
+		return productReplyFile;
+	}
+	public void setProductReplyFile(String productReplyFile) {
+		this.productReplyFile = productReplyFile;
+	}
+	public Timestamp getProductReplyRegDate() {
+		return productReplyRegDate;
+	}
+	public void setProductReplyRegDate(Timestamp productReplyRegDate) {
+		this.productReplyRegDate = productReplyRegDate;
+	}
+	public int getProductReplyDel() {
+		return productReplyDel;
+	}
+	public void setProductReplyDel(int productReplyDel) {
+		this.productReplyDel = productReplyDel;
+	}
+	
+	@Override
+	public String toString() {
+		return "ProductDTO [productNo=" + productNo + ", categoryCode=" + categoryCode + ", categoryName="
+				+ categoryName + ", divisionCode=" + divisionCode + ", divisionName=" + divisionName + ", productName="
+				+ productName + ", productImage=" + productImage + ", productContent=" + productContent
+				+ ", productCnt=" + productCnt + ", productPrice=" + productPrice + ", productRegDate=" + productRegDate
+				+ ", icon=" + icon + ", shcolor=" + shcolor + ", shsize=" + shsize + ", productReplyNo="
+				+ productReplyNo + ", productReplyWriter=" + productReplyWriter + ", productReplyContent="
+				+ productReplyContent + ", productReplyFile=" + productReplyFile + ", productReplyRegDate="
+				+ productReplyRegDate + ", productReplyDel=" + productReplyDel + "]";
 	}
 	
 }

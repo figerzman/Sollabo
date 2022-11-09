@@ -19,6 +19,8 @@ public class SearchVO {
 	/** 현재 페이지 */
 	private int currentPage = 1;
 	
+    private String divisionCode;
+    private int productNo;
     
     /**블럭당 보여질 페이지 수,  페이지 사이즈 */
     private int blockSize; // properties에서 설정
@@ -112,18 +114,30 @@ public class SearchVO {
 		this.recordCountPerPage = recordCountPerPage;
 	}
 
-	@Override
-	public String toString() {
-		return "SearchVO [searchCondition=" + searchCondition
-				+ ", searchKeyword=" + searchKeyword + ", searchUseYn="
-				+ searchUseYn + ", currentPage=" + currentPage
-				+ ", blockSize=" + blockSize + ", firstRecordIndex="
-				+ firstRecordIndex + ", lastRecordIndex=" + lastRecordIndex
-				+ ", recordCountPerPage=" + recordCountPerPage + "]";
+	public String getDivisionCode() {
+		return divisionCode;
 	}
 
-	
+	public void setDivisionCode(String divisionCode) {
+		this.divisionCode = divisionCode;
+	}
 
+	public int getProductNo() {
+		return productNo;
+	}
+
+	public void setProductNo(int productNo) {
+		this.productNo = productNo;
+	}
+
+	@Override
+	public String toString() {
+		return "SearchVO [searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", searchUseYn="
+				+ searchUseYn + ", currentPage=" + currentPage + ", divisionCode=" + divisionCode + ", productNo="
+				+ productNo + ", blockSize=" + blockSize + ", firstRecordIndex=" + firstRecordIndex
+				+ ", lastRecordIndex=" + lastRecordIndex + ", recordCountPerPage=" + recordCountPerPage + "]";
+	}
+	
 	
 }
  

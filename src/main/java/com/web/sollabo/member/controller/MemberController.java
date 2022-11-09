@@ -1,5 +1,7 @@
 package com.web.sollabo.member.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -22,7 +24,6 @@ import com.web.sollabo.session.name.MemberSession;
 @RequestMapping("member")
 public class MemberController implements MemberSession {
 	
-	// db
 	@Autowired
 	private MemberService ms;
 	
@@ -31,7 +32,7 @@ public class MemberController implements MemberSession {
 	// getMember
 	@GetMapping("memberTest")
 	public ModelAndView getMember() {
-		ModelAndView modelAndView = new ModelAndView();
+		 modelAndView = new ModelAndView();
 		
 		modelAndView.setViewName("member/memberTest");
 		modelAndView.addObject("list", ms.getMember());
@@ -40,39 +41,43 @@ public class MemberController implements MemberSession {
 	}
 	
 	
-	// 로그인
-	@PostMapping("/user_check")
-	public String userCheck(HttpServletRequest request, HttpSession session) {
-		System.out.println("re=" + request.getParameter("memId"));
-		int result = ms.user_check(request);
-		if(result == 0) {
-			session.setAttribute("memId", request.getParameter("memId"));
-			return "redirect:/";
+	// 로그인 
+	@PostMapping("user_check")
+	@ResponseBody
+	public int userCheck(MemberDTO memberDTO, HttpSession session) {
+		System.out.println("옴" + memberDTO.toString());
+		List<Object> list = ms.user_check(memberDTO);
+		if((int)list.get(0) == 1 && list.size()==2) {
+			session.setAttribute("memId", memberDTO.getMemId());
+			session.setAttribute("memAuKeyword", (String)list.get(1));
+			//성공하면 메인페이지로 이동
+			return 1;
 		}
-		return "redirect:/member/login";
+		//실패후 로그인 페이지로
+		return 0;
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("login")
 	public String login() {
 		return "member/login";
 	}
 	
 	@GetMapping("logout")
 	public String logout(HttpSession session) {
-		if(session.getAttribute("loginUser") != null) {
+		if(session.getAttribute("memId") != null) {
 			session.invalidate();
 		}
-		return "redirect:/index";
+		return "redirect:/";
 	}
 	
 	
 	// 아이디 찾기
-	@GetMapping("/findId")
+	@GetMapping("findId")
 	public String findId() {
 		return "member/findId";
 	}
 	
-	@PostMapping("/findId")
+	@PostMapping("findId")
 	public String findId(@ModelAttribute MemberDTO memberDTO, RedirectAttributes redirectAttributes) {
 		MemberDTO result = ms.findId(memberDTO);
 		if(result.getMemId() != null) {		// 아이디가 있으면
@@ -81,10 +86,21 @@ public class MemberController implements MemberSession {
 		}
 		return "redirect:/member/findId";
 	}
+	@PostMapping("idCheck")
+	@ResponseBody
+	public int idCheck(MemberDTO memberDTO) {
+		System.out.println(memberDTO.getMemId());
+		memberDTO = ms.modifyProfile(memberDTO);
+		if(memberDTO ==null) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
 	
-	@GetMapping("/findIdResult")	// 아이디 찾기 결과 페이지로 왔으면
+	@GetMapping("findIdResult")	// 아이디 찾기 결과 페이지로 왔으면
 	public ModelAndView findIdResult(@RequestParam String memId) { // 아이디를 받아서
-		ModelAndView modelAndView = new ModelAndView();
+		 modelAndView = new ModelAndView();
 		modelAndView.addObject("memId", memId); 	// 아이디를 담아주고
 		modelAndView.setViewName("member/findIdResult"); // 아이디를 아이디 찾기 결과 페이지로 보낸다
 		return modelAndView;
@@ -92,12 +108,12 @@ public class MemberController implements MemberSession {
 	
 	
 	// 비밀번호 찾기
-	@GetMapping("/findPwd")
+	@GetMapping("findPwd")
 	public String findPwd() {
 		return "member/findPwd";
 	}
 	
-	@PostMapping("/findPwd")
+	@PostMapping("findPwd")
 	public String findPwd(@ModelAttribute MemberDTO memberDTO, RedirectAttributes redirectAttributes) {
 		MemberDTO result = ms.findPwd(memberDTO);
 		if(result.getMemPassword() != null) {	// 비밀번호가 있으면
@@ -107,9 +123,9 @@ public class MemberController implements MemberSession {
 		return "redirect:/member/findPwd";
 	}
 	
-	@GetMapping("/findPwdResult")	// 비밀번호 찾기 결과 페이지로 왔으면
+	@GetMapping("findPwdResult")	// 비밀번호 찾기 결과 페이지로 왔으면
 	public ModelAndView findPwdResult(@RequestParam String memPassword) { // 비밀번호를 받아서
-		ModelAndView modelAndView = new ModelAndView();
+		 modelAndView = new ModelAndView();
 		modelAndView.addObject("memPassword", memPassword);	// 비밀번호를 담아주고
 		modelAndView.setViewName("member/findPwdResult"); // 비밀번호를 비밀번호 찾기 결과 페이지로 보낸다
 		return modelAndView;
@@ -117,22 +133,24 @@ public class MemberController implements MemberSession {
 	
 	
 	// 회원가입
-	@RequestMapping("/join_form")
+	@RequestMapping("join_form")
 	public String join_form() {
 		return "member/join";
 	}
 
-	@PostMapping("/join")
+	@PostMapping("join")
 	@ResponseBody
 	public int join(MemberDTO member) {
+		System.out.println(member);
 		int result = ms.join(member);
+		System.out.println(result);
 		if(result == 1) {
 			return 1; //성공하면
 		}
 		return 0; //실패하면
 	}
 
-	@GetMapping("/join")
+	@GetMapping("join")
 	public String join() {
 		return "member/join";
 	}
@@ -140,9 +158,9 @@ public class MemberController implements MemberSession {
 	
 	// 회원정보 수정
 	// 로그인된 id의 정보를 가져와서 회원정보 수정 페이지에 보여줌
-	@GetMapping("/modifyProfile")	
+	@GetMapping("modifyProfile")	
 	public ModelAndView modifyProfile(HttpSession session) { 
-		ModelAndView modelAndView = new ModelAndView();
+		 modelAndView = new ModelAndView();
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setMemId((String)session.getAttribute("memId"));
 		modelAndView.addObject("MemberDTO", ms.modifyProfile(memberDTO));	
@@ -150,24 +168,35 @@ public class MemberController implements MemberSession {
 		return modelAndView;
 	}
 	
+	@PostMapping("modifyProfile")	
+	public ModelAndView modifyProfile(@ModelAttribute MemberDTO memberDTO) { 
+		 modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("MemberDTO", ms.updateMember(memberDTO));	
+		
+		modelAndView.setViewName("member/modifyProfile");
+		return modelAndView;
+	}
 	// 수정 업데이트 하는 것
 	
 	
 	//--------------------------------
 	
-	@GetMapping("/delete")
-	public String delete() {
-		return "member/delete";
+	@GetMapping("deleteMember")
+	public String deleteMember(@ModelAttribute MemberDTO memberDTO,HttpSession session) {
+		memberDTO.setMemId((String)session.getAttribute("memId"));
+		int result = ms.deleteMember(memberDTO);		
+		if(result==2) {
+			session.removeAttribute("memId");
+			return "redirect:/";
+		}else {
+			return "redirect:member/mypage";
+		}
 	}
-	
-	@GetMapping("/mypage")
+	//mypageMenu get
+	@GetMapping("mypage")
 	public String mypage() {
 		return "member/mypage";
-	}
-	
-	@GetMapping("/goodspage")
-	public String goodspage() {
-		return "product/goodspage";
 	}
 	
 }

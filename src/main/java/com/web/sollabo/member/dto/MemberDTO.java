@@ -131,6 +131,14 @@ public class MemberDTO {
 	public void setMemAuKeyword(String memAuKeyword) {
 		this.memAuKeyword = memAuKeyword;
 	}
+	@Override
+	public String toString() {
+		return "MemberDTO [memNo=" + memNo + ", memId=" + memId + ", memEmail=" + memEmail + ", memPassword="
+				+ memPassword + ", memName=" + memName + ", memNickname=" + memNickname + ", memProfile=" + memProfile
+				+ ", memAddr1=" + memAddr1 + ", memAddr2=" + memAddr2 + ", memAddr3=" + memAddr3 + ", memTel=" + memTel
+				+ ", memRegDate=" + memRegDate + ", memGrade=" + memGrade + ", memLoginFaleCnt=" + memLoginFaleCnt
+				+ ", memAuKeyword=" + memAuKeyword + "]";
+	}
 
 
 }

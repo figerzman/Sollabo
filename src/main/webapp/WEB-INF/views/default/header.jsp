@@ -4,6 +4,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<%
+	String memId = (String) session.getAttribute("memId");
+%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -41,7 +44,7 @@ a {
 
 .leftdiv>ul>li>a:hover {
 	background-color: #fff;
-	background-color: rgba( 255, 255, 255, 0.5 );
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 .l-title {
@@ -54,7 +57,7 @@ header {
 	position: fixed;
 	top: 0;
 	bottom: 0;
-	margin: 30px 30px 0 0; 
+	margin: 30px 30px 0 0;
 	padding-top: 20px;
 	z-index: 10;
 	right: 0;
@@ -69,7 +72,8 @@ header>div {
 
 header label.menu1 {
 	position: absolute;
-	top: 0; right : 0;
+	top: 0;
+	right: 0;
 	transform: translateY(-50%);
 	width: 24px;
 	height: 24px;
@@ -97,7 +101,7 @@ header label.menu1 {
 }
 
 .sidebar_content1>ul>li {
-/* 	border-bottom: 1px solid #ccc; */
+	/* 	border-bottom: 1px solid #ccc; */
 	list-style: none;
 }
 
@@ -195,17 +199,23 @@ input#rightside {
 		</div>
 	</header>
 	<!-- 우측 사이드바 영역 -->
-	<div class="sidebar_content1" >
+	<div class="sidebar_content1">
 		<ul>
 			<!-- 로그인 로그아웃 수정(곽예진) -->
-			<li><c:if test="${loginUser == null }">
-					<a href="/sollabo/member/login">로그인</a>
-				</c:if> <c:if test="${loginUser != null }">
-					<a href="/sollabo/member/logout">로그아웃</a>
+
+			<li><c:if test="${memId ==null }">
+					<a href="${pageContext.request.contextPath }/member/login">로그인</a>
+				</c:if> <c:if test="${memId !=null && memAuKeyword eq 'U' }">
+					<a href="${pageContext.request.contextPath }/member/logout">로그아웃</a>
+					<li><a href="${pageContext.request.contextPath }/cart/cart">장바구니</a></li>
+					<li><a
+						href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></li>
 				</c:if></li>
-			<li><a href="/sollabo/cart/cart">장바구니</a></li>
-			<li><a href="/sollabo/member/mypage">마이페이지</a></li>
-			<li><a href="/sollabo/admin/adminMenuList">관리자</a></li>
+			<c:if test="${memAuKeyword eq 'A'}">
+				<li><a
+					href="${pageContext.request.contextPath }/admin/adminMenuList">관리자</a></li>
+				<a href="${pageContext.request.contextPath }/member/logout">로그아웃</a>
+			</c:if>
 		</ul>
 	</div>
 	<!-- 사이드바 외 영역 -->

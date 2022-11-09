@@ -9,11 +9,6 @@
 <title>제품 상세 페이지</title>
 <!--3초간격 화면전환  -->
 <script>
-function memUpdate(memNo){
-	location.href="adminMemUpdate?memNo="+memNo;
-}
-
-
     var index = 0;   //이미지에 접근하는 인덱스
     window.onload = function(){
         slideShow();
@@ -48,15 +43,12 @@ function memUpdate(memNo){
     	}		
 	}
   
-  
+	function pageFunc(curPage){
+		document.frmPage.currentPage.value=curPage;
+		frmPage.submit();
+	}
 </script>
 
-<!-- <script type="text/javascript">
-fuction check(){
-	
-	alert('색상을 선택하세요');
-}
-</script> -->
 <style type="text/css">
 /* 상단 제목 */
 section .notice {
@@ -655,12 +647,73 @@ input{
 	  border: 1px solid #DADADA; */
 	  text-align:center;
 	  }
+	  
+	  /* 최하단 */
+.lastPack {
+	display: table;
+    margin: 70px auto 0;
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+}
+
+.lastPack img {
+    vertical-align: top;
+}
+
+.lastPack ol {
+	display: inline-block;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
+
+.lastPack li:first-child {
+	margin-left: 0;
+}
+
+.lastPack li {
+	float: left;
+    display: inline-block;
+    margin: 0 0 0 -1px;
+    border: 1px solid #e8e8e8;
+    font-size: 11px;
+    color: #757575;
+    vertical-align: top;
+}
+
+.lastPack li a {
+	display: block;
+    width: 33px;
+    padding: 7px 0 6px;
+    font-weight: bold;
+    color: #b7b7b7;
+    line-height: 14px;
+    background: #fff;
+}
+
+.lastPack li a.this {
+	color: #333;
+    font-weight: bold;
+    background: #f1f1f1;
+}
 </style>
+
+
 </head>
 <body>
 <c:import url="../default/header.jsp"/>
-<h2 ><a href="${pageContext.request.contextPath }/">제품 상세 페이지</a></h2>
+
+
+<%-- <h2 ><a href="${pageContext.request.contextPath }/">제품 상세 페이지</a></h2> --%>
+<form name="frmPage" method="post" action="<c:url value='/product/goodspage'/>">
+	<input type="hidden" name="searchCondition" value="${param.searchCondition}">
+	<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">	
+	<input type="hidden" name="productNo" value="${param.productNo}">		
+	<input type="hidden" name="currentPage" >
+</form>
 <div>
+
 <div class="detail_area"> <!-- 전체 구역 -->
 	<!-- 이미지 구역(이미지는 추후에 제외(DB) -->
 	
@@ -678,7 +731,7 @@ input{
 	<!-- 인포 구역 -->
 	<div class="detail_infoarea">	<!-- 인포 전체 --> 
 		<div class="head">
-			<h2 class="bottom_line">${productList.productName }</h2> <!-- 상품(이름) -->
+			<h2 class="bottom_line">${goodsProduct.productName }</h2> <!-- 상품(이름) -->
 		</div>
 		<br>
 		<!-- 판매가 -->
@@ -690,7 +743,7 @@ input{
 				</th>
 				<td>
 					<span style="font-size:20px;color:black; font-weight:bold;">
-						<strong>KRW ${productList.productPrice }</strong>
+						<strong>KRW ${goodsProduct.productPrice }</strong>
 						<input id="product_price" name="product_price" value="" type="hidden">
 					</span>
 				</td>
@@ -747,16 +800,16 @@ input{
                     </thead>	
                     <tbody class="displaynone">
                     	<tr>
-							<td>${productList.productName }</td>
+							<td>${goodsProduct.productName }</td>
                             <td>
                             	<span class="quantity">
-	                                <input id="quantity" name="quantity_name" style="" value="0" type="text">                                        
-	                                <a href="#none"><img src="image/upbtn.gif" alt="수량증가" class="QuantityUp up"></a>
-	                                <a href="#none"><img src="image/downbtn.gif" alt="수량감소" class="QuantityDown down"></a>
+	                                <input id="quantity" name="quantity_name" style="" value="1" type="text">                                        
+	                                <a href="#none" onclick='count(this.id)' id="plus"><img src="image/upbtn.gif" alt="수량증가" class="QuantityUp up"></a>
+	                                <a href="#none" onclick='count(this.id)' id="minus"><img src="image/downbtn.gif" alt="수량감소" class="QuantityDown down"></a>
                                 </span>
                            </td>
                            <td class="right">
-						   		<span class="quantity_price">${productList.productPrice }</span> 						   		
+						   		<span class="quantity_price">${goodsProduct.productPrice }</span> 						   		
                            </td>
                        </tr>
                    </tbody>
@@ -764,7 +817,7 @@ input{
                             <tr class="option_product " data-option-index="1" target-key="1563">
                             	<td>
                             		<input type="hidden" class="option_box_id" id="option_box1_id" value="P0000CID00BE" name="item_code[]" data-item-add-option="" data-item-reserved="N" data-option-id="00BE" data-option-index="1"> 
-                            		<p class="product">${productList.productName }
+                            		<p class="product">${goodsProduct.productName }
                             		<br> -
                              		<span>커팅-블루(blue)/M(29~30)</span>
                              		</p>
@@ -784,7 +837,7 @@ input{
                              	<td class="right">
                              		<span id="option_box1_price">
                              		<input type="hidden" class="option_box_price" value="59000" product-no="1563" item_code="P0000CID00BE">
-                             		<span class="ec-front-product-item-price" code="P0000CID00BE" product-no="1563">KRW : ${productList.productPrice }</span>
+                             		<span class="ec-front-product-item-price" code="P0000CID00BE" product-no="1563">KRW : ${goodsProduct.productPrice }</span>
                              		</span>
                              	</td>
                             </tr>
@@ -797,7 +850,7 @@ input{
 				<strong>Total</strong> : 
 				<span class="total">
 					<strong>
-						<em>KRW ${productList.productPrice } <!-- 곱하기 생각해봐야함 --></em> "공백"
+						<em>KRW ${goodsProduct.productPrice } <!-- 곱하기 생각해봐야함 --></em> "공백"
 					</strong>
 				</span>
 			</div>
@@ -963,33 +1016,59 @@ input{
   <!-- board list area -->
     <div id="board_list">
         <div class="container">
-        	<div style="float: right; padding: 10px;">
-        		<span><a href="#" >오름차순</a> | <a href="#" >내림차순</a></span>
-        	</div>
             <table class="board_table">
                 <thead>
                 <tr>
                     <th scope="col" class="th-num">No</th>
                     <th scope="col" class="th-num">ID</th>
                     <th scope="col" class="th-num">NAME</th>                    
-                    <th scope="col" class="th-title" style="width:200px;">제품 이름</th>                  
+                    <th scope="col" class="th-title" style="width:200px;">리뷰</th>                  
                     <th scope="col" class="th-date">DATE</th>
                 </tr>	
                 </thead>
                 <tbody>
-                	<c:forEach begin="1" end="10" >
-	                <tr>
-	                    <td>${productList.productReplyNo }</td>
-	                    <td></td>
-	                    <td><a href="#">${productList.productReplyWriter}</a></td>
-	                    <td><a href="#">${productList.productName}</a></td>
-	                    <td>1</td>	                    	                    
+                	<c:forEach var="productList" items="${productList }" varStatus="status">
+	                <tr id="reply${status.index }">
+	                    <td>${pagingInfo.currentPage*10-1 }</td>
+	                    <td>${productList.productReplyWriter}</td>
+	                    <td>${productList.productReplyWriter}</td>
+	                    <td>${productList.productReplyContent}</td>
+	                    <td>${productList.productReplyRegDate}</td>	                    	                    
 	                </tr>
                 </c:forEach>
                 </tbody>
             </table>        
         </div>
-
+	</div>
+	<div class="lastPack">
+	<c:if test="${pagingInfo.firstPage>1 }">
+		<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1 })">			
+			<img src="${pageContext.request.contextPath}/resources/gif/prevbtn.gif" 
+			onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/prev_rollover.gif'" 
+			onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/prevbtn.gif'" alt="이전 페이지">
+		</a>	
+	</c:if>	
+	<!-- [1][2][3][4][5][6][7][8][9][10] -->
+	<c:forEach var="i" begin="${pagingInfo.firstPage }" end="${pagingInfo.lastPage }">
+		<ol style="padding-left: 0px;">
+		<c:if test="${i==pagingInfo.currentPage }">
+			<li class="know"><a href="#">[${i }]</a></li>
+		</c:if>
+		<c:if test="${i!=pagingInfo.currentPage }">
+			<li class="know"><a href="#" onclick="pageFunc(${i})" class="this" >[${i }]</a></li>
+		</c:if>
+           </ol>
+	</c:forEach>
+	<!-- 다음 블럭으로 이동 ▶ -->
+	<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage }">
+		<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})">
+		  <img src="${pageContext.request.contextPath}/resources/gif/nextbtn.gif" 
+           onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/next_rollover.gif'" 
+           onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/nextbtn.gif'" alt="다음 페이지">
+		</a>		           
+	</c:if>
+</div>
+</section>
 
 
 </body>

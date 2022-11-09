@@ -62,9 +62,9 @@
 		<![CDATA[
 		where RNUM > #{firstRecordIndex} 
 		and RNUM<=#{firstRecordIndex}+ #{recordCountPerPage} ]]>	
-	</select> -->
+	</select>
 	
-	<!-- <select id="adminOrderListCount" resultType="int" parameterType="SearchVO">
+	<select id="adminOrderListCount" resultType="int" parameterType="SearchVO">
 		select count(*) from order_list
 		<include refid="searchWhere"></include>	
 	</select> -->

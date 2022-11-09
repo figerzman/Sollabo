@@ -147,8 +147,8 @@
           loop: true,
           loopFillGroupWithBlank: true,
           autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
+/*                 delay: 4000,
+                disableOnInteraction: false, */
               },
           pagination: {
             el: ".swiper-pagination",

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.1.min.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>login</title>
@@ -131,6 +132,34 @@ label {
 }
 
 </style>
+<script type="text/javascript">
+	function login() {
+		if($('#memId').val() == ""){
+			alert("아이디를 입력해주세요")
+			$('#memId').focus()
+		}else if($('#memPassword').val() ==""){
+			alert("비밀번호를 입력해주세요")
+			$('#memPassword').focus()
+		}else{
+		    var formData = $("#loginForm").serialize(); //전부 문자열화 시킨다      
+			 $.ajax({
+		         url:"/sollabo/member/user_check",
+		         type:"post",	
+		         data:formData,
+		         success:function(responseData){         
+		            //서버로부터 완료 응답을 받으면
+		            var json = JSON.parse(responseData);
+		            console.log(json)
+		            if(json==1){ // 1이면 성공 0이면 실패
+		               location.href="/sollabo/"; 
+		            }else{
+		               alert("로그인을 실패하셨습니다. 아이디 또는 비밀번호를 확인해주세요");
+		            }
+		         }
+		      });  
+		}
+	}
+</script>
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
@@ -139,12 +168,12 @@ label {
 	    	<div class="titleArea">
 				<h1>회원 로그인</h1>
 			</div>
-			<form action="${pageContext.request.contextPath }/member/user_check" method="post">
-	            <div class="loginId"><input type="text" name="memId" placeholder="아이디"></div>
-	            <div class="loginPwd"><input type="password" name="memPassword" placeholder="비밀번호"></div><br>
+			<form action="#" name="loginForm" id="loginForm">
+	            <div class="loginId"><input type="text" name="memId" id="memId" placeholder="아이디"></div>
+	            <div class="loginPwd"><input type="password" name="memPassword" id="memPassword" placeholder="비밀번호"></div><br>
            
             <p class="button">
-            	<input type="submit" value="">
+            	<input type="button" value="" onclick="login()">
 	        </p>
 	        
 	        <div class="utilMenu" style="display:block">

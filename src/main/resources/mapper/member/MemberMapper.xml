@@ -30,7 +30,7 @@
 
 	<!-- 로그인 -->
 	<select id="user_check" resultMap="member">
-		select * from member where MEM_ID=#{memId }
+		select * from member where MEM_ID=#{memId } AND MEM_PASSWORD=#{memPassword }
 	</select>
 	
 	<!-- 아이디 찾기 -->
@@ -45,13 +45,33 @@
 	
 	<!-- 회원가입 -->
 	<insert id="join">
-		insert into member(MEM_NO, MEM_ID, MEM_EMAIL, MEM_PASSWORD, MEM_NAME, MEM_NICKNAME, MEM_PROFILE, MEM_ADDR1, MEM_ADDR2, MEM_ADDR3, MEM_TEL, MEM_REG_DATE) 
-		values(mem_no_seq.nextval, #{memId}, #{memEmail}, #{memPassword}, #{memName }, #{memNickname}, #{memProfile}, #{memAddr1 }, #{memAddr2 }, #{memAddr3 }, #{memTel}, sysdate)
+		INSERT INTO member(MEM_NO, MEM_ID, MEM_EMAIL, MEM_PASSWORD, MEM_NAME, MEM_NICKNAME, MEM_PROFILE, MEM_ADDR1, MEM_ADDR2, MEM_ADDR3, MEM_TEL, MEM_REG_DATE) 
+		VALUES(MEM_NO_SEQ.NEXTVAL, #{memId}, #{memEmail}, #{memPassword}, #{memName }, #{memNickname}, #{memProfile}, #{memAddr1 }, #{memAddr2 }, #{memAddr3 }, #{memTel}, SYSDATE)
 	</insert>
 	
-	<!-- 회원정보 수정 -->
+	<!-- 회원정보 수정 값 뿌려주기 -->
 	<select id="modifyProfile" resultMap="member">
 		select * from member where MEM_ID=#{memId}
 	</select>
-
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateMember">
+		update member set MEM_PASSWORD = #{memPassword},MEM_ADDR1 = #{memAddr1 }, MEM_ADDR2 = #{memAddr2 }, MEM_ADDR3 = #{memAddr3 }, MEM_EMAIL = #{memEmail },MEM_TEL = #{memTel}
+	</update>
+	
+	<!-- 회원 삭제 -->
+	<delete id="deleteMember">
+		delete from member where MEM_ID = #{memId}
+	</delete>
+	
+	<!-- 회원 삭제후 탈퇴회원 테이블 작성 -->
+	<insert id="unMember">
+		INSERT INTO UN_MEMBER(UN_MEM_NO, UN_MEM_ID, UN_MEM_EMAIL, UN_MEM_PASSWORD, UN_MEM_NAME, UN_MEM_NICKNAME, UN_MEM_PROFILE, UN_MEM_ADDR1, UN_MEM_ADDR2, UN_MEM_ADDR3, UN_MEM_TEL, UN_MEM_REG_DATE,UN_MEM_END_DATE) 
+		VALUES(UN_MEN_ID_SEQ.NEXTVAL, #{unMemId}, #{unMemEmail}, #{unMemPassword}, #{unMemName }, #{unMemNickname}, #{unMemProfile}, #{unMemAddr1 }, #{unMemAddr2 }, #{unMemAddr3 }, #{unMemTel}, #{unMemRegDate },SYSDATE)
+	</insert>
+	
+	<!-- 회원 삭제 실패시 탈퇴회원 다시삭제 -->
+	<delete id="unDeleteMember">
+		delete from un_member where MEM_ID = #{memId}
+	</delete>
 </mapper>

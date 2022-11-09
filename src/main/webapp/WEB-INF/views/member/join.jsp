@@ -167,7 +167,7 @@ input[type=button] {
    width: 70px;
 }
 
-#addr2, #addr3 {
+#memAddr2, #memAddr3 {
    width: 300px;
 }
 
@@ -235,7 +235,7 @@ div {
          <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수"> 필수입력사항
       </p>
       <div class="boardWrite">
-         <form id="join_form">
+         <form id="join_form" name="join_form" method="post">
             <table border="1">
             <tbody>
                <tr>
@@ -243,64 +243,65 @@ div {
                   아이디 
                   <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
                   </th>
-                  <td><input type="text" id="id" name="memId" maxlength="30" required><!-- <a> (영문소문자/숫자, 4~16자)</a> --></td>
+                  <td><input type="text" id="memId" name="memId" maxlength="30"  required ><!-- <a> (영문소문자/숫자, 4~16자)</a> --><input type="button" value="중복확인" onclick="idCheck()"></td>
                </tr>
                <tr>
                   <th scope="row">
                   비밀번호 
                   <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
                   </th>
-                  <td><input type="password" id="pw" name="memPassword" required><!-- <a> (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)</a> --></td>
+                  <td><input type="password" id="memPassword" name="memPassword"   required><!-- <a> (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)</a> --></td>
                </tr>
                <tr>
                   <th scope="row">
                   비밀번호 확인 
                   <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
                   </th>
-                  <td><input type="password" id="pwd" name="memPasswordCheck" required></td>
+                  <td><input type="password" id="memPasswordCheck" name="memPasswordCheck"  required></td>
                </tr>
                <tr>
                   <th scope="row">
                   이름 
                   <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
                   </th>
-                  <td><input type="text" id="name" name="memName" required></td>
+                  <td><input type="text" id="memName" name="memName" required></td>
                </tr>
                <tr>
                   <th scope="row">주소</th>
                   <td>
-                     <input type="text" id="addr1" name="memAddr1" readonly>
+                     <input type="text" id="memAddr1" name="memAddr1" readonly>
                      <input type="button" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
-                     <input type="text" id="addr2" name="memAddr2" readonly> 주소<br>
-                     <input type="text" id="addr3" name="memAddr3"> 상세주소
+                     <input type="text" id="memAddr2" name="memAddr2" readonly> 주소<br>
+                     <input type="text" id="memAddr3" name="memAddr3"> 상세주소
                   </td>
                </tr>
 					
 					<!-- 전화번호 일단 빼놓고 하기 -->
-<!--                <tr> -->
-<!--                   <th scope="row"> -->
-<!--                   휴대전화  -->
-<!--                   <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수"> -->
-<!--                   </th> -->
-<!--                   <td> -->
-<!--                      <select id="mobile1" name="memTel"> -->
-<!--                         <option value="010">010</option> -->
-<!--                         <option value="011">011</option> -->
-<!--                         <option value="016">016</option> -->
-<!--                      </select> -->
-<!--                      - -->
-<!--                      <input id="mobile2" name="memTel" maxlength="4" required> -->
-<!--                      - -->
-<!--                      <input id="mobile3" name="memTel" maxlength="4" required> -->
-<!--                   </td> -->
-<!--                </tr> -->
+				  <tr>
+                  <th scope="row">
+                  휴대전화 
+                  <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
+                  </th>
+                  <td>
+                     <select id="mobile1" name="mobile1">
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="016">016</option>
+                     </select>
+                     -
+                     <input id="mobile2"  maxlength="4" required>
+                     -
+                     <input id="mobile3"  maxlength="4" required>
+                     <input type="hidden" name="memTel" id="memTel">	                     
+                  </td>
+               </tr>
 
                <tr>
                   <th scope="row">
                   이메일 
                   <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
                   </th>
-                  <td><input type="email" id="user_mail" name="memEmail" required></td>
+                  <td><input type="text" id="memEmail" name="memEmail" required></td>
                </tr>
             </tbody>
             </table>
@@ -547,16 +548,15 @@ div {
            
            
            <div class="btnArea">
-            <input type="submit" value="">
+            <input type="button" value="" onclick="regist()" id="register" >
           </div>
        
           </form>
       </div>
     </div>
     
-   <script>
-   var registerForm = document.querySelector("#join_form");
-   
+   <script>   
+ 
    function daumPost() {
        new daum.Postcode({
            oncomplete: function(data) {
@@ -568,36 +568,102 @@ div {
                else {
                   addr = data.jibunAddress
                }
-               $("#addr1").val(data.zonecode)
-               $("#addr2").val(addr)
-               $("#addr3").focus()
+               $("#memAddr1").val(data.zonecode);
+               $("#memAddr2").val(addr);
+               $("#memAddr3").focus();
            }
        }).open();
    }
-   
-   function regist(event){
-      event.preventDefault();
-      //form 태그의 파라미터들을 전송할수있는 상태로 둬야  data키값에 form 자체를 넣을 수 있다.
-      var formData = $("#join_form").serialize(); //전부 문자열화 시킨다
-      
-      $.ajax({
-         url:"/sollabo/member/join",
-         type:"post",
-         data:formData,
-         success:function(responseData){         
-            //서버로부터 완료 응답을 받으면
-            var json = JSON.parse(responseData);
-            if(json==1){ // 1이면 성공 0이면 실패
-               alert("회원가입이 완료되었습니다. 감사합니다.");
-               location.href="/sollabo/member/login"; // 로그인페이지로 이동
-            }else{
-               alert("회원가입 실패");
-            }
-         }
-      });
+   var idch = 0;
+   //회원 가입
+   function regist(){
+	   $('#memTel').val($('#mobile1').val()+$('#mobile2').val()+ $('#mobile3').val());
+	   var formData = $("#join_form").serialize(); 
+	   var pwd = $('#memPassword').val();
+	   var pwdCh = $('#memPasswordCheck').val();
+	   var memId = $('#memId').val();
+	   var memName = $('#memName').val();
+	   var memAddr1 = $('#memAddr1').val();
+	   var memAddr2 = $('#memAddr2').val();
+	   var memAddr3 = $('#memAddr3').val();
+	   var memEmail = $('#memEmail').val();
+	   var memTel = $('#memTel').val();
+	    if(idch==0){
+		   alert("아이디 중복을 체크해주세요")
+		   $('#memId').focus();
+	   }else{
+		   if(pwd != pwdCh || (!pwd && !pwdCh)  ){
+			   alert("비밀번호를 확인해주세요");
+			   $('#memPassword').focus();
+		   }else if(!memId){
+			   alert("아이디를 확인해주세요");			   
+			   $('#memId').focus();
+		   }else if(!memTel){
+			   alert("전화번호를 확인해주세요");
+			   $('#mobile2').focus();
+		   }else if(!memName){
+			   alert("이름을 확인해주세요");			   
+			   $('#memName').focus();
+		   }else if(!memAddr1){
+			   alert("주소를 확인해주세요");			   
+			   $('#memAddr1').focus();
+		   }else if(!memAddr2){
+			   alert("주소를 확인해주세요");			   
+			   $('#memAddr2').focus();
+		   }else if(!memAddr3){
+			   alert("주소를 확인해주세요");			   
+			   $('#memAddr3').focus();
+		   }else if(!memEmail){
+			   alert("이메일을 확인해주세요");			   
+			   $('#memEmail').focus();
+		   }else{
+			   $.ajax({
+			         url:"/sollabo/member/join",
+			         type:"post",	
+			         data:formData,
+			         success:function(responseData){         
+			            var json = JSON.parse(responseData);
+			            console.log(json)
+			            if(json==1){ // 1이면 성공 0이면 실패
+			               alert("회원가입이 완료되었습니다. 감사합니다.");
+			               location.href="/sollabo/member/login"; // 로그인페이지로 이동
+			            }else{
+			               alert("회원가입 실패");
+			            }
+			         }
+			      });  
+		   }		  
+	   }      
    }
    
-   registerForm.addEventListener("submit", regist);
+   //중복 아이디 체크
+   function idCheck() {
+	   var memId = $('#memId').val();
+	   console.log(memId);
+	   if(memId != null && memId != ""){
+		   $("#register").disabled = true;
+		    $.ajax({
+		         url:"/sollabo/member/idCheck",
+		         type:"post",	
+		         data:{
+		     		memId : $('#memId').val(),
+		    	},
+		         success:function(responseData){         
+		            var json = JSON.parse(responseData);
+		            if(json==1){ // 1이면 성공 0이면 실패
+		            	idch = 1;		            		
+		            	$('#memId').attr("readonly",true);
+						alert("중복된 아이디가 아닙니다")
+		            }else{
+		               alert("중복된 아이디입니다");
+		            }
+		         }
+		      });   
+	   }else{
+		   alert("아이디를 입력해주세요")
+	   }
+	
+   }
    
    </script>
    <c:import url="../default/footer.jsp"/>   
