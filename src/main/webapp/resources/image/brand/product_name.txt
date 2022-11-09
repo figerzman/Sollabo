@@ -1,0 +1,43 @@
+fredperry1 - Baseline Leather(608)
+fredperry2 - B722 레더 (100)
+fredperry3 - 언더스핀 팁드 커프 트윌 (100)
+fredperry4 - B721 레더 (200)
+fredperry5 - Spencer Leather(608)
+fredperry6 - 언더스핀 레더 (100)
+fredperry7 - 언더스핀 레더 (200)
+fredperry8 - B721 레더 (370)
+fredperry9 - 스펜서 레더 (102)
+fredperry10 - 킹스톤 레더 (134)
+fredperry11 - B722 레더 (254)
+fredperry12 - 킹스톤 레더 (200)
+fredperry13 - 베이스라인 퍼프 레더 (200)
+fredperry14 - 킹스톤 레더 (184)
+fredperry15 - 언더스핀 레더 (134)
+fredperry16 - B721 레더/사이드 패널 (200)
+fredperry17 - B722 레더 탭 (303)
+fredperry18 - 언더스핀 레더 (162)
+fredperry19 - B400 레더/스웨이드 (254)
+fredperry20 - 언더스핀 레더 (183)
+--------------------------------------------------------
+lacoste1 - SIDELINE TRI 2 CMA
+lacoste2 - STRAIGHTSET BL
+lacoste3 - SIDELINE 0120 6 CFA
+lacoste4 - SIDELINE
+lacoste5 - STRAIGHTSET 0821
+lacoste6 - CARNABY EVO BL 1 SPW
+lacoste7 - GRIPSHOT 0721 1
+lacoste8 - CARNABY EVO TRI 1 SMA
+lacoste9 - SIDELINE 0120 1 CFA
+lacoste10 - RZ1050W51NWS
+lacoste11 - RZ0002W51NWS
+lacoste12 - RZ1014M51NWS
+lacoste13 - LEROND 0120 1 CFA W
+lacoste14 - SIDELINE 0120 2 CFA
+lacoste15 - EUROPA 0120 1 SMA
+lacoste16 - COURT-MASTER 0120 1 SMA
+lacoste17 - GRADUATE TRI 1 SMA
+lacoste18 - 유로파 0722 남성 / 43SMA0024042
+lacoste19 - L005 222 여성 / 44SFA0098082
+lacoste20 - 르론드 프로 222 남성 / 44CMA00241R5
+
+

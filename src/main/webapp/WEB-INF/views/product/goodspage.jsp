@@ -900,14 +900,20 @@ input{
 <br>
 <div class="down_area">
 
-		<c:set var="tel" value="${fn:split(goodsProduct.productImage,'&')}" />
-		
-		<c:forEach var="telNum" items="${tel}" varStatus="g">
-		     <c:if test="${g.count == 2}">${telNum}</c:if>
-		       <c:if test="${g.last}">-${telNum}</c:if>
-		</c:forEach> 
 
-		<br>
+    <c:set var="key" value="1" />
+    <c:set var="productImage" value="${fn:split(goodsProduct.productImage,'#')}" />
+    <c:forEach var="productImageFile" items="${productImage}" varStatus="varStatus">
+	     <c:if test="${varStatus.count eq key }">
+		    <td >
+		        <img src="${pageContext.request.contextPath}/resources/image/brand/fredperry/${productImageFile} />"> 
+		    </td>
+	     </c:if>
+    </c:forEach> 
+    <c:set var="key" value="${key + 1}" />
+    
+    
+		<%-- <br>
 		<br>
 		<br>
 		<br>
@@ -999,7 +1005,7 @@ input{
 			&nbsp;<span style="background-color: rgb(237, 242, 194);">#운동화</span> 
 			&nbsp;<span style="background-color: rgb(237, 242, 194);">#편안함</span></span>
 		</div>
-	</div>
+	</div> --%>
 </div>
 
 <br>
