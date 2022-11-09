@@ -82,9 +82,10 @@
             width: 120px; 
             height: 50px; 
             border: none; 
-            border-radius: 5%; 
+            border-radius: 5px; 
             background-color: #fff; 
             font-size: 14px;
+            cursor: pointer;
          }
       </style>
    </head>

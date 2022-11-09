@@ -8,7 +8,7 @@
 <title>modifyProfile</title>
 <style type="text/css">
 * {
-	margin: 0;
+/* 	margin: 0; */
 	padding: 0;
 }
 
@@ -30,7 +30,7 @@
 
 /* 전체 글꼴 */
 body{
-    font-size: 0.9em;
+/*     font-size: 0.9em; */
     font-family: 'Roboto', sans-serif;
 }
 
