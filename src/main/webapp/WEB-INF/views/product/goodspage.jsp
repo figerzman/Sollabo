@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,13 +38,10 @@
     		}else if($('#size').val() == ""){
     			 alert('사이즈를 선택해주세요.')    			
     		}else if($('#color').val() != "" && $('#size').val() != "금지" && $('#size').val() != ""){  			
-    			$('#total').show();
-    			
-    			
+    			$('#total').show();	
     		}
     	}		
 	}
-  
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
@@ -900,6 +899,14 @@ input{
 <br>
 <br>
 <div class="down_area">
+
+		<c:set var="tel" value="${fn:split(goodsProduct.productImage,'&')}" />
+		
+		<c:forEach var="telNum" items="${tel}" varStatus="g">
+		     <c:if test="${g.count == 2}">${telNum}</c:if>
+		       <c:if test="${g.last}">-${telNum}</c:if>
+		</c:forEach> 
+
 		<br>
 		<br>
 		<br>
