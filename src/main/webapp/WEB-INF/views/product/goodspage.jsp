@@ -11,9 +11,7 @@
 <title>제품 상세 페이지</title>
 <!--3초간격 화면전환  -->
 <script>
-	function goodsSubmit() {
-		$('#goodsFrm').submit();
-	}
+
     var index = 0;   //이미지에 접근하는 인덱스
     window.onload = function(){
         slideShow();
@@ -41,11 +39,8 @@
     			alert('색상을 선택해주세요.')   	
     		}else if($('#size').val() == ""){
     			 alert('사이즈를 선택해주세요.')    			
-    		}else if($('#color').val() != "" && $('#size').val() != "금지" && $('#size').val() != ""){  			
+    		}else if($('#color').val() != "" && $('#size').val() != "Nope" && $('#size').val() != ""){  			
     			$('#total').show();	
-    			console.log($("#color option:selected").val())
-    			console.log($("#size option:selected").val())
-    			$('#colorSize').innerText =  $("#color option:selected").val() / $("#size option:selected").val()
     		}
     	}		
 	}
@@ -767,10 +762,10 @@ input{
 					<select id="color" name="color" onchange ="search(color)">
 						<option  value="">- [필수] 옵션을 선택해 주세요 -</option>
 						<option  value="">-------------------</option>
-						 <option value="라이트블루">Black</option>
-						 <option value="블루" link_image="">Ivory</option>
-						 <option value="딥블루" link_image="">Gray</option>
-						 <option value="라이트블랙" link_image="">Violet</option>
+						 <option value="LiteBlue">LiteBlue</option>
+						 <option value="Blue" link_image="">Blue</option>
+						 <option value="DeepBlue" link_image="">DeepBlue</option>
+						 <option value="ListBlack" link_image="">ListBlack</option>
 					 </select>
 					</td>
 				</tr>
@@ -782,12 +777,12 @@ input{
 					<th scope="row">사이즈</th>
 					<td>
 					<select name="size" id="size" onchange ="search(size)">
-						<option value="금지">- [필수] 옵션을 선택해 주세요 -</option>
+						<option value="Nope">- [필수] 옵션을 선택해 주세요 -</option>
 						<option value="">-------------------</option>
-						 <option value="스몰" link_image="">S(255~260)</option>
-						 <option value="미디엄" link_image="">M(265~270)</option>
-						 <option value="라지" link_image="">L(275~280)</option>
-						 <option value="엑스라지" link_image="">XL(285~290)</option>	
+						 <option value="Small" link_image="">S(255~260)</option>
+						 <option value="Medium" link_image="">M(265~270)</option>
+						 <option value="Large" link_image="">L(275~280)</option>
+						 <option value="xLarge" link_image="">XL(285~290)</option>	
 					 </select>
 					</td>
 				</tr>
@@ -796,7 +791,6 @@ input{
 			<br><br>
 			<!-- 총 제품 페이지 --><!-- 수정중 -->
 			<div class="total_product" id="total" style="display:none">
-			   <form action="" method="post" id="goodsFrm" name="goodsFrm"> 
 				<table >
 					<thead>
 						<tr>
@@ -811,8 +805,8 @@ input{
                             <td>
                             	<span class="quantity">
 	                                <input id="quantity" name="quantity_name" style="" value="1" type="text">                                        
-	                                <a href="#none" onclick='count(this.id)' id="plus"><img src="image/upbtn.gif" alt="수량증가" class="QuantityUp up"></a>
-	                                <a href="#none" onclick='count(this.id)' id="minus"><img src="image/downbtn.gif" alt="수량감소" class="QuantityDown down"></a>
+	                               <!--  <a href="#none" onclick='count(this.id)' id="plus"><img src="image/upbtn.gif" alt="수량증가" class="QuantityUp up"></a>
+	                                <a href="#none" onclick='count(this.id)' id="minus"><img src="image/downbtn.gif" alt="수량감소" class="QuantityDown down"></a> -->
                                 </span>
                            </td>
                            <td class="right">
@@ -827,7 +821,7 @@ input{
                             		<input type="hidden" class="option_box_id" id="option_box1_id" value="P0000CID00BE" name="item_code[]" data-item-add-option="" data-item-reserved="N" data-option-id="00BE" data-option-index="1"> 
                             		<p class="product">${goodsProduct.productName }
                             		<br> -
-                             		<span id="colorSize"> </span>
+                             		<span id="colorSize"></span>
                              		</p>
                              	</td>
                              	<td>
@@ -852,7 +846,6 @@ input{
                             </tr>
                 	</tbody>		
 				</table>
-                	</form>	
 			</div>
 			<br><br><br>
 			<!-- 총 가격 -->
@@ -867,7 +860,7 @@ input{
 			</div>
 	<!-- 구매버튼 -->
 		<div class="total_btn">
-				<a href="#" class="btnSubmit" onclick="goodsSubmit()" >            
+				<a href="${pageContext.request.contextPath}/cart/cart?productNo=${goodsProduct.productNo }&productCnt=${goodsProduct.productCnt }" class="btnSubmit" >            
 					<span id="buybtn" >구매하기</span>
 				</a>
 				

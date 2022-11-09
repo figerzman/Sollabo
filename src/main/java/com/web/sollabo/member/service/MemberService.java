@@ -15,6 +15,6 @@ public interface MemberService {
 	public MemberDTO findPwd(MemberDTO memberDTO);
 	public int join(MemberDTO memberDTO);
 	public MemberDTO modifyProfile(MemberDTO memberDTO);
-	public MemberDTO updateMember(MemberDTO memberDTO);
+	public int updateMember(MemberDTO memberDTO);
 	public int deleteMember(MemberDTO memberDTO);
 }

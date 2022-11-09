@@ -131,7 +131,6 @@ public class MemberController implements MemberSession {
 		return modelAndView;
 	}
 	
-	
 	// 회원가입
 	@RequestMapping("join_form")
 	public String join_form() {
@@ -159,7 +158,8 @@ public class MemberController implements MemberSession {
 	// 회원정보 수정
 	// 로그인된 id의 정보를 가져와서 회원정보 수정 페이지에 보여줌
 	@GetMapping("modifyProfile")	
-	public ModelAndView modifyProfile(HttpSession session) { 
+	public ModelAndView updateMember(HttpSession session) { 
+		System.out.println("get");
 		 modelAndView = new ModelAndView();
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setMemId((String)session.getAttribute("memId"));
@@ -169,13 +169,16 @@ public class MemberController implements MemberSession {
 	}
 	
 	@PostMapping("modifyProfile")	
-	public ModelAndView modifyProfile(@ModelAttribute MemberDTO memberDTO) { 
-		 modelAndView = new ModelAndView();
+	@ResponseBody
+	public int updateMember(MemberDTO memberDTO) { 
+			
+		System.out.println(memberDTO);
+		int result = ms.updateMember(memberDTO);
+		System.out.println(result);
+		System.out.println("@@@@@@@@@@@@@@@");
+		return result;
+
 		
-		modelAndView.addObject("MemberDTO", ms.updateMember(memberDTO));	
-		
-		modelAndView.setViewName("member/modifyProfile");
-		return modelAndView;
 	}
 	// 수정 업데이트 하는 것
 	

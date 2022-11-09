@@ -56,7 +56,8 @@
 	
 	<!-- 회원정보 수정 -->
 	<update id="updateMember">
-		update member set MEM_PASSWORD = #{memPassword},MEM_ADDR1 = #{memAddr1 }, MEM_ADDR2 = #{memAddr2 }, MEM_ADDR3 = #{memAddr3 }, MEM_EMAIL = #{memEmail },MEM_TEL = #{memTel}
+		update member set MEM_PASSWORD = #{memPassword },MEM_ADDR1 = #{memAddr1 }, MEM_ADDR2 = #{memAddr2 }, MEM_ADDR3 = #{memAddr3 }, MEM_EMAIL = #{memEmail },MEM_TEL = #{memTel }
+		where mem_id = #{memId}
 	</update>
 	
 	<!-- 회원 삭제 -->
