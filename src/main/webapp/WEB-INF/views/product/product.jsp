@@ -226,6 +226,10 @@ ul .prdList > li {
     margin: 20px 0 50px;
     color: #757575;
     vertical-align: top;
+    
+    margin-right: 17px;
+    margin-left: 17px;
+    
 }
 
 .prdList .thumnail {
@@ -235,8 +239,8 @@ ul .prdList > li {
 }
 
 .bottomPack .prdList .thumnail .prdImg a img {
-	width: 200px;
-	height: 250px;
+	width: 250px;
+	height: 280px;
     box-sizing: border-box;
 }
 
