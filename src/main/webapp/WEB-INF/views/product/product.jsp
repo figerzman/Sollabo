@@ -70,7 +70,6 @@ strong {
 
 #container{
 	margin: 0;
-	text-align: center;	
 }
 
 #contents{
@@ -227,9 +226,8 @@ ul .prdList > li {
     margin: 20px 0 50px;
     color: #757575;
     vertical-align: top;
-    
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 17px;
+    margin-left: 17px;
     
 }
 
@@ -240,8 +238,8 @@ ul .prdList > li {
 }
 
 .bottomPack .prdList .thumnail .prdImg a img {
-	width: 350px;
-	height: 400px;
+	width: 250px;
+	height: 280px;
     box-sizing: border-box;
 }
 
@@ -351,7 +349,7 @@ ul .infoT {
 	<input type="hidden" name="currentPage" >
 </form>
 <div id="wrap" class="prdPage">
-	<div id="container">
+	<div id="container" >
 		<div id="contents">
 			<!-- 헤더 -->
 			<div class="topPack">

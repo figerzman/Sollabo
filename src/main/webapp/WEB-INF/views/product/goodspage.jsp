@@ -29,7 +29,7 @@
         index = 1;  //인덱스가 초과되면 1로 변경
     }   
     x[index-1].style.display = "block";  //해당 인덱스는 block으로
-    setTimeout(slideShow, 100000);   //함수를 4초마다 호출
+    setTimeout(slideShow, 40000);   //함수를 4초마다 호출
  
 }
     
@@ -641,6 +641,7 @@ input{
 	padding: 30px;
   /*   border-bottom: 1px solid #222; */
     psotion:absolute;
+    text-align:center;
 
 	    }
 .front_other{
@@ -911,6 +912,7 @@ input{
 	     <c:if test="${varStatus.count eq key }">
 		    <td >
 		        <img src="${pageContext.request.contextPath}/resources/image/brand/fredperry/${productImageFile}"> 
+		        <br>
 		    </td>
 	     </c:if>
    	 <c:set var="key" value="${key + 1}" />
