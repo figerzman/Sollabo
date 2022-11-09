@@ -70,7 +70,7 @@
 		<tr>
 		      <th class="profile"><button class="btn1" type="button"><img src="${pageContext.request.contextPath }/resources/image/profile.png" width="150" height="150"></button></th>
 			  <th class="pen"><button class="btn2" type="button"><a href="/sollabo/member/modifyProfile"><img src="${pageContext.request.contextPath }/resources/image/pen.png" width="150" height="150"></a></button></th>
-			  <th class="exit"><button class="btn3" type="button"><a href="/sollabo/member/delete"><img src="${pageContext.request.contextPath }/resources/image/exit.png" width="150" height="150"></a></button></th>
+			  <th class="exit"><button class="btn3" type="button"><a href="/sollabo/member/deleteMember"><img src="${pageContext.request.contextPath }/resources/image/exit.png" width="150" height="150"></a></button></th>
 		</tr>
 		<tr>
 			  <th class="first">회원정보</th>

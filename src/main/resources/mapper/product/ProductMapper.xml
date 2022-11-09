@@ -4,7 +4,19 @@
 
 
 <mapper namespace="com.web.sollabo.mybatis.product.ProductMapper">
+	
+	<sql id="searchWhereDivisionCode">
+		<choose>
+			<when test="searchKeyword !=null and searchKeyword !=''">
+				where ${searchCondition} like '%' || #{searchKeyword} || '%' and division_code = #{divisionCode}
+			</when>
+			<when test="searchKeyword == null and searchKeyword =='' or divisionCode !='0'">
+				where division_code = #{divisionCode}
+			</when>
 
+		</choose>
+	</sql>
+	
 	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="product">
 		<id property= "productNo" column = "PRODUCT_NO"/>		
 		<result property = "categoryCode" column = "CATEGORY_CODE" />		
@@ -15,8 +27,11 @@
 		<result property = "productCnt" column = "PRODUCT_CNT" />
 		<result property = "productPrice" column = "PRODUCT_PRICE" />
 		<result property = "productRegDate" column = "PRODUCT_REG_DATE" />
-		<result property = "productReplyContent" column = "PRODUCT_REPLY_CONTENT" />
 		<result property = "productReplyWriter" column = "PRODUCT_REPLY_WRITER" />
+		<result property = "productReplyContent" column = "PRODUCT_REPLY_CONTENT" />
+		<result property = "productReplyFile" column = "PRODUCT_REPLY_FILE" />
+		<result property = "productReplyRegDate" column = "PRODUCT_REPLY_REG_DATE" />
+		<result property = "productReplyDel" column = "PRODUCT_REPLY_DEL" />
 		<result property = "productReplyNo" column = "PRODUCT_REPLY_NO" />
 	</resultMap>
 	
@@ -25,18 +40,7 @@
 		<result property= "categoryCode" column = "CATEGORY_CODE"/>
 		<result property= "divisionName" column = "DIVISION_NAME"/>
 		<result property= "icon" column = "ICON"/>
-	</resultMap> 
-	
-	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="reply">
-		<id property= "productReplyNo" column = "PRODUCT_REPLY_NO"/>		
-		<result property = "productNo" column = "PRODUCT_NO" />
-		<result property = "productReplyWriter" column = "PRODUCT_REPLY_WRITER" />
-		<result property = "productReplyContent" column = "PRODUCT_REPLY_CONTENT" />
-		<result property = "productReplyFile" column = "PRODUCT_REPLY_FILE" />
-		<result property = "productReplyRegDate" column = "PRODUCT_REPLY_REG_DATE" />
-		<result property = "productReplyDel" column = "PRODUCT_REPLY_DEL" />
-	</resultMap> 
-	
+	</resultMap> 	
 	
 	<resultMap type="com.web.sollabo.product.dto.ProductDTO" id="option">
 		<result property = "shcolor" column = "SHCOLOR" />
@@ -52,12 +56,14 @@
 	
 	
 	
-	<select id="getProduct" resultMap="product">
+<!-- 	<select id="getProduct" resultMap="product" parameterType="int">
 		select * from product
-		where division_code = #{divisionCode}
-	</select>
+		<if test="divisionCode !=0 ">
+			where division_code = #{divisionCode}		
+		</if>
+	</select> -->
 	
-		<select id="getDivision" resultMap="division">
+	<select id="getDivision" resultMap="division">
 		select * from product_division		
 	</select>
 	
@@ -65,7 +71,47 @@
 		select * from product where product_no = #{productNo}
 	</select>
 	
+	<select id="getProduct" parameterType="com.web.sollabo.util.SearchVO" resultMap="product">
+		select *
+		from(
+		    select rownum as RNUM, plist.*
+		    from(
+		    	select * from product 
+		    	<include refid="searchWhereDivisionCode"></include>
+		    	order by product_reg_date desc
+		    ) plist
+		)
+		<![CDATA[
+		where RNUM>=#{firstRecordIndex} 
+		and RNUM<=#{firstRecordIndex}+#{recordCountPerPage}]]>
+	</select>
 	
+	<select id="selectTotalProductCount" resultType="int" parameterType="com.web.sollabo.util.SearchVO">
+		select count(*) from product
+		<include refid="searchWhereDivisionCode"></include>
+	</select>
+	
+	<select id="getProductReply" parameterType="com.web.sollabo.util.SearchVO" resultMap="product">
+		select *
+		from(
+		    select rownum as RNUM, prlist.*
+		    from(
+				select pr.*,p.product_name,p.product_price from product_reply pr left outer join product p
+				on pr.product_no = p.product_no
+				where p.product_no = #{productNo}
+				order by pr.PRODUCT_REPLY_REG_DATE desc
+		    ) prlist
+		)
+		<![CDATA[
+		where RNUM>=#{firstRecordIndex} 
+		and RNUM<=#{firstRecordIndex}+#{recordCountPerPage}]]>
+	</select>
+	
+	<select id="selectTotalProductReplyCount" resultType="int" parameterType="com.web.sollabo.util.SearchVO">
+		select count(*) from product_reply pr left outer join product p
+		on pr.product_no = p.product_no
+		where p.product_no = #{productNo}
+	</select>
 
 	
 	

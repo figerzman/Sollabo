@@ -199,26 +199,7 @@ div {
 </style>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-function daumPost() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            var addr="";
-            // R : 도로명, J : 지번
-            if(data.userSelectedType=='R'){
-            	addr = data.roadAddress
-            }
-            else {
-            	addr = data.jibunAddress
-            }
-            $("#addr1").val(data.zonecode)
-            $("#addr2").val(addr)
-            $("#addr3").focus()
-        }
-    }).open();
-}
 
-</script>
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
@@ -274,23 +255,24 @@ function daumPost() {
 					</tr>
 
 					<!-- 전화번호 일단 빼놓고 하기 -->
-<!--                <tr> -->
-<!--                   <th scope="row"> -->
-<!--                   휴대전화  -->
-<!--                   <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수"> -->
-<!--                   </th> -->
-<!--                   <td> -->
-<!--                      <select id="mobile1" name="memTel"> -->
-<!--                         <option value="010">010</option> -->
-<!--                         <option value="011">011</option> -->
-<!--                         <option value="016">016</option> -->
-<!--                      </select> -->
-<!--                      - -->
-<!--                      <input id="mobile2" name="memTel" maxlength="4" required> -->
-<!--                      - -->
-<!--                      <input id="mobile3" name="memTel" maxlength="4" required> -->
-<!--                   </td> -->
-<!--                </tr> -->
+	               <tr>
+	                  <th scope="row">
+	                  휴대전화 
+	                  <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="필수">
+	                  </th>
+	                  <td>
+	                     <select id="mobile1" name="mobile1">
+	                        <option value="010">010</option>
+	                        <option value="011">011</option>
+	                        <option value="016">016</option>
+	                     </select>
+	                     -
+	                     <input id="mobile2"  maxlength="4" required>
+	                     -
+	                     <input id="mobile3"  maxlength="4" required>
+	                     <input type="hidden" name="memTel" id="memTel">	                     
+	                  </td>
+	               </tr>
 
 					<tr>
 						<th scope="row">
@@ -300,10 +282,8 @@ function daumPost() {
 						<td><input type="email" id="user_mail" name="memEmail" value="${MemberDTO.memEmail }" required></td>
 					</tr>
 				</tbody>
-				</table>
-				
-			<br>
-		    
+				</table>				
+			<br>		    
 		    <div class="btnArea">
 		        <input type="submit" value=""><a href="/sollabo/member/mypage" onclick=""></a>
 		        <a href="/sollabo/member/mypage"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_modify_cancel.gif" alt="취소" /></a>
@@ -317,4 +297,48 @@ function daumPost() {
     
 	<c:import url="../default/footer.jsp"/>		
 </body>
+<script>
+function daumPost() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var addr="";
+            // R : 도로명, J : 지번
+            if(data.userSelectedType=='R'){
+            	addr = data.roadAddress
+            }
+            else {
+            	addr = data.jibunAddress
+            }
+            $("#addr1").val(data.zonecode)
+            $("#addr2").val(addr)
+            $("#addr3").focus()
+        }
+    }).open();
+}
+function regist(){
+	   var pwd = $('#memPassword').val();
+	   var pwdCh = $('#memPasswordCheck').val()
+	   if(pwd != pwdCh ||  pwd == "" || pwd== null || pwdCh == null || pwdCh == ""  ){
+		   alert("비밀번호 값을 확인해주세요")
+	   }
+		   
+	  $('#memTel').val( $('#mobile1').val()+$('#mobile2').val()+ $('#mobile3').val());
+   //form 태그의 파라미터들을 전송할수있는 상태로 둬야  data키값에 form 자체를 넣을 수 있다.
+   var formData = $("#join_form").serialize(); //전부 문자열화 시킨다      
+     $.ajax({
+      url:"/sollabo/member/join",
+      type:"post",	
+      data:formData,
+      success:function(responseData){         
+         //서버로부터 완료 응답을 받으면
+         var json = JSON.parse(responseData);
+         if(json==1){ // 1이면 성공 0이면 실패
+            alert("회원가입이 완료되었습니다. 감사합니다.");
+            location.href="/sollabo/member/login"; // 로그인페이지로 이동
+         }else{
+            alert("회원가입 실패");
+         }
+      }
+   });  
+</script>
 </html>

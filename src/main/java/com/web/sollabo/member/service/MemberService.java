@@ -10,10 +10,11 @@ public interface MemberService {
 	
 	public List<MemberDTO> getMember();
 	
-	public int user_check(HttpServletRequest request);
+	public 	List<Object> user_check(MemberDTO memberDTO);
 	public MemberDTO findId(MemberDTO memberDTO);
 	public MemberDTO findPwd(MemberDTO memberDTO);
-	public int join(MemberDTO member);
+	public int join(MemberDTO memberDTO);
 	public MemberDTO modifyProfile(MemberDTO memberDTO);
-
+	public MemberDTO updateMember(MemberDTO memberDTO);
+	public int deleteMember(MemberDTO memberDTO);
 }

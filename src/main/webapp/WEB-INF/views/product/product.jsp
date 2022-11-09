@@ -330,9 +330,21 @@ ul .infoT {
 
 </style>
 </head>
+<script type="text/javascript">	
+	function pageFunc(curPage){
+		document.frmPage.currentPage.value=curPage;
+		frmPage.submit();
+	}
+</script>
+
 <body>
 <c:import url="../default/header.jsp"/>
-
+<form name="frmPage" method="post" action="<c:url value='/product/product'/>">
+	<input type="hidden" name="searchCondition" value="${param.searchCondition}">
+	<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">	
+	<input type="hidden" name="divisionCode" value="${param.divisionCode}">		
+	<input type="hidden" name="currentPage" >
+</form>
 <div id="wrap" class="prdPage">
 	<div id="container">
 		<div id="contents">
@@ -417,32 +429,42 @@ ul .infoT {
 			</div>
 			<!-- 제품 진열(최하단)  -->
 			<div class="lastPack">
-				<a href="#none" class="first">
-					<img src="${pageContext.request.contextPath}/resources/gif/firstbtn.gif" 
-					onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/first_rollover.gif'" 
-					onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/firstbtn.gif'" alt="첫 페이지">
-				</a>
-				<a href="#none">
-					<img src="${pageContext.request.contextPath}/resources/gif/prevbtn.gif" 
-					onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/prev_rollover.gif'" 
-					onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/prevbtn.gif'" alt="이전 페이지">
-				</a>
-				<ol style="padding-left: 0px;">
-					<li class="know"><a href="" class="this">1</a></li>
-			        <li class="know"><a href="" class="other">2</a></li>
-			        <li class="know"><a href="" class="other">3</a></li>
-			        <li class="know"><a href="" class="other">4</a></li>
-	            </ol>
-	            <a href="">
-		          <img src="${pageContext.request.contextPath}/resources/gif/nextbtn.gif" 
+				<c:if test="${pagingInfo.firstPage>1 }">
+					<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1 })">			
+						<img src="${pageContext.request.contextPath}/resources/gif/prevbtn.gif" 
+						onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/prev_rollover.gif'" 
+						onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/prevbtn.gif'" alt="이전 페이지">
+					</a>	
+				</c:if>	
+				<!-- [1][2][3][4][5][6][7][8][9][10] -->
+				<c:forEach var="i" begin="${pagingInfo.firstPage }" end="${pagingInfo.lastPage }">
+					<ol style="padding-left: 0px;">
+					<c:if test="${i==pagingInfo.currentPage }">
+						<li class="know"><a href="#">[${i }]</a></li>
+					</c:if>
+					<c:if test="${i!=pagingInfo.currentPage }">
+						<li class="know"><a href="#" onclick="pageFunc(${i})" class="this" >[${i }]</a></li>
+					</c:if>
+		            </ol>
+				</c:forEach>
+				<!-- 다음 블럭으로 이동 ▶ -->
+				<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage }">
+					<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})">
+					  <img src="${pageContext.request.contextPath}/resources/gif/nextbtn.gif" 
 		            onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/next_rollover.gif'" 
 		            onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/nextbtn.gif'" alt="다음 페이지">
-	            </a>
-	            <a href="" class="last">
-	            	<img src="${pageContext.request.contextPath}/resources/gif/lastbtn.gif" 
-	            	onmouseover="this.src='${pageContext.request.contextPath}/resources/gif/last_rollover.gif'" 
-	            	onmouseout="this.src='${pageContext.request.contextPath}/resources/gif/lastbtn.gif'" alt="마지막 페이지">
-            	</a>
+					</a>		           
+				</c:if>
+			</div>
+			<div class="divSearch">
+			   	<form name="frmSearch" method="post" action='<c:url value="/product/product"/>'>
+			        <select name="searchCondition"  style="text-align: center;">        	
+			            <option value="product_name" <c:if test="${param.searchCondition=='product_name'}">selected</c:if>>상품이름</option>
+			        </select>   
+			        <input type="hidden" name="divisionCode" value="${param.divisionCode}">		
+			        <input type="text" name="searchKeyword" title="검색어 입력" value="${param.searchKeyword}">   
+					<input type="submit" value="검색">
+			    </form>
 			</div>
 		</div>
 	</div>
